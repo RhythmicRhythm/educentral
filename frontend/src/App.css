@@ -34,11 +34,11 @@
   bottom: 0;
   margin-bottom: 10px;
 }
-
-.tracker-box .validated{
-  color: #e7e5e;
+button:disabled,
+button[disabled]{
+  background-color: #8691a9;
+  cursor: not-allowed;
 }
-
 
 @keyframes App-logo-spin {
   from {
