@@ -22,6 +22,8 @@ const Resetpassword = () => {
   const [specialValidated, setSpecialValidated] = useState(false);
   const [lengthValidated, setLengthValidated] = useState(false);
 
+  const [passwordMatch, setPasswordMatch] = useState(false);
+
   const handleChange = (value) => {
     const lower = new RegExp("(?=.*[a-z])");
     const upper = new RegExp("(?=.*[A-Z])");

@@ -6,6 +6,7 @@ import Login from './pages/Auth/Login';
 import Forgot from './pages/Auth/Forgot';
 import Emailsent from './pages/Auth/Emailsent';
 import Resetpassword from './pages/Auth/Resetpassword';
+import Resetdone from './pages/Auth/Resetdone';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/forgotpassword" element={<Forgot />} />
       <Route path="/emailsent" element={<Emailsent />} />
       <Route path="/resetpassword" element={<Resetpassword />} />
+      <Route path="/resetdone" element={<Resetdone />} />
         </Routes>
     </BrowserRouter>
     </div>
