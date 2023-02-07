@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
@@ -75,7 +75,7 @@ const Login = () => {
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-8" src={Vector} />
+                  <img className="vector absolute right-0 mr-8 w-8" src={Vector} alt="" />
                 </div>
               </form>
             </div>
@@ -83,7 +83,7 @@ const Login = () => {
         </div>
 
         <div className="login-half lg:flex w-1/2 hidden relative items-center text-white">
-        <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+        <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
           <div className="w-full absolute bottom-0 absolute p-14 text-center right-0 left-0">
             <h1 className="text-3xl font-bold text-left tracking-wide">
               Manage your team properly and share thoughts together with our

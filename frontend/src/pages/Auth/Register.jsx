@@ -1,14 +1,14 @@
 import React from "react";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import Vector from "./Assets/Vector.png";
 
 const Register = () => {
   return (
     <div>
       <section className="min-h-screen flex">
-      <div className="lg:w-1/2 w-full flex flex-col justify-center  md:px-16 px-0 z-0 text-black">
+      <div className=" lg:w-1/2 w-full flex flex-col justify-center  md:px-16 px-0 z-0 text-black">
           <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
             <div className="top-0 absolute p-4 text-center right-0 left-0">
               <img src={logo} alt="logo" />
@@ -80,7 +80,7 @@ const Register = () => {
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-8 w-20" src={Vector} />
+                  <img className="vector absolute right-0 mr-8 w-16 " src={Vector} alt="" />
                 </div>
               </form>
             </div>
