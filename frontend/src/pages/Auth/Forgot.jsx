@@ -14,7 +14,7 @@ const Forgot = () => {
         </div>
         <div
           className="w-96
-        mx-auto rounded-lg bg-white shadow p-5 text-gray-800 flex flex-col items-center justify-center"
+        mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
         >
           <div className="">
             <img src={key} alt="" />

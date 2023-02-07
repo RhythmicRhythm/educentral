@@ -15,7 +15,7 @@ const Login = () => {
             </div>
             <div
               className="w-96
-        mx-auto rounded-lg bg-white shadow p-5 text-gray-800 flex flex-col items-center justify-center"
+        mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
               <div className="mb-6">
                 <h1 className="text-3xl font-bold mb-2">Welcome back, Eugene</h1>
@@ -75,7 +75,7 @@ const Login = () => {
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-4 w-8" src={Vector} alt="" />
+                  <img className="vector absolute right-0 mr-4 w-10" src={Vector} alt="" />
                 </div>
               </form>
             </div>

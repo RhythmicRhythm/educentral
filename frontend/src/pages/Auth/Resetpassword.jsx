@@ -1,14 +1,12 @@
 import React from "react";
 import "./Auth.css";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
 import Icon from "react-icons-kit";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
-import { arrows_exclamation } from "react-icons-kit/linea/arrows_exclamation";
-import { arrows_circle_check } from "react-icons-kit/linea/arrows_circle_check";
 import { radioChecked } from "react-icons-kit/icomoon/radioChecked";
 import { radioUnchecked } from "react-icons-kit/icomoon/radioUnchecked";
 
@@ -65,7 +63,7 @@ const Resetpassword = () => {
         </div>
         <div
           className="w-96
-        mx-auto rounded-lg bg-white shadow p-5 text-gray-800 flex flex-col items-center justify-center"
+        mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
         >
           <div className="">
             <img src={key} alt="" />
