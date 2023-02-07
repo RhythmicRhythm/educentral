@@ -8,6 +8,14 @@ import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2'
 
 
 const Forgot = () => {
+  const navigate = useNavigate();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    // navigate("/resetpasso");
+  }
+
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -38,7 +46,7 @@ const Forgot = () => {
             </div>
 
             <div className="w-full mt-20">
-              <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2">
+              <button onClick={(e) => sendEmail(e)} className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2">
             
                 <Link to="/resetpassword">Send Email</Link>
               </button>
