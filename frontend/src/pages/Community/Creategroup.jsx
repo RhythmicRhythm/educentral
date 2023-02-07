@@ -5,6 +5,15 @@ import logo from "./Assets/eduCentralLogo.png";
 import Vector1 from "./Assets/Vector1.png";
 
 const Creategroup = () => {
+
+  const navigate = useNavigate();
+
+  const createGroup = (e) => {
+    e.preventDefault();
+
+    navigate("/sidebar");
+  }
+
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -25,9 +34,11 @@ const Creategroup = () => {
           </p>
 
           <div className="w-full mt-20">
-            <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
+            <button 
+             onClick={(e) => createGroup(e)}
+            className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
               {" "}
-              <Link to="/sidebar">Create Group</Link>
+              Create Group
             </button>
 
             <p className="mt-6 text-xs">

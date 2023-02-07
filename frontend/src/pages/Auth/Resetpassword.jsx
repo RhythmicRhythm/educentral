@@ -1,7 +1,7 @@
 import React from "react";
 import "./Auth.css";
 import { useState } from "react";
-import { Link, } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
 import Icon from "react-icons-kit";
@@ -13,6 +13,7 @@ import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2'
 
 const Resetpassword = () => {
   const [type, setType] = useState("password");
+  const navigate = useNavigate();
 
   // validated states
   const [lowerValidated, setLowerValidated] = useState(false);
@@ -22,6 +23,12 @@ const Resetpassword = () => {
   const [lengthValidated, setLengthValidated] = useState(false);
 
   const [passwordMatch, setPasswordMatch] = useState(false);
+
+  const resetPassword = (e) => {
+    e.preventDefault();
+
+    navigate("/resetdone");
+  }
 
   const handleChange = (value) => {
     const lower = new RegExp("(?=.*[a-z])");
@@ -196,9 +203,10 @@ const Resetpassword = () => {
                     lengthValidated
                   )
                 }
+                onClick={(e) => resetPassword(e)}
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
-                <Link to="/resetdone">Reset Password</Link>
+                
               </button>
               <Link className="text-sm text-blue-500" to="/login">
               <Icon icon={arrowLeft2} size={18} />   Back to Login{" "}

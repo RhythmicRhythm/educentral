@@ -6,6 +6,14 @@ import Done from "./Assets/Done.png";
 
 
 const Resetdone = () => {
+  const navigate = useNavigate();
+
+  const resetPassword = (e) => {
+    e.preventDefault();
+
+    navigate("/creategroup");
+  }
+
   return (
     <div>
          <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -27,7 +35,9 @@ const Resetdone = () => {
             <p className="text-sm mt-6">click below to Login</p>
 
           <div className="w-full mt-20">
-              <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
+              <button 
+               onClick={(e) => resetPassword(e)}
+              className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
                 {" "}
                 <Link to="/creategroup">Log In</Link>
               </button>
