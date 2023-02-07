@@ -13,7 +13,7 @@ const Forgot = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // navigate("/resetpasso");
+    navigate("/resetpassword");
   }
 
   return (
@@ -48,7 +48,7 @@ const Forgot = () => {
             <div className="w-full mt-20">
               <button onClick={(e) => sendEmail(e)} className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2">
             
-                <Link to="/resetpassword">Send Email</Link>
+               Send Email
               </button>
               <Link className="text-sm text-blue-500" to="/login">
               <Icon icon={arrowLeft2} size={18} /> Back to Login{" "}
