@@ -206,7 +206,7 @@ const Resetpassword = () => {
                 onClick={(e) => resetPassword(e)}
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
-                
+                Reset Password
               </button>
               <Link className="text-sm text-blue-500" to="/login">
               <Icon icon={arrowLeft2} size={18} />   Back to Login{" "}
