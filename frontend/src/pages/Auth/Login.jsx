@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
@@ -18,8 +18,12 @@ const Login = () => {
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
               <div className="mb-6">
-                <h1 className="text-3xl font-bold mb-2">Welcome back, Eugene</h1>
-                <p className="text-sm">welcome back! please enter your details</p>
+                <h1 className="text-3xl font-bold mb-2">
+                  Welcome back, Eugene
+                </h1>
+                <p className="text-sm">
+                  welcome back! please enter your details
+                </p>
               </div>
 
               <form action="" className=" w-full">
@@ -32,7 +36,6 @@ const Login = () => {
                     className="form-input"
                   />
                 </div>
-
 
                 <div className="pb-2 pt-4 relative">
                   <input
@@ -55,10 +58,13 @@ const Login = () => {
                   <div className="absolute left-4 mt-2">
                     <p className="text-sm">Remenber me </p>
                   </div>
-                    <div className="absolute right-0 mt-2">
-                    <Link className="text-sm text-blue-900" to="/forgotpassword">
-                        Forgot Password?{" "}
-                      </Link>
+                  <div className="absolute right-0 mt-2">
+                    <Link
+                      className="text-sm text-blue-900"
+                      to="/forgotpassword"
+                    >
+                      Forgot Password?{" "}
+                    </Link>
                   </div>
                 </div>
 
@@ -70,12 +76,19 @@ const Login = () => {
                   <p className="pt-3 mt-4">
                     Don't have an account ?{" "}
                     <span className="">
-                      <Link className="text-sm text-blue-800 font-bold" to="/register">
+                      <Link
+                        className="text-sm text-blue-800 font-bold"
+                        to="/register"
+                      >
                         Sign up for free{" "}
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-4 w-10" src={Vector} alt="" />
+                  <img
+                    className="vector absolute right-0 mr-4 w-15"
+                    src={Vector}
+                    alt=""
+                  />
                 </div>
               </form>
             </div>
@@ -83,15 +96,15 @@ const Login = () => {
         </div>
 
         <div className="login-half lg:flex w-1/2 hidden relative items-center text-white">
-        <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
+          <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
           <div className="w-full absolute bottom-0 absolute p-14 text-center right-0 left-0">
             <h1 className="text-3xl font-bold text-left tracking-wide">
-              Manage your team properly and share thoughts together with our
-              Platform!
+              Connect with your members
             </h1>
             <p className="text-sm mt-10 text-left">
-              Stay on the same page and make decisions more quickly by bringing
-              all of your work communication into one place.
+              Bring the right people and information together in channels. Share
+              ideas, make decisions and move work forward with a common purpose
+              and place.
             </p>
           </div>
         </div>

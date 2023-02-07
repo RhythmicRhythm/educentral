@@ -15,7 +15,7 @@ const Creategroup = () => {
           className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-900 flex flex-col items-center justify-center"
         >
-          <div className="">
+          <div className="w-52">
             <img src={Vector1} alt="" />
           </div>
           <h1 className="text-2xl font-bold mb-4">Get started on eduCentral</h1>
@@ -27,10 +27,10 @@ const Creategroup = () => {
           <div className="w-full mt-20">
             <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
               {" "}
-              Create Group
+              <Link to="/sidebar">Create Group</Link>
             </button>
 
-            <p className="mt-6 text-sm">
+            <p className="mt-6 text-xs">
               By continuing, you’re agreeing to our Customer Terms of Service,
               User Terms of Service, Privacy policy and Cookie Policy.
             </p>

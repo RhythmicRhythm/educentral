@@ -9,6 +9,7 @@ import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 import { radioChecked } from "react-icons-kit/icomoon/radioChecked";
 import { radioUnchecked } from "react-icons-kit/icomoon/radioUnchecked";
+import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2'
 
 const Resetpassword = () => {
   const [type, setType] = useState("password");
@@ -197,11 +198,10 @@ const Resetpassword = () => {
                 }
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
-                {" "}
-                Reset Password
+                <Link to="/resetdone">Reset Password</Link>
               </button>
               <Link className="text-sm text-blue-500" to="/login">
-                Back to Login{" "}
+              <Icon icon={arrowLeft2} size={18} />   Back to Login{" "}
               </Link>
             </div>
           </form>

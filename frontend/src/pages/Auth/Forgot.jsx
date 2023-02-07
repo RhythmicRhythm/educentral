@@ -3,6 +3,8 @@ import "./Auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
+import Icon from "react-icons-kit";
+import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2'
 
 
 const Forgot = () => {
@@ -37,11 +39,11 @@ const Forgot = () => {
 
             <div className="w-full mt-20">
               <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2">
-                {" "}
-                Reset Password
+            
+                <Link to="/resetpassword">Send Email</Link>
               </button>
               <Link className="text-sm text-blue-500" to="/login">
-                 Back to Login{" "}
+              <Icon icon={arrowLeft2} size={18} /> Back to Login{" "}
               </Link>
             </div>
           </form>

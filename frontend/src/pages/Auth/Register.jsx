@@ -80,7 +80,7 @@ const Register = () => {
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-4 w-20" src={Vector} alt="" />
+                  <img className="vector absolute right-0 mr-10 w-14" src={Vector} alt="" />
                 </div>
               </form>
             </div>

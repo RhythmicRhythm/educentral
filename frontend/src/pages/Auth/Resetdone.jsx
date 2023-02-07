@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import Done from "./Assets/Done.png";
 
+
 const Resetdone = () => {
   return (
     <div>
@@ -25,10 +26,10 @@ const Resetdone = () => {
           </p>
             <p className="text-sm mt-6">click below to Login</p>
 
-          <div class="w-full mt-20">
+          <div className="w-full mt-20">
               <button className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4">
                 {" "}
-                Log In
+                <Link to="/creategroup">Log In</Link>
               </button>
               
             </div>

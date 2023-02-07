@@ -27,7 +27,7 @@ function App() {
           {/* COMMUNITY */}
           <Route path="/creategroup" element={<Creategroup />} />
           <Route path="/sidebar" element={<Sidebar />} />
-          <Route path="/steps" element={<Steps />} />
+          
         </Routes>
       </BrowserRouter>
     </div>
