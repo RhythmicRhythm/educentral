@@ -75,7 +75,7 @@ const Login = () => {
                       </Link>
                     </span>
                   </p>
-                  <img className="vector absolute right-0 mr-8 w-8" src={Vector} alt="" />
+                  <img className="vector absolute right-0 mr-4 w-8" src={Vector} alt="" />
                 </div>
               </form>
             </div>
