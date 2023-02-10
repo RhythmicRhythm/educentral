@@ -111,7 +111,7 @@ const Login = () => {
 
         <div className="login-half lg:flex w-1/2 hidden relative items-center text-white">
           <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
-          <div className="w-full absolute bottom-0 absolute p-14 text-center right-0 left-0">
+          <div className="w-full absolute bottom-0 p-14 text-center right-0 left-0 max-w-xl">
             <h1 className="text-3xl font-bold text-left tracking-wide">
               Connect with your members
             </h1>

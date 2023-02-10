@@ -22,7 +22,7 @@ const Register = () => {
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
               <div className="mb-6">
-                <h1 className="text-3xl font-bold mb-2">Welcome to eduCentral</h1>
+                <h1 className="text-3xl font-bold mb-2">Welcome to eduCENTRAL</h1>
                 <p className="text-sm">welcome please enter your details</p>
               </div>
 
@@ -102,8 +102,8 @@ const Register = () => {
 
         <div className="register-half lg:flex w-1/2 hidden relative items-center text-white">
         <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
-          <div className="w-full absolute bottom-0 absolute p-14 text-center right-0 left-0">
-            <h1 className="text-3xl font-bold text-left tracking-wide">
+          <div className="w-full absolute bottom-0 p-14 right-0 left-0 max-w-xl">
+            <h1 className="text-3xl font-bold text-left ">
               Manage your team properly and share thoughts together with our
               Platform!
             </h1>
