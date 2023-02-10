@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import Home from "./pages/Auth/Home";
 import Register from "./pages/Auth/Register";
 import Login from "./pages/Auth/Login";
 import Forgot from "./pages/Auth/Forgot";
@@ -9,7 +10,7 @@ import Resetpassword from "./pages/Auth/Resetpassword";
 import Resetdone from "./pages/Auth/Resetdone";
 import Creategroup from "./pages/Community/Creategroup";
 import Sidebar from "./pages/Community/Sidebar";
-import Steps from "./pages/Community/StepA";
+import AdminHomepage from "./pages/Community/AdminHomepage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <ToastContainer />
         <Routes>
           {/* AUTHENTICATION */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<Forgot />} />
@@ -27,6 +29,7 @@ function App() {
           {/* COMMUNITY */}
           <Route path="/creategroup" element={<Creategroup />} />
           <Route path="/sidebar" element={<Sidebar />} />
+          <Route path="/adminhomepage" element={<AdminHomepage />} />
           
         </Routes>
       </BrowserRouter>

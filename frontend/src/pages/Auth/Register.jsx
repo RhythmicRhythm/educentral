@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState }  from "react";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import { Link, } from "react-router-dom";
 import Vector from "./Assets/Vector.png";
+import Icon from "react-icons-kit";
+import { basic_eye } from "react-icons-kit/linea/basic_eye";
+import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 
 const Register = () => {
+  const [type, setType] = useState("password");
   return (
     <div>
       <section className="min-h-screen flex">
@@ -46,11 +50,20 @@ const Register = () => {
                 <div className="pb-2 pt-4 relative">
                   <input
                     className="form-input"
-                    type="password"
+                    type={type}
                     name="password"
                     id="password"
                     placeholder="Password"
                   />
+                   {type === "password" ? (
+                <span className="icon-span" onClick={() => setType("text")}>
+                  <Icon icon={basic_eye_closed} size={18} />
+                </span>
+              ) : (
+                <span className="icon-span" onClick={() => setType("password")}>
+                  <Icon icon={basic_eye} size={18} />
+                </span>
+              )}
 
                   <div className="absolute left-0 mt-2">
                     <input
@@ -88,7 +101,7 @@ const Register = () => {
         </div>
 
         <div className="register-half lg:flex w-1/2 hidden relative items-center text-white">
-        <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+        <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
           <div className="w-full absolute bottom-0 absolute p-14 text-center right-0 left-0">
             <h1 className="text-3xl font-bold text-left tracking-wide">
               Manage your team properly and share thoughts together with our

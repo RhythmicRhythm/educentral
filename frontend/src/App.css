@@ -26,6 +26,22 @@
 .App-link {
   color: #61dafb;
 }
+/* PROGRESS BAR */
+.progressbar {
+  width: 300px;
+  height: 10px;
+  background-color: white;
+  margin-bottom: 50px;
+  border-radius: 10px;
+
+}
+
+.progressbar div {
+  width: 33.3%;
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 10px;
+}
 
 .icon-span{
   display: flex;

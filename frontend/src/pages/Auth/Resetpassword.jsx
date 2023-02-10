@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState }  from "react";
 import "./Auth.css";
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
@@ -9,11 +8,15 @@ import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 import { radioChecked } from "react-icons-kit/icomoon/radioChecked";
 import { radioUnchecked } from "react-icons-kit/icomoon/radioUnchecked";
-import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2'
+import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2';
+
+
+
 
 const Resetpassword = () => {
   const [type, setType] = useState("password");
   const navigate = useNavigate();
+ 
 
   // validated states
   const [lowerValidated, setLowerValidated] = useState(false);
@@ -28,6 +31,12 @@ const Resetpassword = () => {
     e.preventDefault();
 
     navigate("/resetdone");
+
+  }
+
+  const handleInputChange = () => {
+    console.log('match')
+  
   }
 
   const handleChange = (value) => {
@@ -89,6 +98,7 @@ const Resetpassword = () => {
                 id="password"
                 placeholder="Password"
                 className="form-input"
+               
                 onChange={(e) => handleChange(e.target.value)}
               />
               {type === "password" ? (
@@ -189,6 +199,7 @@ const Resetpassword = () => {
                 id="confirm_password"
                 placeholder="Confirm Password"
                 className="form-input"
+               
               />
             </div>
 

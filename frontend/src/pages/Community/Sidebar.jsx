@@ -3,6 +3,8 @@ import logo from "./Assets/eduCentralLogo.png";
 import StepA from "./StepA";
 import StepB from "./StepB";
 import StepC from "./StepC";
+import Icon from "react-icons-kit";
+import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2';
 
 const Sidebar = () => {
   const [page, setPage] = useState(0);
@@ -22,11 +24,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex overflow-hidden">
-      <div className="progressbar">
-        <div
-          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
-        ></div>
-      </div>
+
 
       <div
         className={` ${
@@ -65,7 +63,7 @@ const Sidebar = () => {
                 index === 0 && "bg-light-white"
               } `}
             >
-              <img src={`./Assets/${Menu.src}.png`} />
+              <img src={`./Assets/${Menu.src}.png`} alt="" />
               <span className={`${!open && "hidden"} origin-left duration-200`}>
                 {Menu.title}
               </span>
@@ -80,13 +78,19 @@ const Sidebar = () => {
           className="w-50 sm:w-96 
         mx-auto rounded-lg bg-white p-5 text-gray-900 flex flex-col items-center justify-center"
         >
+        <div className="progressbar">
+        <div
+          style={{ width: page === 0 ? "33.3%" : page == 1 ? "66.6%" : "100%" }}
+        ></div>
+      </div>
+      
           <div className="">{PageDisplay()}</div>
 
           {/* Movement Button */}
 
-          <div className="w-full">
+          <div className="w-full relative">
             <button 
-            className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-4"
+            className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
             onClick={() => {
                 setPage((currPage) => currPage +  1);
               }}>
@@ -94,7 +98,16 @@ const Sidebar = () => {
               Next
             </button>
 
-            <p className="mt-4 text-xs">
+            <button 
+             disabled={page == 0}
+            onClick={() => {
+              setPage((currPage) => currPage - 1);
+            }}
+             className="absolute left-4 text-xs text-blue-900">
+            <Icon icon={arrowLeft2} size={14} />  prev step{" "}
+                  </button>
+
+            <p className="mt-8 text-xs">
               By continuing, you’re agreeing to our Customer Terms of Service,
               User Terms of Service, Privacy policy and Cookie Policy.
             </p>

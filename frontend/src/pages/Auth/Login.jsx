@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState }  from "react";
 import { Link } from "react-router-dom";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
+import Icon from "react-icons-kit";
+import { basic_eye } from "react-icons-kit/linea/basic_eye";
+import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
+
 
 const Login = () => {
+  const [type, setType] = useState("password");
   return (
     <div>
       <section className="min-h-screen flex">
@@ -40,11 +45,20 @@ const Login = () => {
                 <div className="pb-2 pt-4 relative">
                   <input
                     className="form-input"
-                    type="password"
+                    type={type}
                     name="password"
                     id="password"
                     placeholder="Password"
                   />
+                          {type === "password" ? (
+                <span className="icon-span" onClick={() => setType("text")}>
+                  <Icon icon={basic_eye_closed} size={18} />
+                </span>
+              ) : (
+                <span className="icon-span" onClick={() => setType("password")}>
+                  <Icon icon={basic_eye} size={18} />
+                </span>
+              )}
 
                   <div className="absolute left-0 mt-2">
                     <input

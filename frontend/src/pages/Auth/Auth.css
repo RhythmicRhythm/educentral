@@ -1,27 +1,26 @@
- .login-half{
+.login-half {
   background-image: url(https://img.freepik.com/free-photo/top-view-diverse-people-hands-holding-together-circle-hands-stack_93675-134815.jpg?w=740&t=st=1675708679~exp=1675709279~hmac=e3d1e0bac9aaafc0af4f8f520d1676b244e5f4260a0274c192b2892af965cfdb);
-     background-size: cover;
- }
-
- .register-half{
-  background-image: url(./Assets/RegisterPage1.png);
   background-size: cover;
+}
 
- }
+.register-half {
+  background-image: url(./Assets/RegisterPage.png);
+  background-size: cover;
+}
 
- .form-input{
-    width: 100%;
-    padding: 10px;
-    outline: none;
-    border-bottom: 1px solid #b7b9bc;
- }
- .form-input:focus{
-   border-bottom: 2px solid #0539B4;
- }
- .ent-btn{
-   background: #0539B4;
- }
- .welcome{
-   font-size: 40px;
-   font-weight: 600;
- }
+.form-input {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border-bottom: 1px solid #b7b9bc;
+}
+.form-input:focus {
+  border-bottom: 2px solid #0539b4;
+}
+.ent-btn {
+  background: #0539b4;
+}
+.welcome {
+  font-size: 40px;
+  font-weight: 600;
+}
