@@ -11,6 +11,7 @@ import Resetdone from "./pages/Auth/Resetdone";
 import Creategroup from "./pages/Community/Creategroup";
 import Sidebar from "./pages/Community/Sidebar";
 import AdminHomepage from "./pages/Community/AdminHomepage";
+import A from "./pages/Community/A";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/creategroup" element={<Creategroup />} />
           <Route path="/sidebar" element={<Sidebar />} />
           <Route path="/adminhomepage" element={<AdminHomepage />} />
+          <Route path="/a" element={<A />} />
           
         </Routes>
       </BrowserRouter>
