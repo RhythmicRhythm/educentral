@@ -56,7 +56,7 @@ const registerUser = asyncHandler(async (req, res) => {
    
   if (user) {
     const { _id, email, phone, } = user;
-    res.status(201).json({
+    res.status(200).json({
       _id,
       email,
       phone,
@@ -104,14 +104,11 @@ const loginUser = asyncHandler(async (req, res) => {
     });
   
     if (user && passwordIsCorrect) {
-      const { _id, name, email, photo, phone, bio } = user;
+      const { _id, email, phone, } = user;
       res.status(200).json({
         _id,
-        name,
         email,
-        photo,
         phone,
-        bio,
         token,
       
       });
@@ -133,26 +130,6 @@ const logoutUser = asyncHandler(async (req, res) => {
     return res.status(200).json({ message: "Successfully Logged Out" });
   });
 
-  // Get User Data
-const getUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.user._id);
-  
-    if (user) {
-      const { _id, name, email, photo, phone, bio } = user;
-      res.status(200).json({
-        _id,
-        name,
-        email,
-        photo,
-        phone,
-
-      });
-    } else {
-      res.status(400);
-      throw new Error("User Not Found");
-    }
-  });
-
   // Get Login Status
  const loginStatus = asyncHandler(async (req, res) => {
     const token = req.cookies.token;
@@ -167,33 +144,6 @@ const getUser = asyncHandler(async (req, res) => {
     return res.json(false);
   });
 
- // Update User
-const updateUser = asyncHandler(async (req, res) => {
-   
-    const user = await User.findById(req.user._id);
-  
-    if (user) {
-      const { name, email, photo, phone, bio } = user;
-      user.email = email;
-      user.name = req.body.name || name;
-      user.phone = req.body.phone || phone;
-      user.bio = req.body.bio || bio;
-      user.photo = req.body.photo || photo;
-  
-      const updatedUser = await user.save();
-      res.status(200).json({
-        _id: updatedUser._id,
-        name: updatedUser.name,
-        email: updatedUser.email,
-        photo: updatedUser.photo,
-        phone: updatedUser.phone,
-        bio: updatedUser.bio,
-      });
-    } else {
-      res.status(404);
-      throw new Error("User not found");
-    }
-  });
    
  //Change Password 
   const changePassword = asyncHandler(async (req, res) => {
@@ -321,9 +271,7 @@ module.exports = {
     registerUser,
     loginUser,
     logoutUser,
-    getUser,
     loginStatus,
-    updateUser,
     changePassword,
     forgotPassword, 
     resetPassword

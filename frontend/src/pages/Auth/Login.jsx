@@ -1,15 +1,72 @@
 import React, { useState }  from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
+import axios from "axios";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
 import Icon from "react-icons-kit";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
+import { toast } from "react-toastify";
+import { loginUser, validateEmail } from "../../services/authServices";
+
+const initialState = {
+  email: "",
+  password: "",
+};
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState("password");
+  const BACKEND_URL = "http://localhost:5000";
+
+  const [formData, setformData] = useState(initialState);
+  const { email, password } = formData;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
+  };
+
+  const login = async (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      return toast.error("All fields are required");
+    }
+
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+
+    const userData = {
+      email,
+      password,
+    };
+
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/users/login`,
+      userData
+    );
+    if (response.statusText === "OK") {
+      toast.success("Login Successful...");
+      console.log("log in");
+    }
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+ 
+
+  };
+
+
   return (
     <div>
       <section className="min-h-screen flex">
@@ -31,14 +88,17 @@ const Login = () => {
                 </p>
               </div>
 
-              <form action="" className=" w-full">
+              <form onSubmit={login}className=" w-full">
                 <div className="pb-2 pt-4">
                   <input
                     type="email"
                     name="email"
                     id="email"
                     placeholder="Email"
+                    value={email}
+                    onChange={handleInputChange}
                     className="form-input"
+
                   />
                 </div>
 
@@ -49,6 +109,8 @@ const Login = () => {
                     name="password"
                     id="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={handleInputChange}
                   />
                           {type === "password" ? (
                 <span className="icon-span" onClick={() => setType("text")}>
@@ -83,7 +145,8 @@ const Login = () => {
                 </div>
 
                 <div className="w-full mt-20 relative">
-                  <button className="ent-btn block w-full p-4 text-lg text-white rounded-lg">
+                  <button type="submit" 
+                  className="ent-btn block w-full p-4 text-lg text-white rounded-lg">
                     {" "}
                     Login
                   </button>

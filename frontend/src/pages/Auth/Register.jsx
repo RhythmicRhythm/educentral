@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Auth.css";
+import axios from "axios";
 import logo from "./Assets/eduCentralLogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Vector from "./Assets/Vector.png";
 import Icon from "react-icons-kit";
 import { toast } from "react-toastify";
@@ -17,9 +18,13 @@ const initialState = {
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+
+
   const [type, setType] = useState("password");
   const [formData, setformData] = useState(initialState);
   const { email, phone, password, password2 } = formData;
+  const BACKEND_URL = "http://localhost:5000";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,16 +56,25 @@ const Register = () => {
     };
 
     try {
-      const data = await registerUser(userData);
-      console.log(data);
-      // toast.success("User Registered successfully");
-      localStorage.setItem(
-        process.env.REACT_APP_LOCALHOST_KEY,
-        JSON.stringify(data)
+      const response = await axios.post(
+        `${BACKEND_URL}/api/users/register`,
+        userData,
+        { withCredentials: true }
       );
+      if (response.statusText === "OK") {
+
+        toast.success("User Registered successfully");
+        console.log("registered");
+
+        navigate("/creategroup");
+      }
+      return response.data;
     } catch (error) {
-    
-      console.log(error);
+      const message =
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString();
+      toast.error(message);
     }
 
   };
