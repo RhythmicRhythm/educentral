@@ -1,22 +1,23 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import logo from "./Assets/eduCentralLogo.png";
 import Icon from "react-icons-kit";
 import {menu} from 'react-icons-kit/icomoon/menu';
 
-const A = () => {
-	const [isActive, setActive] = useState("true");
+const AdminHomepage = () => {
+  const [isActive, setActive] = useState("false");
 
-	const handleToggle = () => {
+  const handleToggle = () => {
 		setActive(!isActive);
 	  };
 
+
   return (
-    <div className="flex">
-       <div onClick={handleToggle}  className="menu-toggle ">
+    <div className="flex overflow-hidden">
+        <div onClick={handleToggle}  className="menu-toggle ">
 	   <Icon icon={menu} size={32} />  
 		</div>
 
-    <aside className={` sidebar ${isActive ? null : "is-active" }`}>
+    <aside className={` z-30 sidebar ${isActive ? null : "is-active" }`}>
 			
 	<div className="flex gap-x-4 items-center justify-center">
           <img
@@ -37,16 +38,13 @@ const A = () => {
 		
 
 		</aside>
+      
 
-		<main class="content">
-			<h1>Welcome, Human</h1>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, explicabo!</p>
-		</main>
-
-
-
+      {/* MainBody */}
+      <div className="min-w-screen min-h-screen flex sm:flex-1 sm:p-20 items-center justify-center">
+       
+      </div>
     </div>
   );
 };
-
-export default A;
+export default AdminHomepage;

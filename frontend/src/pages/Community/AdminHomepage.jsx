@@ -1,44 +1,87 @@
-import React from "react";
+import { useState } from "react";
+import logo from "./Assets/eduCentralLogo.png";
+import Icon from "react-icons-kit";
+import { menu } from "react-icons-kit/icomoon/menu";
+import { userPlus } from "react-icons-kit/icomoon/userPlus";
+import IconSpeak from "./Assets/IconSpeak.png";
 
 const AdminHomepage = () => {
+  const [isActive, setActive] = useState("false");
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
   return (
-
-    <div className="">
-      <div className=""></div>
-          <div className="h-screen flex item-end justify-end px-4 pb-6">
-        <button
-          className="relative z-30 lg:hidden peer top-0 h-14 w-14 rounded-full mt-8
-         bg-blue-900 hover:bg-blue-500 transition mb-[660px]"
-        >
-          <p className="text-white ">M</p>
-        </button>                             
-        <div className="z-20 fixed top-0 -left-96 lg:left-0 h-screen 
-         w-64 bg-blue-900 shadow-2xl peer-focus:left-0 peer:transition 
-         ease-out delay-1500 duration-200">
-
-            <nav role="navigation" className="p-6">
-                <div className="flex items-center gap-4 pb-4">
-                    <h2 className="text-2xl font-bold">eduCentral</h2>
-                </div>
-
-                <div className="mt-4 mx-4 relative overflow-y-auto overflow-x-hidden h-[85vh]">
-                    <span className="uppercase px-4 text-white ">Docs</span>
-                    <ul className="space-y-4 mb-12 px-4 mt-8">
-                        <li> hello </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-
-      
+    <div className="flex overflow-hidden">
+      <div onClick={handleToggle} className="menu-toggle ">
+        <Icon icon={menu} size={32} />
       </div>
-      <div className="flex item-center justify-center text-blue">
-            <p>welcome to edu central</p>
-            <p>welcome to edu central</p>
+
+      <aside className={` z-30 sidebar ${isActive ? null : "is-active"}`}>
+        <div className="flex gap-x-4 items-center justify-center">
+          <img
+            src={logo}
+            className={`cursor-pointer duration-500 ${
+              isActive && "rotate-[360deg]"
+            }`}
+            alt=""
+          />
         </div>
+
+        <div className="flex gap-x-4 items-center justify-center mt-8">
+          <h1 className="text-white text-sm font-bold">Napps</h1>
+        </div>
+      </aside>
+
+      {/* MainBody */}
+      <div className="w-full p-10">
+        <div className="flex justify-between w-full">
+          <div className="">
+            <div class="flex">
+              <div class="flex rounded-md overflow-hidden w-full">
+                <input
+                  type="text"
+                  class="w-full rounded-md shadow rounded-r-none"
+                />
+                <button class="bg-indigo-600 text-white px-12 text-lg font-semibold py-4 rounded-r-md">
+                  Go
+                </button>
+              </div>
+              <button class="bg-white px-6 text-lg font-semibold py-4 rounded-md">
+                Clear
+              </button>
+            </div>{" "}
+          </div>
+          <div className="">icons </div>
+        </div>
+
+        <div className="">
+          <h1 className="font-bold text-xl flex justify-between mb-6">
+            Presidential-Inauguration
+          </h1>
+          <div className="flex mb-6">
+            <img className="w-20 md:w-96" src={IconSpeak} alt="" />
+            <div className="ml-8 text-left mt-10">
+              <p className="font-bold text-xl mb-4">
+                You’re looking at the Presidential-Inauguration Forum
+              </p>
+              <p className="text-sm ">
+                This forum will include every of your members once you invite or
+                add them{" "}
+              </p>
+            </div>
+          </div>
+
+          <div className="text-left">
+            <button className="outline outline-blue-500 text-lg p-2 text-blue-500 rounded-lg">
+              {" "}
+              <Icon icon={userPlus} size={18} /> Add menbers
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    
   );
 };
-
 export default AdminHomepage;
