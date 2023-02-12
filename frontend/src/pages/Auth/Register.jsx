@@ -33,7 +33,6 @@ const Register = () => {
 
   const register = async (e) => {
     e.preventDefault();
-    console.log("clicked");
 
     if (!phone || !email || !password) {
       return toast.error("All fields are required");
@@ -56,25 +55,20 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post(
-        `${BACKEND_URL}/api/users/register`,
-        userData,
-        { withCredentials: true }
+      const data = await registerUser(userData);
+      console.log(data);
+      // toast.success("User Registered successfully");
+      localStorage.setItem(
+        process.env.REACT_APP_LOCALHOST_KEY,
+        JSON.stringify(data)
       );
-      if (response.statusText === "OK") {
-
-        toast.success("User Registered successfully");
-        console.log("registered");
-
-        navigate("/creategroup");
-      }
-      return response.data;
+      // navigate("/"); 
+      console.log("registered");
+     
+      // setIsLoading(false);
     } catch (error) {
-      const message =
-        (error.response && error.response.data && error.response.data.message) ||
-        error.message ||
-        error.toString();
-      toast.error(message);
+    
+      console.log(error);
     }
 
   };
