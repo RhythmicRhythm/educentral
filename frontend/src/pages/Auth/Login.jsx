@@ -19,7 +19,7 @@ const initialState = {
 const Login = () => {
   const navigate = useNavigate();
   const [type, setType] = useState("password");
-  const BACKEND_URL = "http://localhost:5000";
+  const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
   const [formData, setformData] = useState(initialState);
   const { email, password } = formData;
@@ -53,6 +53,7 @@ const Login = () => {
     if (response.statusText === "OK") {
       toast.success("Login Successful...");
       console.log("log in");
+      navigate("/admiinhomepage");
     }
     return response.data;
   } catch (error) {

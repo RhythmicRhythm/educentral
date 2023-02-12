@@ -24,7 +24,7 @@ const Register = () => {
   const [type, setType] = useState("password");
   const [formData, setformData] = useState(initialState);
   const { email, phone, password, password2 } = formData;
-  const BACKEND_URL = "http://localhost:5000";
+  const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
