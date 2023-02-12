@@ -45,25 +45,19 @@ const Login = () => {
       password,
     };
 
-  try {
-    const response = await axios.post(
-      `${BACKEND_URL}/api/users/login`,
-      userData
-    );
-    if (response.statusText === "OK") {
-      toast.success("Login Successful...");
-      console.log("log in");
-      navigate("/admiinhomepage");
+    try {
+      const data = await loginUser(userData);
+      console.log(data);
+      if (localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY, JSON.stringify(data)) !== undefined) {
+        console.log("logged in");
+      }
+      
+      // setIsLoading(false);
+    } catch (error) {
+      // setIsLoading(false);
+      console.log(error);
     }
-    return response.data;
-  } catch (error) {
-    const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
-    toast.error(message);
-  }
- 
+  
 
   };
 

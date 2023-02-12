@@ -264,7 +264,7 @@ const resetPassword = asyncHandler(async (req, res) => {
   res.status(200).json({
     message: "Password Reset Successful, Please Login",
   });
-});
+}); 
 
 
 module.exports = {

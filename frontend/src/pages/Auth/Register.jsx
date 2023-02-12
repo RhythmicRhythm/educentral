@@ -20,7 +20,6 @@ const initialState = {
 const Register = () => {
   const navigate = useNavigate();
 
-
   const [type, setType] = useState("password");
   const [formData, setformData] = useState(initialState);
   const { email, phone, password, password2 } = formData;
@@ -47,7 +46,6 @@ const Register = () => {
       return toast.error("Passwords do not match");
     }
 
-    
     const userData = {
       email,
       phone,
@@ -57,21 +55,15 @@ const Register = () => {
     try {
       const data = await registerUser(userData);
       console.log(data);
-      // toast.success("User Registered successfully");
-      localStorage.setItem(
-        process.env.REACT_APP_LOCALHOST_KEY,
-        JSON.stringify(data)
-      );
-      // navigate("/"); 
-      console.log("registered");
-     
-      // setIsLoading(false);
-    } catch (error) {
     
+      if (localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY, JSON.stringify(data)) !== undefined) {
+        console.log("registered");
+      }
+    } catch (error) {
       console.log(error);
     }
-
   };
+    
 
   return (
     <div>
