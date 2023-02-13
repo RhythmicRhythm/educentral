@@ -1,14 +1,15 @@
 import React, { useState }  from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
-import axios from "axios";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
 import Icon from "react-icons-kit";
+import { useDispatch } from "react-redux";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 import { toast } from "react-toastify";
 import { loginUser, validateEmail } from "../../services/authServices";
+import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 
 const initialState = {
   email: "",
@@ -18,8 +19,8 @@ const initialState = {
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [type, setType] = useState("password");
-  const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
   const [formData, setformData] = useState(initialState);
   const { email, password } = formData;
@@ -48,9 +49,9 @@ const Login = () => {
     try {
       const data = await loginUser(userData);
       console.log(data);
-      if (localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY, JSON.stringify(data)) !== undefined) {
-        console.log("logged in");
-      }
+      await dispatch(SET_LOGIN(true));
+      await dispatch(SET_NAME(data.email));
+      navigate("/a");
       
       // setIsLoading(false);
     } catch (error) {

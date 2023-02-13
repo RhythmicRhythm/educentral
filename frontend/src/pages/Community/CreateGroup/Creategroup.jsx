@@ -1,13 +1,12 @@
 import React from "react";
-
 import { Link, useNavigate } from "react-router-dom";
-import logo from "./Assets/eduCentralLogo.png";
-import Vector1 from "./Assets/Vector1.png";
+import logo from "../Assets/eduCentralLogo.png";
+import Vector1 from "../Assets/Vector1.png";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const Creategroup = () => {
-
+  useRedirectLoggedOutUser("/login");
   const navigate = useNavigate();
-
   const createGroup = (e) => {
     e.preventDefault();
 

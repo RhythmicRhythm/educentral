@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import "./Auth.css";
-import axios from "axios";
 import logo from "./Assets/eduCentralLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import Vector from "./Assets/Vector.png";
 import Icon from "react-icons-kit";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 import { registerUser, validateEmail } from "../../services/authServices";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
+import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
 
 const initialState = {
   email: "",
@@ -19,11 +20,10 @@ const initialState = {
 
 const Register = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [type, setType] = useState("password");
   const [formData, setformData] = useState(initialState);
   const { email, phone, password, password2 } = formData;
-  const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,11 +55,13 @@ const Register = () => {
     try {
       const data = await registerUser(userData);
       console.log(data);
-    
-      if (localStorage.setItem(process.env.REACT_APP_LOCALHOST_KEY, JSON.stringify(data)) !== undefined) {
-        console.log("registered");
-      }
+      await dispatch(SET_LOGIN(true));
+      await dispatch(SET_NAME(data.email));
+      navigate("/creategroup");
+      console.log("registered");
+      // setIsLoading(false);
     } catch (error) {
+      // setIsLoading(false);
       console.log(error);
     }
   };
@@ -77,6 +79,7 @@ const Register = () => {
               className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
+            
               <div className="mb-6">
                 <h1 className="text-3xl font-bold mb-2">
                   Welcome to eduCENTRAL

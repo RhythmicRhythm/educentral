@@ -19,17 +19,12 @@ const Home = () => {
               opinions and ideas with features like forums, and groups.
             </p>
             <div className="flex flex-col md:flex-row gap-6 items-center ">
-              <button className="bg-purple-600 block w-48 p-2 text-lg text-white rounded-lg mb-2">
-              <Link className="text-sm" to="/login">
-              Login as an admin{" "}
+              <button className="bg-blue-600 block w-64 p-2 text-lg text-white rounded-lg mb-2">
+              <Link className="text-sm " to="/register">
+              Get Started{" "}
               </Link>
               </button>
 
-              <button className="ent-btn block w-48 p-2 text-lg text-white rounded-lg mb-2">
-              <Link className="text-sm" to="/login">
-              Login as a menber{" "}
-              </Link>
-              </button>
             </div>
           </div>
           <div className="flex flex-col flex-wrap gap-4 items-center">

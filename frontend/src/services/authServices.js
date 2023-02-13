@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const BACKEND_URL = "http://localhost:5000";
+export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
 export const validateEmail = (email) => {
   return email.match(
@@ -41,6 +41,33 @@ export const loginUser = async (userData) => {
       toast.success("Login Successful...");
     }
     return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
+
+// Get Login Status
+export const getLoginStatus = async () => {
+  try {
+    const response = await axios.get(`${BACKEND_URL}/api/users/loggedin`);
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
+
+// Logout User
+export const logoutUser = async () => {
+  try {
+    await axios.get(`${BACKEND_URL}/api/users/logout`);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) ||
