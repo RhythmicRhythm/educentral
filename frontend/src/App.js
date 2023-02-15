@@ -18,6 +18,7 @@ import Dashboard from "./pages/Community/Dashboard";
 import Layout from "./components/Layout/Layout";
 import { useDispatch } from "react-redux";
 import A from "./pages/Community/A";
+import Profile from "./components/Profile/Profile";
 import axios from "axios";
 import { getLoginStatus } from "./services/authServices";
 import { SET_LOGIN } from "./redux/features/auth/authSlice";
@@ -46,24 +47,52 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<Forgot />} />
           <Route path="/emailsent" element={<Emailsent />} />
-          <Route path="/resetpassword" element={<Resetpassword />} />
+          <Route
+            path="/resetpassword/:resetToken"
+            element={<Resetpassword />}
+          />
           <Route path="/resetdone" element={<Resetdone />} />
           {/* COMMUNITY */}
 
           <Route path="/creategroup" element={<Creategroup />} />
-          <Route path="/creatinggroup" element={<Creatinggroup />} />
+          {/* <Route path="/creatinggroup" element={<Creatinggroup />} /> */}
           <Route path="/adminhomepage" element={<AdminHomepage />} />
           <Route path="/a" element={<A />} />
+
           <Route
-          path="/dashboard"
-          element={
-            <Sidebar>
-              <Layout>
-                <Dashboard />
-              </Layout>
-            </Sidebar>
-          }
-        />
+            path="/dashboard"
+            element={
+              <Sidebar>
+                <Layout>
+                  <Dashboard />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+<Route
+            path="/creatinggroup"
+            element={
+              <Sidebar>
+                <Layout>
+                  <Creatinggroup />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <Sidebar>
+                <Layout>
+                  <Profile />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+
         </Routes>
       </BrowserRouter>
     </div>

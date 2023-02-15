@@ -29,8 +29,6 @@ const Forgot = () => {
     setEmail("");
   };
 
-
-  
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -49,7 +47,7 @@ const Forgot = () => {
             No worries, We’ll send you a new reset instructions
           </p>
 
-          <form  onSubmit={forgot} className=" w-full">
+          <form onSubmit={forgot} className=" w-full">
             <div className="pb-2 pt-4">
               <input
                 type="email"
@@ -64,8 +62,7 @@ const Forgot = () => {
 
             <div className="w-full mt-20">
               <button
-              type="submit"
-             
+                type="submit"
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
                 Send Email

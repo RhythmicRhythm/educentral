@@ -1,22 +1,29 @@
-import React, { useState }  from "react";
+import React, { useState } from "react";
 import "./Auth.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
 import Icon from "react-icons-kit";
+import { toast } from "react-toastify";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 import { radioChecked } from "react-icons-kit/icomoon/radioChecked";
 import { radioUnchecked } from "react-icons-kit/icomoon/radioUnchecked";
-import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2';
+import { arrowLeft2 } from "react-icons-kit/icomoon/arrowLeft2";
+import { resetPassword } from "../../services/authServices";
 
-
-
+const initialState = {
+  password: "",
+  password2: "",
+};
 
 const Resetpassword = () => {
   const [type, setType] = useState("password");
-  const navigate = useNavigate();
- 
+  const [formData, setformData] = useState(initialState);
+  const { password, password2 } = formData;
+  
+
+  const { resetToken } = useParams();
 
   // validated states
   const [lowerValidated, setLowerValidated] = useState(false);
@@ -27,17 +34,6 @@ const Resetpassword = () => {
 
   const [passwordMatch, setPasswordMatch] = useState(false);
 
-  const resetPassword = (e) => {
-    e.preventDefault();
-
-    navigate("/resetdone");
-
-  }
-
-  const handleInputChange = () => {
-    console.log('match')
-  
-  }
 
   const handleChange = (value) => {
     const lower = new RegExp("(?=.*[a-z])");
@@ -72,6 +68,37 @@ const Resetpassword = () => {
     }
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
+    console.log(value);
+    // handleChange(value);
+  };
+
+  const reset = async (e) => {
+    e.preventDefault();
+
+    if (password.length < 6) {
+      return toast.error("Passwords must be up to 6 characters");
+    }
+    if (password !== password2) {
+      return toast.error("Passwords do not match");
+    }
+
+    const userData = {
+      password,
+      password2,
+    };
+
+    try {
+      const data = await resetPassword(userData, resetToken);
+      toast.success(data.message);
+    } catch (error) {
+      // console.log(error.message);
+      console.log("error");
+    }
+  };
+
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -90,7 +117,7 @@ const Resetpassword = () => {
             Your new password must be different to previously used passwords.
           </p>
 
-          <form action="" className=" w-full">
+          <form onSubmit={reset} className=" w-full">
             <div className="pb-2 pt-4 relative">
               <input
                 type={type}
@@ -98,8 +125,8 @@ const Resetpassword = () => {
                 id="password"
                 placeholder="Password"
                 className="form-input"
-               
-                onChange={(e) => handleChange(e.target.value)}
+                value={password}
+                onChange={handleInputChange}
               />
               {type === "password" ? (
                 <span className="icon-span" onClick={() => setType("text")}>
@@ -195,32 +222,33 @@ const Resetpassword = () => {
             <div className="pb-2 pt-4 relative">
               <input
                 type="password"
-                name="password"
+                name="password2"
                 id="confirm_password"
                 placeholder="Confirm Password"
                 className="form-input"
-               
+                value={password2}
+                onChange={handleInputChange}
               />
             </div>
 
             <div className="w-full mt-20">
               <button
-                disabled={
-                  !(
-                    lowerValidated &&
-                    upperValidated &&
-                    numberValidated &&
-                    specialValidated &&
-                    lengthValidated
-                  )
-                }
-                onClick={(e) => resetPassword(e)}
+                // disabled={
+                //   !(
+                //     lowerValidated &&
+                //     upperValidated &&
+                //     numberValidated &&
+                //     specialValidated &&
+                //     lengthValidated
+                //   )
+                // }
+                type="submit"
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
                 Reset Password
               </button>
               <Link className="text-sm text-blue-500" to="/login">
-              <Icon icon={arrowLeft2} size={18} />   Back to Login{" "}
+                <Icon icon={arrowLeft2} size={18} /> Back to Login{" "}
               </Link>
             </div>
           </form>

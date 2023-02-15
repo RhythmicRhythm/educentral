@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 
 export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
+// export const BACKEND_URL = "http://localhost:5000";
+
 export const validateEmail = (email) => {
   return email.match(
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -11,7 +13,7 @@ export const validateEmail = (email) => {
 
 // Register User
 export const registerUser = async (userData) => {
-   try {
+  try {
     const response = await axios.post(
       `${BACKEND_URL}/api/users/register`,
       userData,
@@ -77,6 +79,19 @@ export const logoutUser = async () => {
   }
 };
 
+// Get User Profile
+export const getUser = async () => {
+  try {
+    const response = await axios.get(`${BACKEND_URL}api/users/getuser`);
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
 // Forgot Password
 export const forgotPassword = async (userData) => {
   try {

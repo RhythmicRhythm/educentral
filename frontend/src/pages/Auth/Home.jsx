@@ -1,8 +1,17 @@
 import React from "react";
 import eduLogo from "./Assets/eduLogo.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const getStarted = (e) => {
+    e.preventDefault();
+
+    navigate("/register");
+  }
+
   return (
     <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
       <div className="mx-auto max-w-7xl px-8 md:px-6">
@@ -19,7 +28,9 @@ const Home = () => {
               opinions and ideas with features like forums, and groups.
             </p>
             <div className="flex flex-col md:flex-row gap-6 items-center ">
-              <button className="bg-blue-600 block w-64 p-2 text-lg text-white rounded-lg mb-2">
+              <button 
+              onClick={(e) => getStarted(e)} 
+              className="bg-blue-600 block w-64 p-2 text-lg text-white rounded-lg mb-2">
               <Link className="text-sm " to="/register">
               Get Started{" "}
               </Link>

@@ -50,8 +50,8 @@ const Login = () => {
       const data = await loginUser(userData);
       console.log(data);
       await dispatch(SET_LOGIN(true));
-      await dispatch(SET_NAME(data.email));
-      navigate("/a");
+      await dispatch(SET_NAME(data.firstname));
+      navigate("/dashboard");
       
       // setIsLoading(false);
     } catch (error) {

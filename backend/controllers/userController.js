@@ -118,7 +118,8 @@ const loginUser = asyncHandler(async (req, res) => {
   });
 
   if (user && passwordIsCorrect) {
-    const {    _id,
+    const {
+      _id,
       firstname,
       lastname,
       phone,
@@ -127,7 +128,8 @@ const loginUser = asyncHandler(async (req, res) => {
       photo,
       gender,
       marital_status,
-      dob, } = user;
+      dob,
+    } = user;
     res.status(200).json({
       _id,
       firstname,
@@ -171,6 +173,67 @@ const loginStatus = asyncHandler(async (req, res) => {
     return res.json(true);
   }
   return res.json(false);
+});
+
+// Update User
+const updateUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    const { firstname, lastname, phone, email, photo, gender, marital_status } =
+      user;
+
+    user.email = email;
+    user.firstname = req.body.firstname || firstname;
+    user.lastname = req.body.lastname || lastname;
+    user.phone = req.body.phone || phone;
+    user.gender = req.body.gender || gender;
+    user.photo = req.body.photo || photo;
+    user.marital_status = req.body.marital_status || marital_status;
+
+    const updatedUser = await user.save();
+    res.status(200).json({
+      _id: updatedUser._id,
+      firstname: updatedUser.firstname,
+      lastname: updatedUser.lastname,
+      email: updatedUser.email,
+      photo: updatedUser.photo,
+      phone: updatedUser.phone,
+      gender: updatedUser.gender,
+      marital_status: updatedUser.marital_status,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+// Get User Data
+const getUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    const { _id,  firstname,
+      lastname,
+      phone,
+      email,
+      photo,
+      gender,
+      marital_status } = user;
+    res.status(200).json({
+      _id,
+      firstname,
+      lastname,
+      phone,
+      email,
+      photo,
+      gender,
+      marital_status,
+    });
+  } else {
+    res.status(400);
+    throw new Error("User Not Found");
+  }
 });
 
 //Change Password
@@ -297,6 +360,8 @@ module.exports = {
   loginUser,
   logoutUser,
   loginStatus,
+  getUser,
+  updateUser,
   changePassword,
   forgotPassword,
   resetPassword,

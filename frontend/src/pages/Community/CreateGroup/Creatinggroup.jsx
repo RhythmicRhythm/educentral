@@ -13,9 +13,7 @@ const Creatinggroup = () => {
   const [page, setPage] = useState(0);
   const [isActive, setActive] = useState("false");
 
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
+  
 
   const PageDisplay = () => {
     if (page === 0) {
@@ -28,34 +26,16 @@ const Creatinggroup = () => {
   };
 
   return (
-    <div className="flex overflow-hidden">
-      <div onClick={handleToggle} className="menu-toggle ">
-        <Icon icon={menu} size={32} />
-      </div>
-
-      <aside className={` z-30 sidebar ${isActive ? null : "is-active"}`}>
-        <div className="flex gap-x-4 items-center justify-center">
-          <img
-            src={logo}
-            className={`cursor-pointer duration-500 ${
-              isActive && "rotate-[360deg]"
-            }`}
-            alt=""
-          />
-        </div>
-
-        <div className="flex gap-x-4 items-center justify-center mt-8">
-          <h1 className="text-white text-sm font-bold">Napps</h1>
-        </div>
-      </aside>
+    <div className="flex items-center justify-center mx-auto overflow-hidden">
+      
 
       {/* MainBody */}
-      <div className="min-w-screen min-h-screen flex sm:flex-1 sm:p-20 items-center justify-center">
+      <div className="">
         <div
-          className="w-50 sm:w-96 
+          className="sm:w-96 w-72
         mx-auto rounded-lg bg-white p-5 text-gray-900 flex flex-col items-center justify-center"
         >
-          <div className="progressbar">
+          <div className="progressbar px-6" >
             <div
               style={{
                 width: page === 0 ? "33.3%" : page === 1 ? "66.6%" : "100%",

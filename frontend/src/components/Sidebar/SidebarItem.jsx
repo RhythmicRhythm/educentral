@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../services/authServices";
+import Icon from "react-icons-kit";
+import {signOut} from 'react-icons-kit/fa/signOut'
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "link");
 const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = ({ item, isOpen }) => {
   const [expandMenu, setExpandMenu] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  if (item.childrens) {
+  const logout = async () => {
+    await logoutUser();
+    await dispatch(SET_LOGIN(false));
+   
+    navigate("/login");
+  }
+
+  if (item) {
     return (
       <div
         className={
@@ -17,48 +32,39 @@ const SidebarItem = ({ item, isOpen }) => {
       >
         <div className="sidebar-title">
           <span>
-            {item.icon && <div className="icon">{item.icon}</div>}
-            {isOpen && <div>{item.title}</div>}
+            {<div className="icon"> </div>}
+            {isOpen && <div>the title</div>}
           </span>
-          <MdKeyboardArrowRight
-            size={25}
-            className="arrow-icon"
-            onClick={() => setExpandMenu(!expandMenu)}
-          />
-        </div>
-        <div className="sidebar-content">
-          {item.childrens.map((child, index) => {
-            return (
-              <div key={index} className="s-child">
-                <NavLink to={child.path} className={activeSublink}>
-                  <div className="sidebar-item">
-                    <div className="sidebar-title">
-                      <span>
-                        {child.icon && <div className="icon">{child.icon}</div>}
-                        {isOpen && <div>{child.title}</div>}
-                      </span>
-                    </div>
-                  </div>
-                </NavLink>
-              </div>
-            );
-          })}
         </div>
       </div>
     );
   } else {
     return (
-      <NavLink to={item.path} className={activeLink}>
-        <div className="sidebar-item s-parent">
-          <div className="sidebar-title">
-            <span>
-              {item.icon && <div className="icon">{item.icon}</div>}
-              {isOpen && <div>{item.title}</div>}
+      <div className="">
+        <NavLink to="" className={activeLink}>
+          <div className="sidebar-item s-parent">
+            <div className="sidebar-title">
+              <span>
+                {<div className="icon">M</div>}
+                {isOpen && <div>Dashboard</div>}
+              </span>
+            </div>
+          </div>
+        </NavLink>
 
-            </span>
+        <div className="mt-12 mb-12"> </div>
+
+        <div className="mt-12">
+          <div onClick={logout}  className="sidebar-item s-parent">
+            <div className="sidebar-title text-white">
+              <span>
+                {<div className="icon text-white"> <Icon icon={signOut} size={20} />  </div>}
+                {isOpen && <div>Logout</div>}
+              </span>
+            </div>
           </div>
         </div>
-      </NavLink>
+      </div>
     );
   }
 };

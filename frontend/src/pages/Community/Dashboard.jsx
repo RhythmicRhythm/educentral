@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import IconSpeak from "./Assets/IconSpeak.png";
 import Icon from "react-icons-kit";
 import { userPlus } from "react-icons-kit/icomoon/userPlus";
+import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
+
 
 
 const Dashboard = () => {
+  useRedirectLoggedOutUser("/login");
  
 
   return (

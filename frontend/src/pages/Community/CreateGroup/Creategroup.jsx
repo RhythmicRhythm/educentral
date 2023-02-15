@@ -10,7 +10,7 @@ const Creategroup = () => {
   const createGroup = (e) => {
     e.preventDefault();
 
-    navigate("/sidebar");
+    navigate("/creatinggroup");
   }
 
   return (

@@ -10,19 +10,19 @@ const Header = () => {
   return (
     <div className="--pad header">
       <div className="--flex-between">
-      <div className="flex bg-blue-400 rounded-md w-auto">
+      <div className="flex bg-blue-400 rounded-md sm:w-48 w-auto">
                 <input
                   type="text"
                   className="w-full bg-[#ededed] shadow"
                   placeholder="Search"
                 />
-                <button className="bg-blue-900 px-4 py-2 text-white text-xs font-semibold rounded-md">
+                <button className="bg-[#0539b4] px-4 py-2 text-white text-xs font-semibold rounded-md">
                 <Icon icon={search} size={16} /> 
                 </button>
               </div>
 
               <div className="flex">
-              <Link className="text-sm mr-2 text-gray-500" to="/login">
+              <Link className="text-sm mr-2 text-gray-500" to="#">
                 <Icon icon={ic_contact_support_outline} size={18} /> 
               </Link>
 
@@ -32,7 +32,7 @@ const Header = () => {
               </div>
       
       </div>
-      <hr />
+  
     </div>
   );
 };

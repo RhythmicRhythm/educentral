@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import "./Sidebar.scss";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RiProductHuntLine } from "react-icons/ri";
-import menu from "../../data/sidebar";
+ 
 import SidebarItem from "./SidebarItem";
+ 
+import Icon from "react-icons-kit";
+import {arrowLeft2} from 'react-icons-kit/icomoon/arrowLeft2';
 import { useNavigate } from "react-router-dom";
+import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
+import { logoutUser } from "../../services/authServices";
+
+
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
@@ -14,6 +21,8 @@ const Sidebar = ({ children }) => {
   const goHome = () => {
     navigate("/");
   };
+ 
+
 
   return (
     <div className="layout">
@@ -34,19 +43,14 @@ const Sidebar = ({ children }) => {
             <HiMenuAlt3 onClick={toggle} />
           </div>
         </div>
-        {menu.map((item, index) => {
-          return <SidebarItem key={index} item={item} isOpen={isOpen} />;
-        })}
-       
-        <div className="sidebar-item s-parent">
-          <div className="sidebar-title">
-            <span>
-               
 
-              hello
-            </span>
-          </div>
-        </div>
+        
+        {/* {menu.map((item, index) => {
+          return <SidebarItem key={index} item={item} isOpen={isOpen} />;
+        })} */}
+        <SidebarItem   isOpen={isOpen} />
+       
+        
       </div>
 
       <main
