@@ -4,6 +4,16 @@ const bcrypt = require("bcryptjs");
 const userSchema = mongoose.Schema(
   {
    
+    firstname: {
+      type: String,
+      required: [true, "Please add a firstname"],
+      default: "Na",
+    },
+    lastname: {
+      type: String,
+      required: [true, "Please add a lastname"],
+      default: "Na",
+    },
     email: {
       type: String,
       required: [true, "Please add a email"],
@@ -24,6 +34,27 @@ const userSchema = mongoose.Schema(
       minLength: [6, "Password must be up to 6 characters"],
       // maxLength: [23, "Password must not be more than 23 characters"],
     },
+      photo: {
+      type: String,
+      required: [true, "Please add a photo"],
+      default: "https://i.ibb.co/4pDNDk1/avatar.png",
+    },
+    gender: {
+      type: String,
+      required: [true, "please add your gender"],
+      default: "na"
+    },
+    marital_status: {
+      type: String,
+      required: [true, "please add marital status"],
+      default: "single",
+    },
+    dob: {
+      type: String,
+      required: [true, "date of birth"],
+      default: "NA"
+    }
+
   },
   {
     timestamps: true,

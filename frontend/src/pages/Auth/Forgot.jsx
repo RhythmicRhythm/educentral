@@ -1,20 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./Assets/eduCentralLogo.png";
 import key from "./Assets/KeyIcon.png";
 import Icon from "react-icons-kit";
 import { arrowLeft2 } from "react-icons-kit/icomoon/arrowLeft2";
+import { forgotPassword, validateEmail } from "../../services/authServices";
+import { toast } from "react-toastify";
 
 const Forgot = () => {
-  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
 
-  const sendEmail = (e) => {
+  const forgot = async (e) => {
     e.preventDefault();
+    if (!email) {
+      return toast.error("Please enter an email");
+    }
 
-    navigate("/resetpassword");
+    if (!validateEmail(email)) {
+      return toast.error("Please enter a valid email");
+    }
+
+    const userData = {
+      email,
+    };
+
+    await forgotPassword(userData);
+    setEmail("");
   };
 
+
+  
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -33,7 +49,7 @@ const Forgot = () => {
             No worries, We’ll send you a new reset instructions
           </p>
 
-          <form action="" className=" w-full">
+          <form  onSubmit={forgot} className=" w-full">
             <div className="pb-2 pt-4">
               <input
                 type="email"
@@ -41,12 +57,15 @@ const Forgot = () => {
                 id="email"
                 placeholder="Email"
                 className="form-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="w-full mt-20">
               <button
-                onClick={(e) => sendEmail(e)}
+              type="submit"
+             
                 className="ent-btn block w-full p-2 text-lg text-white rounded-lg mb-2"
               >
                 Send Email

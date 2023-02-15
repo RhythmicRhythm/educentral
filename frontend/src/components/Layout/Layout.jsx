@@ -1,13 +1,15 @@
 import React from "react";
- 
+
+import Header from "../Header/Header";
 
 const Layout = ({ children }) => {
   return (
     <>
-    
-      <div className="--pad">
+      <Header />
+      <div style={{ minHeight: "80vh" }} className="--pad">
         {children}
       </div>
+     
     </>
   );
 };

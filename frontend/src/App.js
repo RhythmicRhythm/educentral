@@ -13,6 +13,9 @@ import Resetdone from "./pages/Auth/Resetdone";
 import Creategroup from "./pages/Community/CreateGroup/Creategroup";
 import Creatinggroup from "./pages/Community/CreateGroup/Creatinggroup";
 import AdminHomepage from "./pages/Community/AdminHomepage";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Dashboard from "./pages/Community/Dashboard";
+import Layout from "./components/Layout/Layout";
 import { useDispatch } from "react-redux";
 import A from "./pages/Community/A";
 import axios from "axios";
@@ -51,6 +54,16 @@ function App() {
           <Route path="/creatinggroup" element={<Creatinggroup />} />
           <Route path="/adminhomepage" element={<AdminHomepage />} />
           <Route path="/a" element={<A />} />
+          <Route
+          path="/dashboard"
+          element={
+            <Sidebar>
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </Sidebar>
+          }
+        />
         </Routes>
       </BrowserRouter>
     </div>
