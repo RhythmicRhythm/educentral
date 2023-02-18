@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const firstname = JSON.parse(localStorage.getItem("firstname"));
+const name = JSON.parse(localStorage.getItem("name"));
 
 const initialState = {
   isLoggedIn: false,
-  firstname: firstname ? firstname : "",
+  name: name ? name : "",
   user: {
     firstname: "",
     lastname: "",
@@ -26,8 +26,8 @@ const authSlice = createSlice({
       state.isLoggedIn = action.payload;
     },
     SET_NAME(state, action) {
-      localStorage.setItem("firstname", JSON.stringify(action.payload));
-      state.firstname = action.payload;
+      localStorage.setItem("name", JSON.stringify(action.payload));
+      state.name = action.payload;
     },
     SET_USER(state, action) {
       const profile = action.payload;
@@ -46,7 +46,7 @@ const authSlice = createSlice({
 export const { SET_LOGIN, SET_NAME, SET_USER } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
-export const selectName = (state) => state.auth.firstname;
+export const selectName = (state) => state.auth.name;
 export const selectUser = (state) => state.auth.user;
 
 export default authSlice.reducer;

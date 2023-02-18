@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../services/authServices";
 import Icon from "react-icons-kit";
 import {signOut} from 'react-icons-kit/fa/signOut'
+import {layers} from 'react-icons-kit/ikons/layers'
 
 const activeLink = ({ isActive }) => (isActive ? "active" : "link");
 const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
@@ -27,7 +28,7 @@ const SidebarItem = ({ item, isOpen }) => {
     return (
       <div
         className={
-          expandMenu ? "sidebar-item s-parent open" : "sidebar-item s-parent"
+          expandMenu ? " bg-pink-400 sidebar-item s-parent open" : "sidebar-item s-parent"
         }
       >
         <div className="sidebar-title">
@@ -40,12 +41,12 @@ const SidebarItem = ({ item, isOpen }) => {
     );
   } else {
     return (
-      <div className="">
+      <div className="bg-gray-900 ">
         <NavLink to="" className={activeLink}>
           <div className="sidebar-item s-parent">
             <div className="sidebar-title">
               <span>
-                {<div className="icon">M</div>}
+                {<div className="icon"><Icon icon={layers} size={20} /> </div>}
                 {isOpen && <div>Dashboard</div>}
               </span>
             </div>

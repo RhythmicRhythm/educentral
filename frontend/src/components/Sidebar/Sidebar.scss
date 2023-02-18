@@ -15,7 +15,6 @@
     flex-shrink: 0;
     background-color: var(--color-primary);
     overflow: auto;
-     
     transition: all 0.5s;
   }
   
@@ -33,16 +32,18 @@
     color: #fff;
   }
   .bars {
-    display: flex;
+    position: fixed;
+     
+    right: 0;
     font-size: 20px;
     margin-left: 70px;
     cursor: pointer;
-    color: #fff;
+     
     transition: all 0.3s;
   }
   
   .bars:hover {
-    color: #fff;
+    
     font-size: 27px;
   }
   
