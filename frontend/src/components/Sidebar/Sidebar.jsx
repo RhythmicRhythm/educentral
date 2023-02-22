@@ -26,16 +26,8 @@ const Sidebar = ({ children }) => {
         <HiMenuAlt3 onClick={toggle} />
       </div>
 
-      <div className="sidebar" style={{ width: isOpen ? "230px" : "0px" }}>
-        <div className="top_section">
-          {/* <div className="logo" style={{ display: isOpen ? "block" : "none" }}>
-            <RiProductHuntLine
-              size={35}
-              style={{ cursor: "pointer" }}
-              onClick={goHome}
-            />
-          </div> */}
-        </div>
+      <div className="sidebar py-4" style={{ width: isOpen ? "230px" : "0px" }}>
+     
 
         <SidebarItem isOpen={isOpen} />
       </div>
