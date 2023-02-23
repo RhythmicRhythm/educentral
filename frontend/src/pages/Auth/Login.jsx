@@ -51,7 +51,7 @@ const Login = () => {
       console.log(data);
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.firstname));
-      navigate("/dashboard");
+      navigate("/presidential");
       
       // setIsLoading(false);
     } catch (error) {
@@ -77,7 +77,7 @@ const Login = () => {
             >
               <div className="mb-6">
                 <h1 className="text-3xl font-bold mb-2">
-                  Welcome back, Eugene
+                  Welcome back
                 </h1>
                 <p className="text-sm">
                   welcome back! please enter your details

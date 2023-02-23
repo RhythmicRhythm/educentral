@@ -10,17 +10,23 @@ const Header = () => {
   return (
     <div className="--pad header">
       <div className="--flex-between">
-      <div className="flex rounded-md sm:w-48 w-auto">
-                <input
-                  type="text"
-                  className="w-full bg-[#ededed] rounded-l-md shadow px-4"
-                  placeholder="Search"
-                 
-                />
-                <button className="bg-[#0539b4] px-4 py-2 text-white text-xs font-semibold rounded-r-md">
-                <Icon icon={search} size={16} /> 
-                </button>
-              </div>
+      <div class=" w-auto ">
+                      <div class="overflow-hidden  rounded-lg relative shadow">
+                        <form
+                          
+                          class="relative flex bg-white rounded-lg shadow"
+                        >
+                          <input
+                            type="text"
+                            placeholder="enter your search here"
+                            class="rounded-lg flex-1 px-3 py-2 text-gray-700 focus:outline-none"
+                          />
+                          <button class="bg-[#1A0B8A] text-white rounded-lg font-semibold px-4 py-2 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
+                            Search
+                          </button>
+                        </form>
+                      </div>
+                    </div>
 
               <div className="flex">
               <Link className="text-sm mr-2 text-gray-500 hover:text-blue-800" to="#">

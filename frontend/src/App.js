@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Auth/Home";
@@ -22,6 +22,12 @@ import Profile from "./components/Profile/Profile";
 import axios from "axios";
 import { getLoginStatus } from "./services/authServices";
 import { SET_LOGIN } from "./redux/features/auth/authSlice";
+import Presidential from "./components/dummypages/Presidential";
+import EditGroup from "./pages/Community/CreateGroup/EditGroup";
+import EditWorkspace from "./pages/Community/CreateGroup/EditWorkspace";
+import AddWorkspace from "./pages/Community/CreateGroup/AddWorkspace";
+import NewForum from "./pages/Community/CreateGroup/NewForum";
+import Workspaces from "./pages/Community/CreateGroup/workspaces";
 
 axios.defaults.withCredentials = true;
 
@@ -42,7 +48,7 @@ function App() {
         <ToastContainer />
         <Routes>
           {/* AUTHENTICATION */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Navigate to="/register" replace={true} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<Forgot />} />
@@ -70,7 +76,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="/creatinggroup"
             element={
               <Sidebar>
@@ -80,6 +86,32 @@ function App() {
               </Sidebar>
             }
           />
+
+          <Route
+            path="/editgroup"
+            element={
+              <Sidebar>
+                <Layout>
+                  <EditGroup />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+          <Route
+            path="/editworkspace"
+            element={
+              <Sidebar>
+                <Layout>
+                  <EditWorkspace />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+          <Route path="/addworkspace" element={<AddWorkspace />} />
+          <Route path="/workspaces" element={<Workspaces />} />
+          <Route path="/createnewforum" element={<NewForum />} />
 
           <Route
             path="/profile"
@@ -92,7 +124,16 @@ function App() {
             }
           />
 
-
+          <Route
+            path="/presidential"
+            element={
+              <Sidebar>
+                <Layout>
+                  <Presidential />
+                </Layout>
+              </Sidebar>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </div>
