@@ -9,7 +9,7 @@ import { basic_eye } from "react-icons-kit/linea/basic_eye";
 import { basic_eye_closed } from "react-icons-kit/linea/basic_eye_closed";
 import { toast } from "react-toastify";
 import { loginUser, validateEmail } from "../../services/authServices";
-import { SET_LOGIN, SET_NAME } from "../../redux/features/auth/authSlice";
+import { SET_LOGIN, SET_NAME, SET_ADMIN } from "../../redux/features/auth/authSlice";
 
 const initialState = {
   email: "",
@@ -51,6 +51,7 @@ const Login = () => {
       console.log(data);
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.firstname));
+      await dispatch(SET_ADMIN(data.isAdmin));
       navigate("/presidential");
       
       // setIsLoading(false);
