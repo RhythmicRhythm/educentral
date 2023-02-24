@@ -31,8 +31,6 @@ import Workspaces from "./pages/Community/CreateGroup/workspaces";
 import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
 
-
-
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -70,25 +68,20 @@ function App() {
 
           {/* dashboards */}
 
-         
-
           <Route
             path="/dashboard"
             element={
               <Sidebar>
                 <Layout>
-                  {isAdmin ? (
-                    <AdminDashboard />
-                  ): (
-                    <UserDashboard />
-                  )}
+                  {isAdmin ? <AdminDashboard /> : <UserDashboard />}
                 </Layout>
               </Sidebar>
             }
           />
-           {/* dashboards */}
+          {/* dashboards */}
 
           <Route path="/creategroup" element={<Creategroup />} />
+
           {/* <Route path="/creatinggroup" element={<Creatinggroup />} /> */}
           <Route path="/adminhomepage" element={<AdminHomepage />} />
           <Route path="/a" element={<A />} />
@@ -104,16 +97,7 @@ function App() {
             }
           /> */}
 
-          <Route
-            path="/creatinggroup"
-            element={
-              <Sidebar>
-                <Layout>
-                  <Creatinggroup />
-                </Layout>
-              </Sidebar>
-            }
-          />
+          <Route path="/creatinggroup" element={<Creatinggroup />} />
 
           <Route
             path="/editgroup"

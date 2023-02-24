@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Sidebar.scss";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { RiProductHuntLine } from "react-icons/ri";
@@ -12,13 +12,27 @@ import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
 import { logoutUser } from "../../services/authServices";
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
   const navigate = useNavigate();
 
-  const goHome = () => {
-    navigate("/");
-  };
+  // const goHome = () => {
+  //   navigate("/");
+  // };
+
+//choose the screen size 
+const handleResize = () => {
+  if (window.innerWidth < 720) {
+    setIsOpen(false)
+  } else {
+    setIsOpen(true)
+  }
+}
+
+// create an event listener
+useEffect(() => {
+  window.addEventListener("resize", handleResize)
+})
 
   return (
     <div className="layout">

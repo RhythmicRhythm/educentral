@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import IconSpeak from "../Assets/IconSpeak.png";
 import Icon from "react-icons-kit";
 import { userPlus } from "react-icons-kit/icomoon/userPlus";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
@@ -24,13 +25,13 @@ const AdminDashboard = () => {
             </div>
           </div>
           <div className="text-center sm:text-left mt-8 ml-1">
-            <button
+            <Link to="/creategroup"
               
               className=" outline outline-blue-500 text-xs p-2 text-blue-500 rounded-lg"
             >
               {" "}
-              <Icon icon={userPlus} size={14} /> Add menbers
-            </button>
+              <Icon icon={userPlus} size={14} /> Create Group
+            </Link>
           </div>
         </div>
       </div>

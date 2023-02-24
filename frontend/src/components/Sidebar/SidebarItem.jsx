@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../services/authServices";
@@ -26,6 +26,8 @@ const SidebarItem = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+ 
 
   const logout = async () => {
     await logoutUser();

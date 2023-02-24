@@ -23,8 +23,8 @@ const Creategroup = () => {
           className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-900 flex flex-col items-center justify-center"
         >
-          <div className="w-52">
-            <img src={Vector1} alt="" />
+          <div>
+            <img className="w-[10rem]" src={Vector1} alt="" />
           </div>
           <h1 className="text-2xl font-bold mb-4">Get started on eduCentral</h1>
           <p className="text-sm">
