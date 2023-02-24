@@ -16,22 +16,27 @@ import AdminHomepage from "./pages/Community/AdminHomepage";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./pages/Community/Dashboard";
 import Layout from "./components/Layout/Layout";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import A from "./pages/Community/A";
 import Profile from "./components/Profile/Profile";
 import axios from "axios";
 import { getLoginStatus } from "./services/authServices";
-import { SET_LOGIN } from "./redux/features/auth/authSlice";
+import { SET_LOGIN, selectIsAdmin } from "./redux/features/auth/authSlice";
 import Presidential from "./components/dummypages/Presidential";
 import EditGroup from "./pages/Community/CreateGroup/EditGroup";
 import EditWorkspace from "./pages/Community/CreateGroup/EditWorkspace";
 import AddWorkspace from "./pages/Community/CreateGroup/AddWorkspace";
 import NewForum from "./pages/Community/CreateGroup/NewForum";
 import Workspaces from "./pages/Community/CreateGroup/workspaces";
+import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
+import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
+
+
 
 axios.defaults.withCredentials = true;
 
 function App() {
+  const isAdmin = useSelector(selectIsAdmin);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -63,12 +68,32 @@ function App() {
           <Route path="/resetdone" element={<Resetdone />} />
           {/* COMMUNITY */}
 
+          {/* dashboards */}
+
+         
+
+          <Route
+            path="/dashboard"
+            element={
+              <Sidebar>
+                <Layout>
+                  {isAdmin ? (
+                    <AdminDashboard />
+                  ): (
+                    <UserDashboard />
+                  )}
+                </Layout>
+              </Sidebar>
+            }
+          />
+           {/* dashboards */}
+
           <Route path="/creategroup" element={<Creategroup />} />
           {/* <Route path="/creatinggroup" element={<Creatinggroup />} /> */}
           <Route path="/adminhomepage" element={<AdminHomepage />} />
           <Route path="/a" element={<A />} />
 
-          <Route
+          {/* <Route
             path="/dashboard"
             element={
               <Sidebar>
@@ -77,7 +102,7 @@ function App() {
                 </Layout>
               </Sidebar>
             }
-          />
+          /> */}
 
           <Route
             path="/creatinggroup"
