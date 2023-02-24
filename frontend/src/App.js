@@ -48,7 +48,10 @@ function App() {
         <ToastContainer />
         <Routes>
           {/* AUTHENTICATION */}
-          <Route path="/" element={<Navigate to="/register" replace={true} />} />
+          <Route
+            path="/"
+            element={<Navigate to="/register" replace={true} />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<Forgot />} />
@@ -98,16 +101,7 @@ function App() {
             }
           />
 
-          <Route
-            path="/editworkspace"
-            element={
-              <Sidebar>
-                <Layout>
-                  <EditWorkspace />
-                </Layout>
-              </Sidebar>
-            }
-          />
+          <Route path="/editworkspace" element={<EditWorkspace />} />
 
           <Route path="/addworkspace" element={<AddWorkspace />} />
           <Route path="/workspaces" element={<Workspaces />} />

@@ -90,6 +90,21 @@ const SidebarItem = () => {
                     </div>
                   </Link>
 
+                  <Link
+                    to="/editworkspace"
+                    className="flex justify-between mb-2 cursor-pointer hover:bg-gray-100"
+                  >
+                    <h1 className="text-gray-600  font-bold">Edit Workspace</h1>
+
+                    <div className=" float-right text-xl mb-3 text-gray-600">
+                      {" "}
+                      <Icon
+                        icon={ic_keyboard_arrow_right_twotone}
+                        size={20}
+                      />{" "}
+                    </div>
+                  </Link>
+
                   <div
                     onClick={() => setShowModala(true)}
                     className="flex justify-between mb-2 cursor-pointer hover:bg-gray-100"
