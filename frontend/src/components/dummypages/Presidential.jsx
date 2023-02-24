@@ -13,7 +13,7 @@ const Presidential = () => {
 
   return (
     <div>
-       {showModal ? (
+      {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none px-16">
             <div className="relative  px-8 w-3xl">
@@ -21,7 +21,9 @@ const Presidential = () => {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex justify-between p-4 rounded-t">
-                  <h3 className="text-xl text-gray-800 font-semibold">Members</h3>
+                  <h3 className="text-xl text-gray-800 font-semibold">
+                    Members
+                  </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-gray-400 float-right text-sm leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
@@ -41,10 +43,7 @@ const Presidential = () => {
                   <div class="">
                     <div class=" w-full sm:max-w-2xl sm:mx-auto">
                       <div class="overflow-hidden z-0 rounded-lg relative shadow">
-                        <form
-                          
-                          class="relative flex z-50 bg-white rounded-lg shadow"
-                        >
+                        <form class="relative flex z-50 bg-white rounded-lg shadow">
                           <input
                             type="text"
                             placeholder="enter your search here"
@@ -145,7 +144,6 @@ const Presidential = () => {
                     </div>
                   </div>
 
-
                   <div className="flex justify-between mb-2">
                     <div className="flex">
                       <div className="">
@@ -178,13 +176,13 @@ const Presidential = () => {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-      <div className="min-w-screen min-h-screen flex  justify-center">
+      <div className="min-w-screen min-h-screen z-10 flex justify-center ">
         <div className="mx-auto flex flex-col w-[40rem]">
           <h1 className="text-2xl font-bold text-left mt-8">
             Presidential-Inauguration
           </h1>
 
-          <div className=" flex flex-col sm:flex-row gap-10 items-center justify-center mt-16">
+          <div className=" flex flex-col z-0 sm:flex-row gap-10 items-center justify-center mt-16">
             <div className="relative">
               <img className="w-20 md:w-74" src={IconSpeak} alt="" />
             </div>
@@ -200,8 +198,10 @@ const Presidential = () => {
             </div>
           </div>
           <div className="text-center sm:text-left mt-8 ml-1">
-            <button 
-            onClick={() => setShowModal(true)} className=" outline outline-blue-500 text-xs p-2 text-blue-500 rounded-lg">
+            <button
+              onClick={() => setShowModal(true)}
+              className=" outline outline-blue-500 text-xs p-2 text-blue-500 rounded-lg"
+            >
               {" "}
               <Icon icon={userPlus} size={14} /> Add menbers
             </button>
@@ -220,7 +220,7 @@ const Presidential = () => {
 
             <div className="text-left">
               <div className="flex gap-2">
-                <h1 className="font-bold text-gray-500" >Mr Fred</h1>
+                <h1 className="font-bold text-gray-500">Mr Fred</h1>
                 <button class="bg-orange-500 text-white text-xs rounded-full font-semibold px-2">
                   active
                 </button>
@@ -236,7 +236,7 @@ const Presidential = () => {
 
           <div className="flex mt-4 ml-16">
             <img className="w-[7rem]" src={biden} alt="" />
-        </div>
+          </div>
         </div>
       </div>
     </div>

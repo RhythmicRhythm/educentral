@@ -12,7 +12,7 @@ import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
 import { logoutUser } from "../../services/authServices";
 
 const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const Sidebar = ({ children }) => {
 
   return (
     <div className="layout">
-      <div className="bars" style={{ marginLeft: isOpen ? "100px" : "0px" }}>
+      <div className="bars">
         <HiMenuAlt3 onClick={toggle} />
       </div>
 
@@ -32,7 +32,7 @@ const Sidebar = ({ children }) => {
         <SidebarItem isOpen={isOpen} />
       </div>
 
-      <main
+      <main 
         style={{
           paddingLeft: isOpen ? "230px" : "0px",
           transition: "all .5s",

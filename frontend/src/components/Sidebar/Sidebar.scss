@@ -3,7 +3,6 @@
 }
 main {
   width: 100%;
-  // padding: 20px;
 }
 .sidebar {
   position: fixed;
@@ -13,8 +12,14 @@ main {
   height: 100vh;
   flex-shrink: 0;
   background-color: #1a0b8a;
-  overflow: auto;
+  z-index: 100;
+  // overflow: auto;
+  overflow-y: hidden;
   transition: all 0.5s;
+}
+
+.modalbg{
+  border: 1px solid #3623e0;
 }
 
 .top_section {
@@ -32,10 +37,9 @@ main {
 }
 .bars {
   position: fixed;
-  right: 0;
+  right: 50%;
   font-size: 20px;
-  margin-right: 20px;
-  margin-top: 70px;
+   
   cursor: pointer;
 
   transition: all 0.3s;

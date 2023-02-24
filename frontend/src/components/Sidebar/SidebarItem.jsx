@@ -20,6 +20,7 @@ const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = () => {
   const [showModal, setShowModal] = useState(false);
+  const toggle = () => setShowModal(!showModal)
   const [showModala, setShowModala] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -46,22 +47,22 @@ const SidebarItem = () => {
       </div>
 
       <div className="mt-2">
-        <button
-          onClick={() => setShowModal(true)}
+        <div
+          onClick={toggle}
           className="text-xs text-white"
         >
           Forum+
-        </button>
+        </div>
       </div>
 
       {/* ModalStarts */}
 
       {showModal ? (
         <>
-          <div className="justify-center shadow-2xl items-center flex px-16 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
+          <div className="justify-center items-center z-30 flex px-16 fixed">
             <div className="relative px-8">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="modalbg border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex justify-between p-6 rounded-t">
                   <button
@@ -156,15 +157,15 @@ const SidebarItem = () => {
       ) : null}
 
       {/* ModalEnds */}
-
+ 
       {/* ModalStarts  A*/}
 
       {showModala ? (
         <>
-          <div className="justify-end items-center flex px-16 overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-[2px solid #000] shadow-2xl">
-            <div className="relative px-8">
+          <div className=" justify-end items-center flex   fixed z-40">
+            <div className="relative px-8 ">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="modalbg border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex justify-between p-6 rounded-t">
                   <button
