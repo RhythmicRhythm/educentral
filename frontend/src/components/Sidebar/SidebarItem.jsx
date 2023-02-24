@@ -59,7 +59,7 @@ const SidebarItem = () => {
 
       {showModal ? (
         <>
-          <div className="justify-center items-center z-30 flex px-16 fixed">
+          <div className="justify-center items-center z-30 flex fixed">
             <div className="relative px-8">
               {/*content*/}
               <div className="modalbg border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -162,7 +162,7 @@ const SidebarItem = () => {
 
       {showModala ? (
         <>
-          <div className=" justify-end items-center flex   fixed z-40">
+          <div className=" justify-end items-center flex fixed z-40">
             <div className="relative px-8 ">
               {/*content*/}
               <div className="modalbg border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
