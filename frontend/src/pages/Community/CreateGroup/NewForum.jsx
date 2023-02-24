@@ -5,8 +5,12 @@ import Icon from "react-icons-kit";
 import { arrowLeft2 } from "react-icons-kit/icomoon/arrowLeft2";
 import { toast } from "react-toastify";
 import Edu from "../Assets/Edu.png";
+import { selectIsAdmin } from "../../../redux/features/auth/authSlice";
+import { useSelector } from "react-redux";
 
 const NewForum = () => {
+  const isAdmin = useSelector(selectIsAdmin);
+
   return (
     <div>
       <div className="min-w-screen min-h-screen flex items-center justify-center px-5 py-5">
@@ -17,26 +21,27 @@ const NewForum = () => {
           className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
         >
-          
-          <h1 className="text-2xl font-bold mb-3">Create New Forum</h1>
+          {isAdmin ? (
+            <h1 className="text-2xl font-bold mb-3">Create New Forum Admin</h1>
+          ) : (
+            <h1 className="text-2xl font-bold mb-3">Create New Forum User</h1>
+          )}
+
           <p className="text-sm">
-          Forums are where your team communicates. They’re best when organized around a topic — #marketing, for example.
+            Forums are where your team communicates. They’re best when organized
+            around a topic — #marketing, for example.
           </p>
 
           <form className=" w-full">
             <div className="pb-2 pt-4 text-left">
-                <label className="font-bold text-gray-700 text-sm">Name</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-               
-                className="form-input"
-              />
-            </div> 
+              <label className="font-bold text-gray-700 text-sm">Name</label>
+              <input type="text" name="name" id="name" className="form-input" />
+            </div>
 
             <div className="pb-2 pt-4 text-left">
-            <label className="font-bold text-gray-700 text-sm">Description</label>
+              <label className="font-bold text-gray-700 text-sm">
+                Description
+              </label>
               <input
                 type="text"
                 name="email"
@@ -53,7 +58,6 @@ const NewForum = () => {
               >
                 Create Forum
               </button>
-             
             </div>
           </form>
         </div>

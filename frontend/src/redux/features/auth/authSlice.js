@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const name = JSON.parse(localStorage.getItem("name"));
+// const isAdmin = localStorage.getItem('isAdmin');
 
 const initialState = {
   isLoggedIn: false,
+  isAdmin: true,
   name: name ? name : "",
   user: {
     firstname: "",
@@ -11,6 +13,7 @@ const initialState = {
     email: "",
     phone: "",
     gender: "",
+   
     marital_status: "",
     photo: "",
     dob: "",
@@ -29,6 +32,9 @@ const authSlice = createSlice({
       localStorage.setItem("name", JSON.stringify(action.payload));
       state.name = action.payload;
     },
+    SET_ADMIN(state, action) {
+      state.isAdmin = action.payload;
+    },
     SET_USER(state, action) {
       const profile = action.payload;
       state.user.firstname = profile.firstname;
@@ -36,6 +42,7 @@ const authSlice = createSlice({
       state.user.email = profile.email;
       state.user.phone = profile.phone;
       state.user.dob = profile.dob;
+      
       state.user.gender = profile.gender;
       state.user.marital_status = profile.marital_status;
 
@@ -43,9 +50,10 @@ const authSlice = createSlice({
   },
 });
 
-export const { SET_LOGIN, SET_NAME, SET_USER } = authSlice.actions;
+export const { SET_LOGIN, SET_NAME, SET_USER, SET_ADMIN } = authSlice.actions;
 
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectIsAdmin = (state) => state.auth.isAdmin;
 export const selectName = (state) => state.auth.name;
 export const selectUser = (state) => state.auth.user;
 
