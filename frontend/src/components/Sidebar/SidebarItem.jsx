@@ -15,14 +15,13 @@ import { ic_keyboard_arrow_right_twotone } from "react-icons-kit/md/ic_keyboard_
 
 import WorkDropdown from "./WorkDropdown";
 
-const activeLink = ({ isActive }) => (isActive ? "active" : "link");
-const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
+// const activeLink = ({ isActive }) => (isActive ? "active" : "link");
+// const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = () => {
   const [showModal, setShowModal] = useState(false);
-  const toggle = () => setShowModal(!showModal)
+  const toggle = () => setShowModal(!showModal);
   const [showModala, setShowModala] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();

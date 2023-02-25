@@ -37,7 +37,9 @@ main {
 }
 .bars {
   position: fixed;
-  right: 50%;
+  right: 0;
+  margin-top: 80px;
+  margin-right: 16px;
   font-size: 20px;
    
   cursor: pointer;
