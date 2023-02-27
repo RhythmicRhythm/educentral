@@ -7,30 +7,43 @@ import { ic_contact_support_outline } from "react-icons-kit/md/ic_contact_suppor
 
 const Header = () => {
   return (
-    <div className="--pad header">
+    <div className="pt-2">
       <div className="--flex-between">
-        <div class=" w-[17rem] sm:w-auto ">
-          <div class="overflow-hidden  rounded-lg relative shadow">
-            <form class="relative flex bg-white rounded-lg shadow">
-              <input
-                type="text"
-                placeholder="enter your search here"
-                class="rounded-lg  px-3 py-2 text-gray-700 focus:outline-none"
-              />
-              <button class="bg-[#1A0B8A] text-white text-sm rounded-lg font-semibold px-4 py-2 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none">
-                Search
-              </button>
-            </form>
+        <div class="max-w-md mx-auto">
+          <div class="relative flex items-center w-full h-12 shadow rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+            <div class="grid place-items-center h-full w-12 text-gray-300 cursor-pointer">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </div>
+
+            <input
+              class="peer w-[15rem] outline-none text-sm text-gray-700 pr-2"
+              type="text"
+              id="search"
+              placeholder="Search something.."
+            />
           </div>
         </div>
 
-        <div className="flex">
-          <Link
+        <div className="flex mr-2">
+          {/* <Link
             className="text-sm mr-2 text-gray-500 hover:text-blue-800"
             to="#"
           >
             <Icon icon={ic_contact_support_outline} size={22} />
-          </Link>
+          </Link> */}
 
           <Link
             className="text-sm text-gray-500 hover:text-blue-800"
