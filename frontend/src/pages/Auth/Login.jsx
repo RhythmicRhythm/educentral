@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
+import Load from "./Assets/1497.gif";
 import Icon from "react-icons-kit";
 import { useDispatch } from "react-redux";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
@@ -20,6 +21,7 @@ const initialState = {
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
   const [type, setType] = useState("password");
 
   const [formData, setformData] = useState(initialState);
@@ -32,6 +34,7 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
+    
 
     if (!email || !password) {
       return toast.error("All fields are required");
@@ -47,16 +50,19 @@ const Login = () => {
     };
 
     try {
+      setIsLoading(true);
       const data = await loginUser(userData);
       console.log(data);
+      
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.firstname));
       await dispatch(SET_ADMIN(data.isAdmin));
+
       navigate("/dashboard");
       
       // setIsLoading(false);
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       console.log(error);
     }
   
@@ -72,7 +78,12 @@ const Login = () => {
             <div className="top-0 absolute p-4 text-center right-0 left-0">
               <img src={logo} alt="logo" />
             </div>
-            <div
+
+
+            {isLoading ? ( <div className="">
+              <img className="w-[8rem]" src={Load} alt="" />
+            </div> ): ( 
+              <div
               className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
@@ -166,6 +177,9 @@ const Login = () => {
                 </div>
               </form>
             </div>
+             ) }
+
+
           </div>
         </div>
 
