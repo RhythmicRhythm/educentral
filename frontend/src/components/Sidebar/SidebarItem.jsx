@@ -26,7 +26,6 @@ const SidebarItem = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
- 
 
   const logout = async () => {
     await logoutUser();
