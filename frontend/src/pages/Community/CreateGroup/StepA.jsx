@@ -8,7 +8,7 @@ const StepA = () => {
           What's the name of your Group
         </h1>
         <p className="text-sm max-w-30">
-          This will be the name of your Edu-central Group- Choose something that
+          This will be the name of your eduCENTRAL Group- Choose something that
           your team will recognize
         </p>
 

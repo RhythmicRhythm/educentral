@@ -29,7 +29,7 @@ const Header = () => {
             </div>
 
             <input
-              className="peer w-[15rem] outline-none text-sm text-gray-700 pr-2"
+              className="peer w-[20rem] outline-none text-sm text-gray-700 pr-2"
               type="text"
               id="search"
               placeholder="Search something.."
@@ -37,13 +37,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex mr-2">
-          {/* <Link
-            className="text-sm mr-2 text-gray-500 hover:text-blue-800"
-            to="#"
-          >
-            <Icon icon={ic_contact_support_outline} size={22} />
-          </Link> */}
+        {/* <div className="flex mr-2">
 
           <Link
             className="text-sm text-gray-500 hover:text-blue-800"
@@ -51,7 +45,9 @@ const Header = () => {
           >
             <Icon icon={ic_account_circle_outline} size={22} />
           </Link>
-        </div>
+        </div> */}
+
+
       </div>
     </div>
   );

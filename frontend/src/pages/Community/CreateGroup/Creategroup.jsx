@@ -26,8 +26,8 @@ const Creategroup = () => {
           <div>
             <img className="w-[10rem]" src={Vector1} alt="" />
           </div>
-          <h1 className="text-2xl font-bold mb-4">Get started on eduCentral</h1>
-          <p className="text-sm">
+          <h1 className="text-2xl font-bold mb-4 text-gray-800">Get started on eduCENTRAL</h1>
+          <p className="text-sm text-gray-700">
             It’s a new way to communicate with your members. It’s faster, better
             organized, and more secure than email.
           </p>

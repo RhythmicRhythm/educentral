@@ -38,12 +38,6 @@ useEffect(() => {
       </div>
 
       <div className="sidebar py-4" style={{ width: isOpen ? "230px" : "0px" }}>
-        <div onClick={() => setIsOpen(false)}
-        className="absolute cursor-pointer bg-[#3623e0] rounded-full  ml-4 right-0">
-        <h1 className="text-white">
-        <Icon icon={ic_keyboard_arrow_left_twotone} size={25} />
-        </h1>
-        </div>
         <SidebarItem isOpen={isOpen} />
       </div>
 
