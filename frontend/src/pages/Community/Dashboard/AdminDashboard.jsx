@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import IconSpeak from "../Assets/IconSpeak.png";
 import Icon from "react-icons-kit";
 import { userPlus } from "react-icons-kit/icomoon/userPlus";
-import {bubble2} from 'react-icons-kit/icomoon/bubble2';
-import {ic_favorite_border_outline} from 'react-icons-kit/md/ic_favorite_border_outline';
+import { bubble2 } from "react-icons-kit/icomoon/bubble2";
+import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_border_outline";
 import { Link } from "react-router-dom";
 import biden from "../Assets/biden.png";
-import  User  from "../Assets/User.png";
+import User from "../Assets/User.png";
+import data from "./data";
 
 const AdminDashboard = () => {
   return (
@@ -45,34 +46,45 @@ const AdminDashboard = () => {
         </div> */}
 
         <div className="w-[30rem]">
-          <div className=" flex flex-row gap-4 justify-center mt-16">
-            <div className="">
-              <img className="w-15 md:w-74" src={User} alt="" />
-            </div>
-
-            <div className="text-left">
+          <div className="p-6">
+            {data.map((item) => (
+              <div key={item.id} className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8">
+                <div className="">
+                  <img className="w-14 md:w-74 rounded-full" src={item.userimg} alt="" />
+                </div>
+                <div className="text-left">
               <div className="flex gap-2">
-                <h1 className="font-bold text-gray-500">Mr Fred</h1> 
+                <h1 className="font-bold text-gray-500">{item.name}</h1>
               </div>
               <div className="">
-              <p className="text-sm text-gray-600 mt-2">
-                Welcome Everyone to our Presidential Inauguration ceremony this
-                December, i hope we can work and collaborate to get the best out
-                of this.
-                
-              </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  {item.desc}
+                </p>
               </div>
-              <div className="flex mt-4 ">
-            <img className="w-[7rem]" src={biden} alt="" />
-          </div>
-          <div className="flex mt-6 gap-6">
-            <h1 className="text-xs text-gray-400"> <Icon icon={bubble2} size={12} /> 30</h1>
-            <h1 className="text-xs text-gray-400"> <Icon icon={ic_favorite_border_outline} size={15} /> 30</h1>
-            
-          </div>
-
-             
+              <div className="flex mt-4 px-4">
+                <img
+                  className="w-auto rounded-lg"
+                  src={item.imageUrl}
+                  alt=""
+                />
+              </div>
+              <div className="flex mt-6 gap-6">
+                <h1 className="text-xs text-gray-400">
+                  {" "}
+                  <Icon icon={bubble2} size={12} /> 30
+                </h1>
+                <h1 className="text-xs text-gray-400">
+                  {" "}
+                  <Icon icon={ic_favorite_border_outline} size={15} /> 30
+                </h1>
+              </div>
             </div>
+
+
+              </div>
+            ))}
+
+            
           </div>
         </div>
       </div>
