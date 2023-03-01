@@ -30,6 +30,7 @@ import NewForum from "./pages/Community/CreateGroup/NewForum";
 import Workspaces from "./pages/Community/CreateGroup/workspaces";
 import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
+import Members from "./pages/Community/Members/Members";
 
 axios.defaults.withCredentials = true;
 
@@ -122,6 +123,17 @@ function App() {
               <Sidebar>
                 <Layout>
                   <Profile />
+                </Layout>
+              </Sidebar>
+            }
+          />
+
+<Route
+            path="/members"
+            element={
+              <Sidebar>
+                <Layout>
+                  <Members />
                 </Layout>
               </Sidebar>
             }

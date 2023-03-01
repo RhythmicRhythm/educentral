@@ -10,6 +10,9 @@ import { ic_keyboard_arrow_right_outline } from "react-icons-kit/md/ic_keyboard_
 import { ic_keyboard_arrow_down_outline } from "react-icons-kit/md/ic_keyboard_arrow_down_outline";
 import { ic_keyboard_arrow_right_twotone } from "react-icons-kit/md/ic_keyboard_arrow_right_twotone";
 import { statsBars } from "react-icons-kit/icomoon/statsBars";
+import {ic_perm_identity_twotone} from 'react-icons-kit/md/ic_perm_identity_twotone'
+import {users} from 'react-icons-kit/fa/users'
+
 
 // const activeLink = ({ isActive }) => (isActive ? "active" : "link");
 // const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
@@ -37,25 +40,25 @@ const SidebarItem = () => {
 
     
 
-      <div className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+      <Link to="/dashboard" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
         <h1>
           {" "}
           <Icon icon={statsBars} size={25} /> Dashboard
         </h1>
         <p> </p>
-      </div>
-      <div className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+      </Link>
+      <Link to="/profile" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
         <h1>
           {" "}
-          <Icon icon={statsBars} size={25} /> Profile
+          <Icon icon={ic_perm_identity_twotone} size={25} /> Profile
         </h1>
         <p> </p>
-      </div>
+      </Link>
 
       <div className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
         <h1>
           {" "}
-          <Icon icon={statsBars} size={25} /> Members
+          <Icon icon={users} size={25} /> Members
         </h1>
         <p>
           {" "}

@@ -7,13 +7,68 @@ import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_borde
 import { Link } from "react-router-dom";
 import biden from "../Assets/biden.png";
 import User from "../Assets/User.png";
+import {image} from 'react-icons-kit/icomoon/image';
+import {happy} from 'react-icons-kit/icomoon/happy';
+import {timesOutline} from 'react-icons-kit/typicons/timesOutline';
+import {send} from 'react-icons-kit/fa/send';
+
+
+
 import data from "./data";
 
 const AdminDashboard = () => {
+  const [showModal, setShowModal] = useState(true);
   return (
     <div>
-      <div className="fixed bottom-0 right-0 mb-6 mr-6 ">
-        <h1 className="text-gray-500 font-bold text-3xl bg-blue-200 rounded-full p-4">
+        {showModal ? (
+        <>
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none px-16">
+            <div className="relative w-[30rem] p-8 bg-white shadow-lg rounded-lg">
+
+              <div onClick={() => setShowModal(false)}  
+              className="absolute right-0 px-8 cursor-pointer">
+                <h1 className="text-gray-600">
+                <Icon icon={timesOutline} size={25} />
+                </h1>
+              </div>
+              {/*content*/}
+              <form className=" w-full">
+           
+
+            <div className="pb-2 pt-4 text-left">
+              <label className="font-bold text-gray-700 text-sm">
+                Description
+              </label>
+              <textarea
+                type="text"
+                name="email"
+                id="email"
+                placeholder="What's Happening?"
+                className="form-input"
+              />
+            </div>
+
+            <div className="flex justify-between">
+              <div className="flex gap-6">
+             <div className=""><Icon icon={image} size={20} /></div>
+              <div className=""><Icon icon={happy} size={20} /></div>
+              </div>
+              <div className="">
+                <div className=""><Icon icon={send} size={20} /></div>
+                </div>
+            
+            </div>
+
+           
+          </form>
+            </div>
+          </div>
+          <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
+        </>
+      ) : null}
+      <div onClick={() => setShowModal(true)} 
+       className="fixed bottom-0 right-0 mb-6 mr-6 w-10 h-10 bg-blue-900 hover:bg-blue-800 rounded-full cursor-pointer">
+        <h1 className="text-gray-200 font-bold text-3xl ">
           +
         </h1>
       </div>
