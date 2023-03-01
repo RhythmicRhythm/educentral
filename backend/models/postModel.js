@@ -1,20 +1,20 @@
 const postSchema = mongoose.Schema(
   {
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     title: {
       type: String,
       required: true,
     },
-    description: {
+    desc: {
       type: String,
       required: true,
     },
     image: {
       type: String,
-      required: true,
-    },
-    author: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
       required: true,
     },
   },
