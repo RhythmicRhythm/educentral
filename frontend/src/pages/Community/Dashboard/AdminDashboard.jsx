@@ -17,13 +17,13 @@ import {send} from 'react-icons-kit/fa/send';
 import data from "./data";
 
 const AdminDashboard = () => {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
         {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none px-16">
-            <div className="relative w-[30rem] p-8 bg-white shadow-lg rounded-lg">
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none px-4 sm:px-16">
+            <div className="relative w-[30rem] p-4 sm:p-8 bg-white shadow-lg rounded-lg">
 
               <div onClick={() => setShowModal(false)}  
               className="absolute right-0 px-8 cursor-pointer">
@@ -32,7 +32,7 @@ const AdminDashboard = () => {
                 </h1>
               </div>
               {/*content*/}
-              <form className=" w-full">
+              <form className=" w-full mt-6">
            
 
             <div className="pb-2 pt-4 text-left">
