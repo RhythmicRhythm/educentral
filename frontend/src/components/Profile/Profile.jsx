@@ -30,61 +30,68 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="min-w-screen min-h-screen flex items-center justify-center mt-10">
-        <div className="px-8 md:px-6">
-          <div className="flex justify-center flex-col md:flex-row gap-10">
-            
-            <div className="flex flex-col flex-wrap gap-8 items-center">
-              <h1 className="text-2xl font-bold">My Profile </h1>
-              <img src={eduLogo} className="w-48" alt="" />
-            </div>
-
-            <div className="w-full lg:w-5/12 md:w-5/12 text-left ">
-              <h1 className="text-xl font-bold mb-6">Basic Information</h1>
-
-              <div className="mb-2">
-                <h1 className="font-bold mb-1 text-base">FirstName:</h1>
-                <p className="text-sm text-gray-800 font-semibold">{profile?.firstname}</p>
-                <hr />
-              </div>
-              <div className="mb-2">
-                <h1 className="font-bold mb-1 text-base">LastName:</h1>
-                <p className="text-sm text-gray-800 font-semibold">{profile?.lastname}</p>
-                <hr />
-              </div>
-              <div className="mb-2">
-                <h1 className="font-bold text-gray-800 mb-1">Gender:</h1>
-                <p className="">{profile?.gender} </p>
-              </div>
-              <hr />
-              <div className="mb-2">
-                <h1 className="font-bold text-gray-800 mb-1">
-                  Marital Status:
-                </h1>
-                <p className=""> {profile?.marital_status}</p>
-              </div>
-
-              {/* <div className="flex flex-col md:flex-row gap-6 items-center ">
-                <button className="block bg-blue-700 w-64 p-2 text-lg text-white rounded-lg mb-2">
-                  try
-                </button>
-              </div> */}
-            </div>
+      <div className=" flex flex-col sm:flex-row gap-10 items-center justify-center mt-16">
+        <div className="bg-gray-400 w-[15rem]">
+          
+          <div class="mt-6 w-fit mx-auto">
+            <img
+              src="https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe"
+              class="rounded-full w-28 "
+              alt="profile"
+            />
           </div>
 
-          <div className="w-full  text-left ">
-            <h1 className="text-xl font-bold mb-6">Contact Information</h1>
+          <div class="mt-8 ">
+            <h2 class="text-white font-bold text-2xl tracking-wide">
+              Jonathan <br /> Smith
+            </h2>
+          </div>
+          <p class="text-emerald-400 font-semibold mt-2.5">Active</p>
 
-            <div className="mb-2">
-              <h1 className="font-bold text-gray-800 mb-1">Email:</h1>
-              <p className="">{profile?.email}</p>
-              <hr />
+          <div class="h-1 w-full bg-black mt-8 rounded-full">
+            <div class="h-1 rounded-full w-2/5 bg-yellow-500 "></div>
+          </div>
+        </div>
+
+        <div className="w-[15rem] sm:w-[33rem]">
+          <div className="flex flex-col gap-4">
+
+            <div className="flex md:flex-row flex-col justify-between">
+              <div className="flex flex-col  gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
+                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
+                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              </div>
             </div>
-            <div className="mb-2">
-              <h1 className="font-bold text-gray-800 mb-1">Phone:</h1>
-              <p className="">{profile?.phone}</p>
-              <hr />
+
+            <div className="flex md:flex-row flex-col justify-between">
+              <div className="flex flex-col  gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
+                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
+                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              </div>
             </div>
+
+            <div className="flex md:flex-row flex-col justify-between">
+              <div className="flex flex-col  gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
+                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
+                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

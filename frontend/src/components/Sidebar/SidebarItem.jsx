@@ -55,7 +55,7 @@ const SidebarItem = () => {
         <p> </p>
       </Link>
 
-      <div className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+      <Link to="/members" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
         <h1>
           {" "}
           <Icon icon={users} size={25} /> Members
@@ -64,7 +64,7 @@ const SidebarItem = () => {
           {" "}
           {" "}
         </p>
-      </div>
+      </Link>
 
       <div className="text-left  border-b-2 border-gray-100 p-2">
         <div
