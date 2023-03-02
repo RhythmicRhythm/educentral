@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
-import data from "./data";
+// import data from "./data";
 import {getMembers} from "../../../services/authServices";
 
 
 const Members = () => {
-    
+  const [members, setMembers] = useState([]);
   useEffect(() => {
     console.log("Getting Members");
 
     async function getUserData() {
       const data = await getMembers();
       console.log(data);
+      setMembers(data);
 
       
     }
@@ -52,7 +53,7 @@ const Members = () => {
                     </p>
                   </td>
                   <td className="pl-6">
-                    <p className="text-sm font-bold leading-none text-gray-800">Role</p>
+                    <p className="text-sm font-bold leading-none text-gray-800">Phone</p>
                   </td>
                   <td className="pl-6">
                     <p className="text-sm font-bold leading-none text-gray-800">Email</p>
@@ -62,13 +63,13 @@ const Members = () => {
                   </td>
                 </tr>
               
-                {data.map((item) => (
-                   <tr key={item.id} className="text-sm leading-none text-gray-600 h-16 border-b-2 border-gray-300">
+                {members.map((item) => (
+                   <tr key={item._id} className="text-sm leading-none text-gray-600 h-16 border-b-2 border-gray-300">
                    <td className="pr-4">
                    <div className="w-10 h-10 rounded-sm flex items-center justify-center">
                          <img
                            className="w-14 md:w-74 rounded-full"
-                           src={item.userimg}
+                           src={item.photo}
                            alt=""
                          />
                        </div>
@@ -89,7 +90,7 @@ const Members = () => {
                      </p>
                    </td>
                    <td className="pl-6">
-                     <p className="text-sm font-medium leading-none text-gray-800">{item.role} </p>
+                     <p className="text-sm font-medium leading-none text-gray-800">{item.phone} </p>
                    </td>
                    <td className="pl-6">
                      <p className="text-sm font-medium leading-none text-gray-800">{item.email}</p>

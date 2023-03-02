@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema(
       photo: {
       type: String,
       required: [true, "Please add a photo"],
-      default: "https://i.ibb.co/4pDNDk1/avatar.png",
+      default: "https://api.lorem.space/image/face?w=120&h=120&hash=bart89fe",
     },
     gender: {
       type: String,

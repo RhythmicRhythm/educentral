@@ -97,7 +97,7 @@ export const getUser = async () => {
 export const getMembers = async () => {
   try{
     const response = await axios.get(`${BACKEND_URL}/api/users/getmembers`);
-    return response.data;
+    return response.data.members;
   } catch (error) {
     console.log(error);
   }
