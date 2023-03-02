@@ -224,7 +224,7 @@ const addMember = asyncHandler(async (req, res) => {
 const getMembers = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
-  const user = await User.findById(userId).populate('members');
+  const user = await User.findById(userId).populate('members', 'firstname lastname email phone photo');
 
   if (!user) {
     res.status(400);
