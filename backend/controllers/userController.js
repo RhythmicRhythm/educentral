@@ -201,8 +201,14 @@ const addMember = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
+  // Check if user is already a member
+  if (req.user.members.includes(user._id)) {
+    res.status(400);
+    throw new Error("User is already a member");
+  }
+
   if(user){
-    // Add the user as a member to the authenticated user's account
+    // Add the user as a member 
    req.user.members.push(user._id);
    await req.user.save();
 
