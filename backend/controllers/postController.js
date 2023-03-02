@@ -1,26 +1,35 @@
 const asyncHandler = require("express-async-handler");
 const Post = require("../models/postModel");
+const User = require("../models/userModel");
 
 //Create Post
 const createPost = asyncHandler(async(req, res) => {
-   const {name, desc, userimage, image} = req.body;
+   const { desc, userimage, image} = req.body;
 
         //   Validation
-  if (!name|| !desc ) {
+  if ( !desc ) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
 
-  // Create Post
-  const post = await Post.create({
-    author: req.user.id,
-    name,
-    desc,
-    userimage,
-    image,
-   
-  });
-  res.status(201).json(post);
+  try {
+    // Fetch user from the database
+    const user = await User.findById(req.user.id);
+
+    // Create Post with user's name
+    const post = await Post.create({
+      author: req.user.id,
+      name: user.firstname,
+      desc,
+      userimage,
+      image,
+    });
+
+    res.status(201).json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
 });
 
 // Get all Products
