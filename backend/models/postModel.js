@@ -7,7 +7,7 @@ const postSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
-    title: {
+    name: {
       type: String,
       required: true,
     },
@@ -15,9 +15,15 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    userimage: {
+        type: String,
+        required: [true, "Please add a photo"],
+        default: "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
+      },
     image: {
       type: String,
-      required: true,
+      required: [true, "Please add a photo"],
+      default: "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
     },
    
   },

@@ -9,7 +9,7 @@ const data = [
     {
         id: 2,
         name: "Mrs Coker",
-        userimg: "https://preview.redd.it/cpslext1vx971.png?auto=webp&s=a67d767ddec283c3490613cdb0b40c180a33daf6",
+        userimg: "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
         desc: "Welcome Everyone to our Presidential Inauguration ceremony this December, i hope we can work and collaborate to get the best out of this.",
         imageUrl: "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
     },

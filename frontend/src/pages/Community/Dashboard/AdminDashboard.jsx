@@ -11,7 +11,7 @@ import { image } from "react-icons-kit/icomoon/image";
 import { happy } from "react-icons-kit/icomoon/happy";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import { send } from "react-icons-kit/fa/send";
-import data from "./data";
+// import data from "./data";
 import { getPosts } from "../../../services/authServices";
 
 const AdminDashboard = () => {
@@ -30,7 +30,7 @@ const AdminDashboard = () => {
     }
     getUserData();
   }, []);
-  
+
   return (
     <div>
       {showModal ? (
@@ -117,15 +117,15 @@ const AdminDashboard = () => {
 
         <div className="w-[30rem]">
           <div className="p-6">
-            {data.map((item) => (
+            {posts.map((item) => (
               <div
-                key={item.id}
+                key={item._id}
                 className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
               >
                 <div className="">
                   <img
-                    className="w-14 md:w-74 rounded-full"
-                    src={item.userimg}
+                    className=" rounded-full"
+                    src={item.userimage}
                     alt=""
                   />
                 </div>
@@ -139,7 +139,7 @@ const AdminDashboard = () => {
                   <div className="flex mt-4 px-4">
                     <img
                       className="w-auto rounded-lg"
-                      src={item.imageUrl}
+                      src={item.image}
                       alt=""
                     />
                   </div>

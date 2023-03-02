@@ -3,10 +3,10 @@ const Post = require("../models/postModel");
 
 //Create Post
 const createPost = asyncHandler(async(req, res) => {
-   const {title, desc, image} = req.body;
+   const {name, desc, userimage, image} = req.body;
 
         //   Validation
-  if (!title|| !desc || !image) {
+  if (!name|| !desc ) {
     res.status(400);
     throw new Error("Please fill in all fields");
   }
@@ -14,8 +14,9 @@ const createPost = asyncHandler(async(req, res) => {
   // Create Post
   const post = await Post.create({
     author: req.user.id,
-    title,
+    name,
     desc,
+    userimage,
     image,
    
   });
