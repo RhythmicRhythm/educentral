@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import eduLogo from "../Assets/eduCentralLogo.png";
+// import { Link } from "react-router-dom";
 import useRedirectLoggedOutUser from "../../customHook/useRedirectLoggedOutUser";
 import { SET_NAME, SET_USER } from "../../redux/features/auth/authSlice";
 import { getUser } from "../../services/authServices";
-import axios from "axios";
 
 const Profile = () => {
   useRedirectLoggedOutUser("/login");
@@ -14,7 +12,7 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    console.log("Getting use");
+    console.log("Getting Users");
 
     async function getUserData() {
       const data = await getUser();

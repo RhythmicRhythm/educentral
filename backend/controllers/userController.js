@@ -220,7 +220,7 @@ const addMember = asyncHandler(async (req, res) => {
 
 });
 
-// Fetch members of authenticated user
+// Get members 
 const getMembers = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
