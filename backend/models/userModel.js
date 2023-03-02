@@ -57,7 +57,11 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "date of birth"],
       default: "NA"
-    }
+    },
+    members: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    }],
 
   },
   {

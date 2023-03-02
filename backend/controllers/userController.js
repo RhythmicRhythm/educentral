@@ -38,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     phone,
     password,
+    members: []
   });
 
   //   Generate Token
@@ -78,6 +79,7 @@ const registerUser = asyncHandler(async (req, res) => {
       gender,
       marital_status,
       dob,
+      members: user.members,
       token,
     });
   } else {
@@ -177,6 +179,39 @@ const loginStatus = asyncHandler(async (req, res) => {
     return res.json(true);
   }
   return res.json(false);
+});
+
+//////////////
+//Add Members
+const addMember = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+
+    // Validate Request
+    if (!email ) {
+      res.status(400);
+      throw new Error("Please add an email");
+
+    }
+
+  // Check if user exists
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    res.status(400);
+    throw new Error("User not found");
+  }
+
+  if(user){
+    // Add the user as a member to the authenticated user's account
+   req.user.members.push(user._id);
+   await req.user.save();
+
+ res.status(200).json({ message: "Member added successfully" });
+  }else {
+    res.status(400);
+    throw new Error("err adding member");
+  }
+
 });
 
 // Update User
@@ -372,6 +407,7 @@ module.exports = {
   loginUser,
   logoutUser,
   loginStatus,
+  addMember,
   getUser,
   updateUser,
   changePassword,
