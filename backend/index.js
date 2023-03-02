@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const userRoute = require("./routes/userRoute");
+const postRoute = require("./routes/postRoute");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
@@ -26,6 +27,7 @@ app.use(
 
 // Routes Middleware
 app.use("/api/users", userRoute)
+app.use("/api/posts", postRoute)
 
 // Routes
 app.get("/", (req, res) => {
