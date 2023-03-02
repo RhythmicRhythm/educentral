@@ -8,6 +8,7 @@ const {
   updateUser,
   changePassword,
   addMember,
+  getMembers,
   forgotPassword,
   resetPassword,
 } = require("../controllers/userController");
@@ -18,6 +19,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/logout", logoutUser);
 router.get("/loggedin", loginStatus);
+router.get("/getmembers", protect, getMembers);
 router.get("/getuser", protect, getUser);
 router.post("/addmembers", protect, addMember);
 router.patch("/changepassword", protect, changePassword);

@@ -220,6 +220,21 @@ const addMember = asyncHandler(async (req, res) => {
 
 });
 
+// Fetch members of authenticated user
+const getMembers = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+
+  const user = await User.findById(userId).populate('members');
+
+  if (!user) {
+    res.status(400);
+    throw new Error('User not found');
+  }
+
+  res.status(200).json({ members: user.members });
+});
+
+
 // Update User
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -414,6 +429,7 @@ module.exports = {
   logoutUser,
   loginStatus,
   addMember,
+  getMembers,
   getUser,
   updateUser,
   changePassword,
