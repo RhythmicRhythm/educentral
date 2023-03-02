@@ -54,7 +54,7 @@ function App() {
           {/* AUTHENTICATION */}
           <Route
             path="/"
-            element={<Navigate to="/register" replace={true} />}
+            element={<Navigate to="/login" replace={true} />}
           />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

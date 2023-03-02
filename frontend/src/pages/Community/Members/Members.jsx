@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import data from "./data";
+import {getMembers} from "../../../services/authServices";
+
 
 const Members = () => {
+    
+  useEffect(() => {
+    console.log("Getting Members");
+
+    async function getUserData() {
+      const data = await getMembers();
+      console.log(data);
+
+      
+    }
+    getUserData();
+  }, []);
+
   return (
     <div>
       <div className="xl:w-3/4 2xl:w-4/5 w-full">
