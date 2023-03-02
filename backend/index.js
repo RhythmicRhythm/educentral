@@ -29,6 +29,8 @@ app.use(
 app.use("/api/users", userRoute)
 app.use("/api/posts", postRoute)
 
+/////////
+
 // Routes
 app.get("/", (req, res) => {
     res.send("Home Page");
