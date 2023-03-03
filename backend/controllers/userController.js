@@ -38,6 +38,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     phone,
     password,
+    addedBy: null,
     members: []
   });
 
@@ -64,8 +65,10 @@ const registerUser = asyncHandler(async (req, res) => {
       password,
       photo,
       gender,
+      addedBy,
       marital_status,
       dob,
+      
     } = user;
     res.status(200).json({
       _id,
@@ -77,8 +80,10 @@ const registerUser = asyncHandler(async (req, res) => {
       isAdmin,
       photo,
       gender,
+      addedBy,
       marital_status,
       dob,
+     
       members: user.members,
       token,
     });
@@ -132,6 +137,8 @@ const loginUser = asyncHandler(async (req, res) => {
       isAdmin,
       photo,
       gender,
+      members,
+      addedBy,
       marital_status,
       dob,
     } = user;
@@ -145,6 +152,8 @@ const loginUser = asyncHandler(async (req, res) => {
       isAdmin,
       photo,
       gender,
+      members,
+      addedBy,
       marital_status,
       dob,
       token,
@@ -210,7 +219,14 @@ const addMember = asyncHandler(async (req, res) => {
   if(user){
     // Add the user as a member 
    req.user.members.push(user._id);
-   await req.user.save();
+   
+
+   //updated addedBy
+   user.addedBy = req.user._id;
+
+   // Save the changes
+  await Promise.all([req.user.save(), user.save()]);
+
 
  res.status(200).json({ message: "Member added successfully" });
   }else {
