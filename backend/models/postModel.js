@@ -18,7 +18,7 @@ const postSchema = mongoose.Schema(
     userimage: {
         type: String,
         required: [true, "Please add a photo"],
-        default: "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
+        default: "https://preview.redd.it/cpslext1vx971.png?auto=webp&s=a67d767ddec283c3490613cdb0b40c180a33daf6",
       },
     image: {
       type: String,

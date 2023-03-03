@@ -1,9 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
+// export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
-// export const BACKEND_URL = "http://localhost:5000";
+export const BACKEND_URL = "http://localhost:5000";
 
 export const validateEmail = (email) => {
   return email.match(
@@ -51,6 +51,26 @@ export const loginUser = async (userData) => {
     toast.error(message);
   }
 };
+
+// Add Post
+export const createPost = async(postData) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/posts/`,
+      postData
+    );
+    if (response.statusText === "OK") {
+      toast.success("post added Successful...");
+    }
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+}
 
 // Get Login Status
 export const getLoginStatus = async () => {
@@ -103,7 +123,25 @@ export const getMembers = async () => {
   }
 }
 
-// Get Members
+// Forgot Password
+export const addMember = async (userData) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/users/addmembers`,
+      userData
+    );
+    toast.success(response.data.message);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+    
+  }
+};
+
+// Get Posts
 export const getPosts = async () => {
   try{
     const response = await axios.get(`${BACKEND_URL}/api/posts/getposts`);
@@ -112,6 +150,7 @@ export const getPosts = async () => {
     console.log(error);
   }
 }
+
 
 // Forgot Password
 export const forgotPassword = async (userData) => {
