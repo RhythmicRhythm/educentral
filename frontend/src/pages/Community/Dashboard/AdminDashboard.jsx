@@ -7,16 +7,47 @@ import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_borde
 import { Link } from "react-router-dom";
 import biden from "../Assets/biden.png";
 import User from "../Assets/User.png";
+import { toast } from "react-toastify";
 import { image } from "react-icons-kit/icomoon/image";
 import { happy } from "react-icons-kit/icomoon/happy";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import { send } from "react-icons-kit/fa/send";
 // import data from "./data";
 import { getPosts } from "../../../services/authServices";
+import { createPost } from "../../../services/authServices";
+
+const initialState = {
+  desc: "",
+};
 
 const AdminDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [formData, setformData] = useState(initialState);
+  const { desc } = formData;
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
+  };
+
+  const createpost = async (e) => {
+    e.preventDefault();
+
+    console.log("clicked");
+
+    const postData = {
+      desc,
+    };
+
+    try{
+      const data = await createPost(postData);
+      console.log(data);
+      toast.success("post added Successful...");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     console.log("Getting Posts");
@@ -25,8 +56,6 @@ const AdminDashboard = () => {
       const data = await getPosts();
       console.log(data);
       setPosts(data);
-
-      
     }
     getUserData();
   }, []);
@@ -46,17 +75,19 @@ const AdminDashboard = () => {
                 </h1>
               </div>
               {/*content*/}
-              <form className=" w-full mt-6">
+              <form onSubmit={createpost} className=" w-full mt-6">
                 <div className="pb-2 pt-4 text-left">
                   <label className="font-bold text-gray-700 text-sm">
                     Description
                   </label>
                   <textarea
                     type="text"
-                    name="email"
-                    id="email"
+                    name="desc"
+                    id="desc"
+                    value={desc}
                     placeholder="What's Happening?"
                     className="form-input"
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -70,9 +101,9 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                   <div className="">
-                    <div className="">
+                    <button type="submit" className="">
                       <Icon icon={send} size={20} />
-                    </div>
+                    </button>
                   </div>
                 </div>
               </form>
@@ -123,11 +154,7 @@ const AdminDashboard = () => {
                 className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
               >
                 <div className="">
-                  <img
-                    className=" rounded-full"
-                    src={item.userimage}
-                    alt=""
-                  />
+                  <img className=" rounded-full" src={item.userimage} alt="" />
                 </div>
                 <div className="text-left">
                   <div className="flex gap-2">
