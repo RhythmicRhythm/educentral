@@ -39,19 +39,19 @@ const getPosts = asyncHandler(async (req, res) => {
   });
 
 //    // Get single product
-const getPost = asyncHandler(async (req, res) => {
+const getPostUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
 
   // Log the ID of the user who added the current user
   const posts = await Post.find({ author: user.addedBy }).sort("-createdAt");
 
   res.status(200).json(posts);
-})
+});
 
 
 
  module.exports = {
     createPost,
     getPosts,
-    getPost
+    getPostUser
   };
