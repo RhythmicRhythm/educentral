@@ -1,25 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { selectName, SET_LOGIN } from "../../redux/features/auth/authSlice";
+import { selectIsAdmin, SET_LOGIN } from "../../redux/features/auth/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../services/authServices";
 import { Link, useNavigate } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { signOut } from "react-icons-kit/fa/signOut";
-import User from "../Assets/User.png";
-import { ic_keyboard_arrow_right_outline } from "react-icons-kit/md/ic_keyboard_arrow_right_outline";
-import { ic_keyboard_arrow_down_outline } from "react-icons-kit/md/ic_keyboard_arrow_down_outline";
-import { ic_keyboard_arrow_right_twotone } from "react-icons-kit/md/ic_keyboard_arrow_right_twotone";
 import { statsBars } from "react-icons-kit/icomoon/statsBars";
-import {ic_perm_identity_twotone} from 'react-icons-kit/md/ic_perm_identity_twotone'
-import {users} from 'react-icons-kit/fa/users'
-
+import { ic_perm_identity_twotone } from "react-icons-kit/md/ic_perm_identity_twotone";
+import { users } from "react-icons-kit/fa/users";
 
 // const activeLink = ({ isActive }) => (isActive ? "active" : "link");
 // const activeSublink = ({ isActive }) => (isActive ? "active" : "link");
 
 const SidebarItem = () => {
- 
-  const [isOpen, setIsOpen] = useState(false);
+  const isAdmin = useSelector(selectIsAdmin);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,37 +30,42 @@ const SidebarItem = () => {
         <h1 className="text-lg text-white font-bold">Napps+</h1>
       </div>
 
-     
-
-    
-
-      <Link to="/dashboard" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+      <Link
+        to="/dashboard"
+        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
+      >
         <h1>
           {" "}
           <Icon icon={statsBars} size={25} /> Dashboard
         </h1>
         <p> </p>
       </Link>
-      <Link to="/profile" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+
+      <Link
+        to="/profile"
+        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
+      >
         <h1>
           {" "}
           <Icon icon={ic_perm_identity_twotone} size={25} /> Profile
         </h1>
         <p> </p>
       </Link>
-
-      <Link to="/members" className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer">
+      {isAdmin ? (
+        <Link
+        to="/members"
+        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
+      >
         <h1>
           {" "}
           <Icon icon={users} size={25} /> Members
         </h1>
-        <p>
-          {" "}
-          {" "}
-        </p>
+        <p> </p>
       </Link>
+      ) : null  }
+      
 
-      <div className="text-left  border-b-2 border-gray-100 p-2">
+      {/* <div className="text-left  border-b-2 border-gray-100 p-2">
         <div
           onClick={() => setIsOpen((prev) => !prev)}
           className=" flex justify-between text-white cursor-pointer"
@@ -104,7 +103,7 @@ const SidebarItem = () => {
             </Link>
           </div>
         )}
-      </div>
+      </div> */}
 
       <div className="absolute bottom-0 right-12 mb-4">
         <button onClick={logout} className="text-white font-bold hover:text-lg">

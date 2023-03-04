@@ -150,6 +150,15 @@ export const getPosts = async () => {
     console.log(error);
   }
 }
+// Get Posts
+export const getPostUser = async () => {
+  try{
+    const response = await axios.get(`${BACKEND_URL}/api/posts/getpostuser`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 // Forgot Password
