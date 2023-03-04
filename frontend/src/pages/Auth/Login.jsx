@@ -130,18 +130,7 @@ const Login = () => {
                 </span>
               )}
 
-                  <div className="absolute left-0 mt-2">
-                    <input
-                      className="form-input"
-                      type="checkbox"
-                      name="password"
-                      id="remenber"
-                      placeholder="remenber"
-                    />
-                  </div>
-                  <div className="absolute left-4 mt-2">
-                    <p className="text-sm">Remenber me </p>
-                  </div>
+                 
                   <div className="absolute right-0 mt-2">
                     <Link
                       className="text-sm text-blue-900"

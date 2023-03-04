@@ -27,9 +27,12 @@ const Profile = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div className=" flex flex-col sm:flex-row gap-10 items-center justify-center mt-16">
-        <div className="bg-gray-400 w-[15rem]">
+    <div className=" px-8">
+      <div className=" flex flex-col md:flex-row gap-10 items-center  justify-center mt-16">
+        <div className="bg-white p-4 rounded-lg shadow-2xl w-[15rem]">
+        <div class="h-1 w-full bg-pink-600 mt-8 rounded-full">
+            <div class="h-1 rounded-full w-2/5 bg-blue-700"></div>
+          </div>
           
           <div class="mt-6 w-fit mx-auto">
             <img
@@ -40,55 +43,176 @@ const Profile = () => {
           </div>
 
           <div class="mt-8 ">
-            <h2 class="text-white font-bold text-2xl tracking-wide">
+            <h2 class="text-gray-600 font-bold text-2xl tracking-wide">
               Jonathan <br /> Smith
             </h2>
           </div>
           <p class="text-emerald-400 font-semibold mt-2.5">Active</p>
 
-          <div class="h-1 w-full bg-black mt-8 rounded-full">
-            <div class="h-1 rounded-full w-2/5 bg-yellow-500 "></div>
+          <div class="h-1 w-full bg-blue-700  mt-8 rounded-full">
+            <div class="h-1 rounded-full w-2/5  bg-pink-600"></div>
           </div>
         </div>
 
-        <div className="w-[15rem] sm:w-[33rem]">
-          <div className="flex flex-col gap-4">
+        <div className="w-[15rem] sm:w-[33rem] bg-white p-4 rounded-lg shadow-2xl">
 
-            <div className="flex md:flex-row flex-col justify-between">
+      
+
+          <div className="flex flex-col gap-2 p-2">
+
+            <div className="flex md:flex-row flex-col gap-6 justify-between">
               <div className="flex flex-col  gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
-                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+              <div className="pb-2 text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Association Name
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
-                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Email Address
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col justify-between">
+            <div className="flex md:flex-row flex-col gap-6 justify-between">
               <div className="flex flex-col  gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
-                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Association Name
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
 
               <div className="flex flex-col gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
-                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Email Address
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
             </div>
 
-            <div className="flex md:flex-row flex-col justify-between">
-              <div className="flex flex-col  gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Association Name:</h1>
-                <p className="text-gray-700 font-medium text-sm">Dos technologies</p>
+            <div className="flex md:flex-row flex-col gap-6 justify-between">
+              <div className="flex flex-col  ">
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Association Name
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
 
-              <div className="flex flex-col gap-2">
-                <h1 className="text-gray-800 font-bold text-sm">Email Address:</h1>
-                <p className="text-gray-700 font-medium text-sm">dos@gmail.com</p>
+              <div className="flex flex-col ">
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Email Address
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
               </div>
             </div>
+
+            <div className="flex md:flex-row flex-col gap-6 justify-between">
+              <div className="flex flex-col  ">
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Association Name
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col ">
+              <div className="pb-2  text-left">
+                  <label className="font-bold text-gray-700 text-sm">
+                  Email Address
+                  </label>
+                  <input
+                  disabled="true"
+                    type="text"
+                    name="email"
+                    id="email"
+                    value="name"
+                    placeholder="Email"
+                    className="form-inputt text-gray-600"
+                    
+                  />
+                </div>
+              </div>
+            </div>
+
+           
             
           </div>
         </div>
