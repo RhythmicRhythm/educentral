@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Vector from "./Assets/Vector.png";
 import Icon from "react-icons-kit";
 import { toast } from "react-toastify";
+import Load from "./Assets/1497.gif";
 import { useDispatch } from "react-redux";
 import { registerUser, validateEmail } from "../../services/authServices";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
@@ -22,6 +23,7 @@ const Register = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [type, setType] = useState("password");
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setformData] = useState(initialState);
   const { email, phone, password, password2 } = formData;
 
@@ -53,15 +55,16 @@ const Register = () => {
     };
 
     try {
+      setIsLoading(true);
       const data = await registerUser(userData);
       console.log(data);
       await dispatch(SET_LOGIN(true));
       await dispatch(SET_NAME(data.firstname));
-      navigate("/creategroup");
+      navigate("/dashboard");
       console.log("registered");
       // setIsLoading(false);
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       console.log(error);
     }
   };
@@ -75,7 +78,10 @@ const Register = () => {
             <div className="top-0 absolute p-4 text-center right-0 left-0">
               <img src={logo} alt="logo" />
             </div>
-            <div
+            {isLoading ? (<div className="">
+              <img className="w-[8rem]" src={Load} alt="" />
+            </div>) : (
+              <div
               className="w-96
         mx-auto rounded-lg bg-white p-5 text-gray-800 flex flex-col items-center justify-center"
             >
@@ -188,6 +194,8 @@ const Register = () => {
                 </div>
               </form>
             </div>
+            )}
+            
           </div>
         </div>
 
