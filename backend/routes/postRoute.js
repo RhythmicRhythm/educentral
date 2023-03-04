@@ -1,11 +1,13 @@
 const express = require("express");
-const { createPost, getPosts, getPostUser } = require("../controllers/postController");
+const { createPost, getPosts, getPostUser, addComment, likePost } = require("../controllers/postController");
 const protect = require("../middleWare/authMiddleware");
 const router = express.Router();
 
 router.post("/", protect, createPost);
 router.get("/getposts", protect, getPosts);
 router.get("/getpostuser", protect, getPostUser);
+router.post("/addcomment/:id", protect, addComment);
+router.post("/likepost/:id", protect, likePost);
 
 
 module.exports = router;

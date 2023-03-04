@@ -48,10 +48,64 @@ const getPostUser = asyncHandler(async (req, res) => {
   res.status(200).json(posts);
 });
 
+// Get single post
+const getPostById = asyncHandler(async (req, res) => {
+  const post = await Post.findById(req.params.id).populate({
+    path: "comments.user",
+    select: "firstname lastname",
+  });
+
+  if (!post) {
+    res.status(404);
+    throw new Error("Post not found");
+  }
+
+  res.status(200).json(post);
+});
+
+// Add comment to post
+const addComment = asyncHandler(async (req, res) => {
+  const { text } = req.body;
+
+  if (!text) {
+    res.status(400);
+    throw new Error("Please enter a comment");
+  }
+
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      res.status(404);
+      throw new Error("Post not found");
+    }
+
+    const comment = {
+      text,
+      user: req.user.id,
+    };
+
+    post.comments.push(comment);
+
+    await post.save();
+
+    res.status(201).json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
+
+
+
 
 
  module.exports = {
     createPost,
     getPosts,
-    getPostUser
+    getPostUser,
+    getPostById,
+    addComment,
+    likePost
   };
