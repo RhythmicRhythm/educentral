@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from "react";
-import IconSpeak from "../Assets/IconSpeak.png";
 import Icon from "react-icons-kit";
-import { userPlus } from "react-icons-kit/icomoon/userPlus";
 import { bubble2 } from "react-icons-kit/icomoon/bubble2";
 import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_border_outline";
-import { Link } from "react-router-dom";
-import biden from "../Assets/biden.png";
-import User from "../Assets/User.png";
 import { toast } from "react-toastify";
 import { image } from "react-icons-kit/icomoon/image";
 import { happy } from "react-icons-kit/icomoon/happy";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import { send } from "react-icons-kit/fa/send";
-// import data from "./data";
 import { getPosts } from "../../../services/authServices";
 import { createPost } from "../../../services/authServices";
 
