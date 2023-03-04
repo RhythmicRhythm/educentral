@@ -117,6 +117,28 @@ const likePost = asyncHandler(async (req, res) => {
 });
 
 
+// Dislike Post
+const dislikePost = asyncHandler(async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      res.status(404);
+      throw new Error("Post not found");
+    }
+
+    post.dislikes += 1;
+    const updatedPost = await post.save();
+
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
+
+
 
 
 
@@ -126,5 +148,6 @@ const likePost = asyncHandler(async (req, res) => {
     getPostUser,
     getPostById,
     addComment,
-    likePost
+    likePost,
+    dislikePost
   };
