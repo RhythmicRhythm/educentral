@@ -106,28 +106,18 @@ const likePost = asyncHandler(async (req, res) => {
       throw new Error("Post not found");
     }
 
-    post.likes += 1;
-    const updatedPost = await post.save();
+    // Check if the user has already liked the post
+    const alreadyLiked = post.likes.some(
+      (like) => like.toString() === req.user.id
+    );
 
-    res.status(200).json(updatedPost);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err);
-  }
-});
-
-
-// Dislike Post
-const dislikePost = asyncHandler(async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
-
-    if (!post) {
-      res.status(404);
-      throw new Error("Post not found");
+    if (alreadyLiked) {
+      res.status(400);
+      throw new Error("You have already liked this post");
     }
 
-    post.dislikes += 1;
+    post.likes.push(req.user.id);
+
     const updatedPost = await post.save();
 
     res.status(200).json(updatedPost);
@@ -136,6 +126,8 @@ const dislikePost = asyncHandler(async (req, res) => {
     res.status(500).send(err);
   }
 });
+
+
 
 
 
@@ -149,5 +141,5 @@ const dislikePost = asyncHandler(async (req, res) => {
     getPostById,
     addComment,
     likePost,
-    dislikePost
+    // dislikePost
   };
