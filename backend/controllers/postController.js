@@ -109,20 +109,33 @@ const likePost = asyncHandler(async (req, res) => {
   const alreadyLiked = post.likes.find(
     (like) => like.user.toString() === req.user.id
   );
+
+  // Check if user has already disliked the post
+  const alreadyDisliked = post.dislikes.find(
+    (dislike) => dislike.user.toString() === req.user.id
+  );
+
   if (alreadyLiked) {
     // User has already liked the post, so remove the like
     post.likes = post.likes.filter(
       (like) => like.user.toString() !== req.user.id
     );
     post.likesCount--;
-    res.status(200).json({ message: "Post unliked" });
   } else {
     // User has not liked the post, so add the like
     post.likes.push({ user: req.user.id });
     post.likesCount++;
-    res.status(200).json({ message: "Post liked" });
   }
 
+  if (alreadyDisliked) {
+    // User has already disliked the post, so remove the dislike
+    post.dislikes = post.dislikes.filter(
+      (dislike) => dislike.user.toString() !== req.user.id
+    );
+    post.dislikesCount--;
+  }
+
+  res.status(200).json(post);
   const updatedPost = await post.save();
 });
 
@@ -134,27 +147,40 @@ const dislikePost = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Post not found");
   }
-  
-   // Check if user has already disliked the post
-   const alreadyDisliked = post.dislikes.find(
+
+  // Check if user has already disliked the post
+  const alreadyDisliked = post.dislikes.find(
     (dislike) => dislike.user.toString() === req.user.id
   );
+
+  // Check if user has already liked the post
+  const alreadyLiked = post.likes.find(
+    (like) => like.user.toString() === req.user.id
+  );
+
   if (alreadyDisliked) {
     // User has already disliked the post, so remove the dislike
     post.dislikes = post.dislikes.filter(
       (dislike) => dislike.user.toString() !== req.user.id
     );
     post.dislikesCount--;
-    res.status(200).json({ message: "disliked cancelled" });
   } else {
     // User has not disliked the post, so add the dislike
     post.dislikes.push({ user: req.user.id });
     post.dislikesCount++;
-    res.status(200).json({ message: "Post disliked" });
   }
 
-  const updatedPost = await post.save();
+  if (alreadyLiked) {
+    // User has already liked the post, so remove the like
+    post.likes = post.likes.filter(
+      (like) => like.user.toString() !== req.user.id
+    );
+    post.likesCount--;
+  }
 
+  res.status(200).json(post);
+
+  const updatedPost = await post.save();
 });
 
 module.exports = {
