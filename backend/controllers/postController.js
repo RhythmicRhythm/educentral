@@ -106,54 +106,28 @@ const likePost = asyncHandler(async (req, res) => {
       throw new Error("Post not found");
     }
 
-    // Check if user has already liked the post
-    const alreadyLiked = post.likes.find(
-      (like) => like.user.toString() === req.user.id
-    );
-    if (alreadyLiked) {
-      res.status(400);
-      throw new Error("Post already liked by user");
-    }
+// Check if user has already liked the post
+const alreadyLiked = post.likes.find(
+  (like) => like.user.toString() === req.user.id
+);
+if (alreadyLiked) {
+  // User has already liked the post, so remove the like
+  post.likes = post.likes.filter((like) => like.user.toString() !== req.user.id);
+  res.status(200).json({ message: "Post unliked" });
+} else {
+  // User has not liked the post, so add the like
+  post.likes.push({ user: req.user.id });
+  res.status(200).json({ message: "Post liked" });
+}
 
-    
-    post.likes.push({ user: req.user.id });
     const updatedPost = await post.save();
 
-    res.status(200).json(updatedPost);
+    
   
 });
 
 
-// Dislike Post
-const dislikePost = asyncHandler(async (req, res) => {
-  try {
-    const post = await Post.findById(req.params.id);
 
-    if (!post) {
-      res.status(404);
-      throw new Error("Post not found");
-    }
-
-    // Check if the user has already disliked the post
-    const alreadyDisliked = post.dislikes.some(
-      (dislike) => dislike.toString() === req.user.id
-    );
-
-    if (alreadyDisliked) {
-      res.status(400);
-      throw new Error("You have already disliked this post");
-    }
-
-    post.dislikes.push(req.user.id);
-
-    const updatedPost = await post.save();
-
-    res.status(200).json(updatedPost);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err);
-  }
-});
 
 
 
