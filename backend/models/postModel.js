@@ -52,6 +52,10 @@ const postSchema = mongoose.Schema(
         },
       },
     ],
+    likesCount: {
+      type: Number,
+      default: 0,
+    },
     dislikes: [
       {
         user: {
@@ -60,6 +64,10 @@ const postSchema = mongoose.Schema(
         },
       },
     ],
+    dislikesCount: {
+      type: Number,
+      default: 0,
+    },
    
   },
 

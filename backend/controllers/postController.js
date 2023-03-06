@@ -32,7 +32,7 @@ const createPost = asyncHandler(async (req, res) => {
   }
 });
 
-// Get all Products
+// Get all Posts
 const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find({ author: req.user.id }).sort("-createdAt");
   res.status(200).json(posts);
@@ -114,10 +114,12 @@ const likePost = asyncHandler(async (req, res) => {
     post.likes = post.likes.filter(
       (like) => like.user.toString() !== req.user.id
     );
+    post.likesCount--;
     res.status(200).json({ message: "Post unliked" });
   } else {
     // User has not liked the post, so add the like
     post.likes.push({ user: req.user.id });
+    post.likesCount++;
     res.status(200).json({ message: "Post liked" });
   }
 
@@ -142,10 +144,12 @@ const dislikePost = asyncHandler(async (req, res) => {
     post.dislikes = post.dislikes.filter(
       (dislike) => dislike.user.toString() !== req.user.id
     );
+    post.dislikesCount--;
     res.status(200).json({ message: "disliked cancelled" });
   } else {
     // User has not disliked the post, so add the dislike
     post.dislikes.push({ user: req.user.id });
+    post.dislikesCount++;
     res.status(200).json({ message: "Post disliked" });
   }
 
