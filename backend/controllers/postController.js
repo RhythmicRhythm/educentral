@@ -98,7 +98,7 @@ const addComment = asyncHandler(async (req, res) => {
 
 // Like Post
 const likePost = asyncHandler(async (req, res) => {
-  try {
+  
     const post = await Post.findById(req.params.id);
 
     if (!post) {
@@ -106,26 +106,23 @@ const likePost = asyncHandler(async (req, res) => {
       throw new Error("Post not found");
     }
 
-    // Check if the user has already liked the post
-    const alreadyLiked = post.likes.some(
-      (like) => like.toString() === req.user.id
+    // Check if user has already liked the post
+    const alreadyLiked = post.likes.find(
+      (like) => like.user.toString() === req.user.id
     );
-
     if (alreadyLiked) {
       res.status(400);
-      throw new Error("You have already liked this post");
+      throw new Error("Post already liked by user");
     }
 
-    post.likes.push(req.user.id);
-
+    
+    post.likes.push({ user: req.user.id });
     const updatedPost = await post.save();
 
     res.status(200).json(updatedPost);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send(err);
-  }
+  
 });
+
 
 // Dislike Post
 const dislikePost = asyncHandler(async (req, res) => {
