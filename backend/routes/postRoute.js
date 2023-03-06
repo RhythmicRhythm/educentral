@@ -5,7 +5,7 @@ const {
   getPostUser,
   addComment,
   likePost,
-//   dislikePost,
+  dislikePost,
 } = require("../controllers/postController");
 const protect = require("../middleWare/authMiddleware");
 const router = express.Router();
@@ -15,6 +15,6 @@ router.get("/getposts", protect, getPosts);
 router.get("/getpostuser", protect, getPostUser);
 router.post("/addcomment/:id", protect, addComment);
 router.post("/likepost/:id", protect, likePost);
-// router.post("/dislikepost/:id", protect, dislikePost);
+router.post("/dislikepost/:id", protect, dislikePost);
 
 module.exports = router;
