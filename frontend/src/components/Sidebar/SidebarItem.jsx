@@ -27,43 +27,48 @@ const SidebarItem = () => {
   return (
     <div className="">
       <div className="">
-        <h1 className="text-lg text-white font-bold">Napps+</h1>
+        <h1 className="text-lg font-bold mb-6">Napps+</h1>
       </div>
 
       <Link
         to="/dashboard"
-        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
+        className="text-left flex  border-b-2 border-blue-200 p-2 cursor-pointer"
       >
-        <h1>
-          {" "}
-          <Icon icon={statsBars} size={25} /> Dashboard
+        <p className="text-blue-400 ml-4">
+          <Icon icon={statsBars} size={20} />
+        </p>
+        <h1 className="text-sm text-gray-200 font-bold ml-2 mt-1">
+          Dashboard
         </h1>
-        <p> </p>
+        
       </Link>
 
       <Link
         to="/profile"
-        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
+        className="text-left flex border-b-2 border-blue-200 p-2 cursor-pointer"
       >
-        <h1>
-          {" "}
-          <Icon icon={ic_perm_identity_twotone} size={25} /> Profile
+        <p className="text-blue-400 ml-4">
+          <Icon icon={ic_perm_identity_twotone} size={25} />
+        </p>
+        <h1 className="text-sm text-gray-200  font-bold ml-2 mt-1 ">
+          Profile
         </h1>
-        <p> </p>
+        <p className="text-blue-800 ml-4"> </p>
       </Link>
       {isAdmin ? (
         <Link
-        to="/members"
-        className="text-left flex justify-between text-white border-b-2 border-gray-100 p-2 cursor-pointer"
-      >
-        <h1>
-          {" "}
-          <Icon icon={users} size={25} /> Members
-        </h1>
-        <p> </p>
-      </Link>
-      ) : null  }
-      
+          to="/members"
+          className="text-left flex border-b-2 border-gray-100 p-2 cursor-pointer"
+        >
+          <p className="text-blue-400 ml-4">
+            <Icon icon={users} size={20} />
+          </p>
+          <h1 className="text-sm text-gray-200 leading-relaxed font-bold ml-4 mt-1">
+            Members
+          </h1>
+          <p> </p>
+        </Link>
+      ) : null}
 
       {/* <div className="text-left  border-b-2 border-gray-100 p-2">
         <div

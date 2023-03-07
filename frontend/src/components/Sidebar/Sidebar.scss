@@ -13,15 +13,14 @@ main {
   width: 230px;
   height: 100vh;
   flex-shrink: 0;
-  background-color: #1a0b8a;
+  background: linear-gradient( 50.9deg, rgb(12, 54, 163) 5.2%, rgb(1, 30, 95) 55.3%);
   z-index: 100;
-  // overflow: auto;
   overflow-y: hidden;
   transition: all 0.5s;
 }
 
 .modalbg{
-  border: 1px solid #3623e0;
+  border: 1px solid ;
 }
 
 .top_section {

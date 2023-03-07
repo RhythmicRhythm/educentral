@@ -37,7 +37,7 @@ useEffect(() => {
         <HiMenuAlt3 onClick={toggle} />
       </div>
 
-      <div className="sidebar py-4" style={{ width: isOpen ? "230px" : "0px" }}>
+      <div className="sidebar shadow-xl py-4" style={{ width: isOpen ? "230px" : "0px" }}>
         <SidebarItem isOpen={isOpen} />
       </div>
 

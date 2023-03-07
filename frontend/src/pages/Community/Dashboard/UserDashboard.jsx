@@ -21,7 +21,7 @@ const UserDashboard = () => {
   return (
     <div>
         <div className="min-w-screen min-h-screen z-10 flex justify-center ">
-        <div className="w-[30rem]">
+        <div className="w-[25rem] md:w-[45rem]">
           <div className="p-6">
             {posts.map((item) => (
               <div
@@ -29,7 +29,7 @@ const UserDashboard = () => {
                 className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
               >
                 <div className="">
-                  <img className=" rounded-full" src={item.userimage} alt="" />
+                  <img className="rounded-full w-10" src={item.userimage} alt="" />
                 </div>
                 <div className="text-left">
                   <div className="flex gap-2">
