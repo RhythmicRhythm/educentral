@@ -3,8 +3,12 @@ import { getPostUser } from "../../../services/authServices";
 import Icon from "react-icons-kit";
 import { bubble2 } from "react-icons-kit/icomoon/bubble2";
 import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_border_outline";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
+
 
 const UserDashboard = () => {
+  useRedirectLoggedOutUser("/login");
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

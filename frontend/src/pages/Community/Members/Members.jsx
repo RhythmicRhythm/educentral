@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import { getMembers } from "../../../services/authServices";
 import Icon from "react-icons-kit";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
-import { send } from "react-icons-kit/fa/send";
 import {addMember} from "../../../services/authServices";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
+
 
 const initialState = {
   email: "",
 };
 
 const Members = () => {
+  useRedirectLoggedOutUser("/login");
+
   const [members, setMembers] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);

@@ -13,7 +13,7 @@ import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
-import { selectIsLoggedIn } from "../../../redux/features/auth/authSlice";
+
 
 
 const initialState = {
