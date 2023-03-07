@@ -12,12 +12,17 @@ import { createPost } from "../../../services/authServices";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
+import { selectIsLoggedIn } from "../../../redux/features/auth/authSlice";
+
 
 const initialState = {
   desc: "",
 };
 
 const AdminDashboard = () => {
+  useRedirectLoggedOutUser("/login");
+
   const [showModal, setShowModal] = useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [posts, setPosts] = useState([]);
@@ -184,8 +189,9 @@ const AdminDashboard = () => {
         </h1>
       </div>
       <div className="min-w-screen min-h-screen z-10 flex justify-center ">
-        <div className="w-[25rem] md:w-[45rem]">
+        <div className="w-auto">
           <div className="p-6">
+            
             {posts.map((item) => (
               <div
                 key={item._id}
@@ -239,6 +245,36 @@ const AdminDashboard = () => {
                   </div>
 
                   <div className="">
+                  <form className=" w-auto mt-6">
+                      <div className="pb-2 pt-4 text-left">
+                        <label className="font-bold text-gray-700 text-sm">
+                          Add a comment
+                        </label>
+                        <textarea
+                          type="text"
+                          name="desc"
+                          id="desc"
+                          placeholder="Reply"
+                          className="form-input"
+                        />
+                      </div>
+
+                      <div className="flex justify-between">
+                        <div className="flex gap-6">
+                          <div className="">
+                            <Icon icon={image} size={20} />
+                          </div>
+                          <div className="">
+                            <Icon icon={happy} size={20} />
+                          </div>
+                        </div>
+                        <div className="">
+                          <button type="submit" className="">
+                            <Icon icon={send} size={20} />
+                          </button>
+                        </div>
+                      </div>
+                    </form>
                     {item.comments.map((comment) => (
                       <div
                         key={comment._id}
@@ -265,7 +301,7 @@ const AdminDashboard = () => {
                         </div>
                       </div>
                     ))}
-                    
+                   
                   </div>
                 </div>
               </div>

@@ -52,10 +52,7 @@ function App() {
         <ToastContainer />
         <Routes>
           {/* AUTHENTICATION */}
-          <Route
-            path="/"
-            element={<Navigate to="/login" replace={true} />}
-          />
+          <Route path="/" element={<Navigate to="/login" replace={true} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgotpassword" element={<Forgot />} />
@@ -128,7 +125,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path="/members"
             element={
               <Sidebar>
