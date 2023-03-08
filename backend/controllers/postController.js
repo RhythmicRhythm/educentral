@@ -38,7 +38,7 @@ const getPosts = asyncHandler(async (req, res) => {
   res.status(200).json(posts);
 });
 
-//    // Get single product
+// Get posts under an admin
 const getPostUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
 
@@ -62,6 +62,8 @@ const getPostById = asyncHandler(async (req, res) => {
 
   res.status(200).json(post);
 });
+
+
 
 // Add comment to post
 const addComment = asyncHandler(async (req, res) => {

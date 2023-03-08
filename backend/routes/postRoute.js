@@ -5,6 +5,7 @@ const {
   getPostUser,
   addComment,
   likePost,
+  getPostById,
   dislikePost,
 } = require("../controllers/postController");
 const protect = require("../middleWare/authMiddleware");
@@ -12,6 +13,7 @@ const router = express.Router();
 
 router.post("/", protect, createPost);
 router.get("/getposts", protect, getPosts);
+router.get("/getpost/:id", protect, getPostById);
 router.get("/getpostuser", protect, getPostUser);
 router.post("/addcomment/:id", protect, addComment);
 router.post("/likepost/:id", protect, likePost);
