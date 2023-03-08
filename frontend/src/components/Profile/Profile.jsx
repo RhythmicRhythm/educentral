@@ -19,6 +19,7 @@ const Profile = () => {
       console.log(data);
 
       setProfile(data);
+      console.log(profile);
 
       await dispatch(SET_USER(data));
       await dispatch(SET_NAME(data.firstname));
