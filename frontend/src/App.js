@@ -31,6 +31,7 @@ import Workspaces from "./pages/Community/CreateGroup/workspaces";
 import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
 import Members from "./pages/Community/Members/Members";
+import Post from "./pages/Community/Posts/Post";
 
 axios.defaults.withCredentials = true;
 
@@ -75,6 +76,14 @@ function App() {
                 </Layout>
               </Sidebar>
             }
+          />
+          {/* dashboards */}
+
+           {/* dashboards */}
+
+           <Route
+            path="/dashboard/:id"
+            element={< Post /> }
           />
           {/* dashboards */}
 

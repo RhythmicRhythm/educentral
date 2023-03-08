@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import {Link} from "react-router-dom";
 import Icon from "react-icons-kit";
 import { bubble2 } from "react-icons-kit/icomoon/bubble2";
-import { ic_favorite_border_outline } from "react-icons-kit/md/ic_favorite_border_outline";
 import { toast } from "react-toastify";
 import { image } from "react-icons-kit/icomoon/image";
 import { happy } from "react-icons-kit/icomoon/happy";
@@ -189,11 +189,11 @@ const AdminDashboard = () => {
         </h1>
       </div>
       <div className="min-w-screen min-h-screen z-10 flex justify-center ">
-        <div className="w-auto">
+        <div className="w-[25rem] md:w-[45rem]">
           <div className="p-6">
             
             {posts.map((item) => (
-              <div
+              <Link to={`/dashboard/${item._id}`}
                 key={item._id}
                 className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
               >
@@ -245,7 +245,7 @@ const AdminDashboard = () => {
                   </div>
 
                   <div className="">
-                  <form className=" w-auto mt-6">
+                  <form className=" w-auto mt-6 mb-6">
                       <div className="pb-2 pt-4 text-left">
                         <label className="font-bold text-gray-700 text-sm">
                           Add a comment
@@ -278,7 +278,7 @@ const AdminDashboard = () => {
                     {item.comments.map((comment) => (
                       <div
                         key={comment._id}
-                        className="flex flex-row gap-4 justify-center mt-4"
+                        className="flex flex-row gap-4 justify-center mt-8"
                       >
                         <div className="">
                           <img
@@ -304,7 +304,7 @@ const AdminDashboard = () => {
                    
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

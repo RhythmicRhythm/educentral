@@ -72,6 +72,26 @@ export const createPost = async(postData) => {
   }
 }
 
+// Add Comment
+export const addComment = async(postData) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/posts/addcomment`,
+      postData
+    );
+    if (response.statusText === "OK") {
+      toast.success("post added Successful...");
+    }
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+}
+
 // Get Login Status
 export const getLoginStatus = async () => {
   try {
