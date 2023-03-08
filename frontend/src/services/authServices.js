@@ -161,7 +161,7 @@ export const addMember = async (userData) => {
   }
 };
 
-// Get Posts
+// Get All Posts
 export const getPosts = async () => {
   try{
     const response = await axios.get(`${BACKEND_URL}/api/posts/getposts`);
@@ -170,7 +170,7 @@ export const getPosts = async () => {
     console.log(error);
   }
 }
-// Get Posts
+// Get Posts under Admin
 export const getPostUser = async () => {
   try{
     const response = await axios.get(`${BACKEND_URL}/api/posts/getpostuser`);
@@ -179,6 +179,16 @@ export const getPostUser = async () => {
     console.log(error);
   }
 }
+
+//Get Single Post
+export const getPostById = async (postId) => {
+  try {
+    const response = await axios.get(`${BACKEND_URL}/api/posts/getpost/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 // Forgot Password
