@@ -73,10 +73,10 @@ export const createPost = async(postData) => {
 }
 
 // Add Comment
-export const addComment = async(postData) => {
+export const addComment = async(postData, postId) => {
   try {
     const response = await axios.post(
-      `${BACKEND_URL}/api/posts/addcomment`,
+      `${BACKEND_URL}/api/posts/addcomment/${postId}`,
       postData
     );
     if (response.statusText === "OK") {

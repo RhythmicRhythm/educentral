@@ -24,7 +24,6 @@ const AdminDashboard = () => {
   useRedirectLoggedOutUser("/login");
 
   const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(false);
   const [posts, setPosts] = useState([]);
   const [formData, setformData] = useState(initialState);
   const { desc } = formData;
@@ -119,66 +118,7 @@ const AdminDashboard = () => {
         </>
       ) : null}
 
-      {showModal2 ? (
-        <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none px-4 sm:px-16">
-            <div className="relative w-[30rem] p-4 sm:p-8 bg-white shadow-lg rounded-lg">
-              <div
-                onClick={() => setShowModal2(false)}
-                className="absolute right-0 px-8 cursor-pointer"
-              >
-                <h1 className="text-gray-600">
-                  <Icon icon={timesOutline} size={25} />
-                </h1>
-              </div>
-              {/*content*/}
-              <div className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8">
-                <div className="">
-                  <img
-                    className="rounded-full w-10"
-                    src="https://preview.redd.it/cpslext1vx971.png?auto=webp&s=a67d767ddec283c3490613cdb0b40c180a33daf6"
-                    alt=""
-                  />
-                </div>
-                <div className="text-left">
-                  <div className="flex gap-2">
-                    <h1 className="font-bold text-gray-500">admin</h1>
-                  </div>
-                  <div className="">
-                    <p className="text-sm text-gray-600 mt-2">
-                      This is a demo description nothing much just textinhg the
-                      comments
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8">
-                <div className="">
-                  <img
-                    className="rounded-full w-10"
-                    src="https://preview.redd.it/cpslext1vx971.png?auto=webp&s=a67d767ddec283c3490613cdb0b40c180a33daf6"
-                    alt=""
-                  />
-                </div>
-                <div className="text-left">
-                  <div className="flex gap-2">
-                    <h1 className="font-bold text-gray-500">admin</h1>
-                  </div>
-                  <div className="">
-                    <p className="text-sm text-gray-600 mt-2">
-                      This is a demo description nothing much just textinhg the
-                      comments
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
-        </>
-      ) : null}
+     
 
       <div
         onClick={() => setShowModal(true)}
@@ -235,74 +175,10 @@ const AdminDashboard = () => {
                       <h1 className="">{item.dislikesCount}</h1>
                     </div>
 
-                    <div
-                      onClick={() => setShowModal2(true)}
-                      className="text-xs text-gray-400"
-                    >
-                      {" "}
-                      <Icon icon={bubble2} size={15} /> 30
-                    </div>
+                    
                   </div>
 
-                  <div className="">
-                  <form className=" w-auto mt-6 mb-6">
-                      <div className="pb-2 pt-4 text-left">
-                        <label className="font-bold text-gray-700 text-sm">
-                          Add a comment
-                        </label>
-                        <textarea
-                          type="text"
-                          name="desc"
-                          id="desc"
-                          placeholder="Reply"
-                          className="form-input"
-                        />
-                      </div>
-
-                      <div className="flex justify-between">
-                        <div className="flex gap-6">
-                          <div className="">
-                            <Icon icon={image} size={20} />
-                          </div>
-                          <div className="">
-                            <Icon icon={happy} size={20} />
-                          </div>
-                        </div>
-                        <div className="">
-                          <button type="submit" className="">
-                            <Icon icon={send} size={20} />
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                    {item.comments.map((comment) => (
-                      <div
-                        key={comment._id}
-                        className="flex flex-row gap-4 justify-center mt-8"
-                      >
-                        <div className="">
-                          <img
-                            className="rounded-full w-8"
-                            src={item.userimage}
-                            alt=""
-                          />
-                        </div>
-                        <div className="text-left">
-                          <div className="flex gap-2">
-                            <h1 className="font-bold text-gray-500">
-                              {comment.user}
-                            </h1>
-                          </div>
-                          <div className="">
-                            <p className="text-sm text-gray-600 mt-2">
-                              {comment.text}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                   
-                  </div>
+                
                 </div>
               </Link>
             ))}

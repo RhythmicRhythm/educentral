@@ -64,7 +64,6 @@ const getPostById = asyncHandler(async (req, res) => {
 });
 
 
-
 // Add comment to post
 const addComment = asyncHandler(async (req, res) => {
   const { text } = req.body;
