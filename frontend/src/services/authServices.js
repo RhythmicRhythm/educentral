@@ -191,6 +191,18 @@ export const addComment = async (postData, postId) => {
   }
 };
 
+// Like Post
+export const likePost = async (postId) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/posts/likepost/${postId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Get All Posts
 export const getPosts = async () => {
   try {

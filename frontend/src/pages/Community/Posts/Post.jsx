@@ -8,7 +8,7 @@ import PostHeader from "../../../components/Header/PostHeader";
 import Icon from "react-icons-kit";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
-import { addComment } from "../../../services/authServices";
+import { addComment, likePost } from "../../../services/authServices";
 
 const initialState = {
   text: "",
@@ -47,11 +47,26 @@ const Post = () => {
     }
   };
 
+  const likepost = async () => {
+    console.log("Post Liked....");
+    try{
+       const data = await likePost(postId);
+        console.log(data);
+
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+  const dislikepost = async () => {
+    console.log("Post Disliked....");
+  }
+
   useEffect(() => {
     async function getPostData() {
       const data = await getPostById(postId);
       setPost(data);
-      console.log(data);
+      
     }
     getPostData();
   }, [postId]);
@@ -115,7 +130,7 @@ const Post = () => {
                 <div className="flex mt-6 gap-6 border-t border-blue-400 p-6">
                   <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
                     {" "}
-                    <h1>
+                    <h1 onClick={likepost}>
                       <Icon icon={ic_thumb_up_outline} size={20} />
                     </h1>
                     <h1 className="">{post ? post.likesCount : 0}</h1>
@@ -123,7 +138,7 @@ const Post = () => {
 
                   <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
                     {" "}
-                    <h1>
+                    <h1 onClick={dislikepost}>
                       <Icon icon={ic_thumb_down_outline} size={20} />
                     </h1>
                     <h1 className="">{post ? post.dislikesCount : 0}</h1>
