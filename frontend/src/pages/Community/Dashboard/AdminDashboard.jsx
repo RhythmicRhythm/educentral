@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { bubble2 } from "react-icons-kit/icomoon/bubble2";
 import { toast } from "react-toastify";
@@ -13,8 +13,6 @@ import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
-
-
 
 const initialState = {
   desc: "",
@@ -118,8 +116,6 @@ const AdminDashboard = () => {
         </>
       ) : null}
 
-     
-
       <div
         onClick={() => setShowModal(true)}
         className="fixed bottom-0 right-0 mb-6 mr-6 w-10 h-10 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 rounded-full cursor-pointer"
@@ -131,11 +127,11 @@ const AdminDashboard = () => {
       <div className="min-w-screen min-h-screen z-10 flex justify-center ">
         <div className="w-[25rem] md:w-[45rem]">
           <div className="p-6">
-            
             {posts.map((item) => (
-              <Link to={`/dashboard/${item._id}`}
+              <Link
+                to={`/dashboard/${item._id}`}
                 key={item._id}
-                className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
+                className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 p-8 bg-white shadow-lg rounded-lg"
               >
                 <div className="">
                   <img
@@ -158,27 +154,7 @@ const AdminDashboard = () => {
                       alt=""
                     />
                   </div>
-                  <div className="flex mt-6 gap-6">
-                    <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
-                      {" "}
-                      <h1>
-                        <Icon icon={ic_thumb_up_outline} size={17} />
-                      </h1>
-                      <h1 className="">{item.likesCount}</h1>
-                    </div>
-
-                    <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
-                      {" "}
-                      <h1>
-                        <Icon icon={ic_thumb_down_outline} size={17} />
-                      </h1>
-                      <h1 className="">{item.dislikesCount}</h1>
-                    </div>
-
-                    
-                  </div>
-
-                
+               
                 </div>
               </Link>
             ))}

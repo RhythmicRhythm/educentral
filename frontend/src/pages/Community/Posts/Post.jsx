@@ -38,6 +38,8 @@ const Post = () => {
     try {
       const data = await addComment(postData, postId);
       console.log(data);
+      const updatedPost = await getPostById(postId);
+      setPost(updatedPost);
     //   toast.success("post added Successful...");
       //   setPosts([data, ...posts]);
       
@@ -84,7 +86,7 @@ const Post = () => {
   return (
     <>
       <PostHeader />
-      <div className="container mx-auto px-10 mb-8">
+      <div className="container mx-auto px-6 mb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="col-span-1 lg:col-span-8">
             {/* Post Details */}
@@ -159,7 +161,7 @@ const Post = () => {
             {/* Post Details */}
 
             {/* Comments Form */}
-            <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
+            <div className="bg-white shadow-lg rounded-lg p-4 pb-12 mb-8">
               <h3 className="text-xl mb-8 font-semibold border-b pb-4">
                 Leave a Reply
               </h3>
@@ -190,7 +192,6 @@ const Post = () => {
           <div className="col-span-1 lg:col-span-4">
             <div className="relative lg:sticky top-8">
               {/* comments */}
-
               <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
                 <h3 className="text-xl mb-8 font-semibold border-b pb-4">
                   {post ? post.comments.length : 0} Comments
