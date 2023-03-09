@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Auth.css";
 import logo from "./Assets/eduCentralLogo.png";
 import Vector from "./Assets/Vector.png";
-import Load from "./Assets/1497.gif";
+import Load from "./Assets/Loader.gif";
 import Icon from "react-icons-kit";
 import { useDispatch } from "react-redux";
 import { basic_eye } from "react-icons-kit/linea/basic_eye";
@@ -81,7 +81,7 @@ const Login = () => {
 
 
             {isLoading ? ( <div className="">
-              <img className="w-[8rem]" src={Load} alt="" />
+              <img className="w-[10rem]" src={Load} alt="" />
             </div> ): ( 
               <div
               className="w-96
