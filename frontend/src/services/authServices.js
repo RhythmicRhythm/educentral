@@ -203,6 +203,18 @@ export const likePost = async (postId) => {
   }
 };
 
+// Dislike Post
+export const dislikePost = async (postId) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/posts/dislikepost/${postId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 // Get All Posts
 export const getPosts = async () => {
   try {

@@ -8,7 +8,7 @@ import PostHeader from "../../../components/Header/PostHeader";
 import Icon from "react-icons-kit";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
-import { addComment, likePost } from "../../../services/authServices";
+import { addComment, likePost, dislikePost } from "../../../services/authServices";
 
 const initialState = {
   text: "",
@@ -16,7 +16,6 @@ const initialState = {
 
 const Post = () => {
   const [post, setPost] = useState(null);
-  const [comments, setComments] = useState([]);
   const [formData, setformData] = useState(initialState);
   const params = useParams();
   const postId = params.id;
@@ -52,6 +51,8 @@ const Post = () => {
     try{
        const data = await likePost(postId);
         console.log(data);
+        const updatedPost = await getPostById(postId);
+        setPost(updatedPost);
 
     } catch (error) {
         console.log(error);
@@ -60,6 +61,15 @@ const Post = () => {
 
   const dislikepost = async () => {
     console.log("Post Disliked....");
+    try{
+        const data = await dislikePost(postId);
+         console.log(data);
+         const updatedPost = await getPostById(postId);
+         setPost(updatedPost);
+ 
+     } catch (error) {
+         console.log(error);
+     }
   }
 
   useEffect(() => {
