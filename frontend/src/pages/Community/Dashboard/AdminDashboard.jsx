@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "react-icons-kit";
-import { bubble2 } from "react-icons-kit/icomoon/bubble2";
 import { toast } from "react-toastify";
 import { image } from "react-icons-kit/icomoon/image";
 import { happy } from "react-icons-kit/icomoon/happy";
@@ -9,8 +8,6 @@ import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import { send } from "react-icons-kit/fa/send";
 import { getPosts } from "../../../services/authServices";
 import { createPost } from "../../../services/authServices";
-import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
-import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 

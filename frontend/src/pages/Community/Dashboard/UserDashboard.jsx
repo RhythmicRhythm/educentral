@@ -30,7 +30,7 @@ const UserDashboard = () => {
             {posts.map((item) => (
               <div
                 key={item._id}
-                className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8"
+                className="flex flex-row gap-4 justify-center mt-16 border-b-2 border-gray-300 pb-8 bg-white shadow-lg rounded-lg"
               >
                 <div className="">
                   <img className="rounded-full w-10" src={item.userimage} alt="" />

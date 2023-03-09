@@ -9,12 +9,15 @@ import Icon from "react-icons-kit";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { addComment, likePost, dislikePost } from "../../../services/authServices";
+import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const initialState = {
   text: "",
 };
 
 const Post = () => {
+  useRedirectLoggedOutUser("/login");
+
   const [post, setPost] = useState(null);
   const [formData, setformData] = useState(initialState);
   const params = useParams();
@@ -103,7 +106,7 @@ const Post = () => {
 
               <div className="px-4 lg:px-0">
                 <div className="flex items-center mb-8 w-full">
-                  <div className="flex items-center justify-center lg:mb-0 lg:w-auto mr-8 items-center">
+                  <div className="flex items-center justify-center lg:mb-0 lg:w-auto mr-4 items-center">
                     <img
                       alt=""
                       height="30px"
@@ -131,29 +134,29 @@ const Post = () => {
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                       />
                     </svg>
-                    <span className="align-middle">
+                    <span className="align-middle text-xs">
                       {moment(post ? post.createdAt :0).format("MMM DD, YYYY")}
                     </span>
                   </div>
                 </div>
-                <h1 className="mb-8 text-xl font-semibold">{post?.desc}</h1>
+                <h1 className="mb-8 text-sm text-gray-600 font-semibold">{post?.desc}</h1>
               </div>
               <div className="px-8">
                 <div className="flex mt-6 gap-6 border-t border-blue-400 p-6">
-                  <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
+                  <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={likepost}>
-                      <Icon icon={ic_thumb_up_outline} size={20} />
+                      <Icon icon={ic_thumb_up_outline} size={25} />
                     </h1>
-                    <h1 className="">{post ? post.likesCount : 0}</h1>
+                    <h1 className="text-lg">{post ? post.likesCount : 0}</h1>
                   </div>
 
-                  <div className="flex gap-2 text-xs text-gray-400 cursor-pointer">
+                  <div className="flex gap-2  text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={dislikepost}>
-                      <Icon icon={ic_thumb_down_outline} size={20} />
+                      <Icon icon={ic_thumb_down_outline} size={25} />
                     </h1>
-                    <h1 className="">{post ? post.dislikesCount : 0}</h1>
+                    <h1 className="text-lg">{post ? post.dislikesCount : 0}</h1>
                   </div>
                 </div>
               </div>
@@ -162,7 +165,7 @@ const Post = () => {
 
             {/* Comments Form */}
             <div className="bg-white shadow-lg rounded-lg p-4 pb-12 mb-8">
-              <h3 className="text-xl mb-8 font-semibold border-b pb-4">
+              <h3 className="text-xl text-gray-700 mb-8 font-bold border-b pb-4">
                 Leave a Reply
               </h3>
               <div className="grid grid-cols-1 gap-4 mb-4">
@@ -193,7 +196,7 @@ const Post = () => {
             <div className="relative lg:sticky top-8">
               {/* comments */}
               <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
-                <h3 className="text-xl mb-8 font-semibold border-b pb-4">
+                <h3 className="text-xl mb-8 text-gray-700 font-bold border-b pb-4">
                   {post ? post.comments.length : 0} Comments
                 </h3>
                 {post &&
