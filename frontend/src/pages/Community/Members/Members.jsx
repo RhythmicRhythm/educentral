@@ -35,6 +35,9 @@ const Members = () => {
     try{
       const data = await addMember(userData);
       console.log(data);
+      const updatedMembers = await getMembers();
+      setMembers(updatedMembers);
+      setShowModal(false);
       
     } catch (error) {
       console.log(error);
