@@ -4,6 +4,7 @@ const {
   getPosts,
   getPostUser,
   addComment,
+  addReply,
   likePost,
   getPostById,
   dislikePost,
@@ -16,6 +17,7 @@ router.get("/getposts", protect, getPosts);
 router.get("/getpost/:id", protect, getPostById);
 router.get("/getpostuser", protect, getPostUser);
 router.post("/addcomment/:id", protect, addComment);
+router.post("/addreply/:id/:commentId", protect, addReply);
 router.post("/likepost/:id", protect, likePost);
 router.post("/dislikepost/:id", protect, dislikePost);
 

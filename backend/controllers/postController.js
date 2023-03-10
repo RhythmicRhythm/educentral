@@ -63,7 +63,6 @@ const getPostById = asyncHandler(async (req, res) => {
   res.status(200).json(post);
 });
 
-
 // Add comment to post
 const addComment = asyncHandler(async (req, res) => {
   const { text } = req.body;
@@ -87,6 +86,46 @@ const addComment = asyncHandler(async (req, res) => {
     };
 
     post.comments.push(comment);
+
+    await post.save();
+
+    res.status(201).json(post);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
+});
+
+// Add reply to comment
+const addReply = asyncHandler(async (req, res) => {
+  const { text } = req.body;
+
+  if (!text) {
+    res.status(400);
+    throw new Error("Please enter a reply");
+  }
+
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      res.status(404);
+      throw new Error("Post not found");
+    }
+
+    const comment = post.comments.id(req.params.commentId);
+
+    if (!comment) {
+      res.status(404);
+      throw new Error("Comment not found");
+    }
+
+    const reply = {
+      text,
+      user: req.user.id,
+    };
+
+    comment.replies.push(reply);
 
     await post.save();
 
@@ -190,6 +229,7 @@ module.exports = {
   getPostUser,
   getPostById,
   addComment,
+  addReply,
   likePost,
   dislikePost,
 };
