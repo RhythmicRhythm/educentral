@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { toast } from "react-toastify";
-import { image } from "react-icons-kit/icomoon/image";
-import { happy } from "react-icons-kit/icomoon/happy";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
-import { send } from "react-icons-kit/fa/send";
-import { getPosts } from "../../../services/authServices";
-import { createPost } from "../../../services/authServices";
+import { getPosts, createPost  } from "../../../services/authServices";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
@@ -22,7 +18,7 @@ const AdminDashboard = () => {
   const [posts, setPosts] = useState([]);
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
-  const [productImage, setProductImage] = useState("");
+  const [postImage, setPostImage] = useState("");
   const { desc } = formData;
 
   const handleInputChange = (e) => {
@@ -31,7 +27,7 @@ const AdminDashboard = () => {
   };
 
   const handleImageChange = (e) => {
-    setProductImage(e.target.files[0]);
+    setPostImage(e.target.files[0]);
     setImagePreview(URL.createObjectURL(e.target.files[0]));
   };
 
@@ -40,7 +36,7 @@ const AdminDashboard = () => {
     const postData = new FormData();
     postData.append("desc", desc);
 
-    postData.append("image", productImage);
+    postData.append("image", postImage);
 
     console.log(...postData);
     console.log("clicked");
