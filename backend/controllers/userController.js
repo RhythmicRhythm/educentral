@@ -190,7 +190,6 @@ const loginStatus = asyncHandler(async (req, res) => {
   return res.json(false);
 });
 
-//////////////
 //Add Members
 const addMember = asyncHandler(async (req, res) => {
   const { email } = req.body;

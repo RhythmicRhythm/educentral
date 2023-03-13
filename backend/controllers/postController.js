@@ -6,7 +6,7 @@ const User = require("../models/userModel");
 
 //Create Post
 const createPost = asyncHandler(async (req, res) => {
-  const { desc, userimage, image } = req.body;
+  const { desc, userimage } = req.body;
 
   //   Validation
   if (!desc) {
@@ -18,7 +18,6 @@ const createPost = asyncHandler(async (req, res) => {
   let fileData = {};
 
   try {
-
     // Upload file to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
 
@@ -31,8 +30,7 @@ const createPost = asyncHandler(async (req, res) => {
       name: user.firstname,
       desc,
       userimage,
-      image,
-      photo: result.secure_url,
+      image: result.secure_url,
     });
 
     res.status(201).json(post);
@@ -42,18 +40,7 @@ const createPost = asyncHandler(async (req, res) => {
   }
 });
 
-// Add Image
-const addImage = asyncHandler(async (req, res) => {
-  // Handle Image upload
-  let fileData = {};
 
-  // Create Product
-  const pictures = await Post.create({
-    photo: fileData,
-  });
-
-  res.status(201).json(pictures);
-});
 
 // Get all Posts
 const getPosts = asyncHandler(async (req, res) => {
@@ -248,7 +235,6 @@ const dislikePost = asyncHandler(async (req, res) => {
 
 module.exports = {
   createPost,
-  addImage,
   getPosts,
   getPostUser,
   getPostById,

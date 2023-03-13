@@ -23,14 +23,9 @@ const postSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: [true, "Please add a photo"],
-      default:
-        "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
-    },
-    photo: {
-      type: String, // Store Cloudinary image URL
       default: "",
     },
+
     comments: [
       {
         text: {
@@ -89,7 +84,6 @@ const postSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-   
   },
 
   {

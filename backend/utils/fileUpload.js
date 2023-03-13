@@ -3,9 +3,9 @@ const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 cloudinary.config({
-  cloud_name: "dyvog4dzo",
-  api_key: "498972792565473",
-  api_secret: "lnSC21-TD7AhFCKaBKE_uwJMs8A",
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 // // Define file storage
@@ -35,12 +35,11 @@ cloudinary.config({
 // }
 
 const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    folder: "edu",
-    allowedFormats: ["jpg", "png", "jpeg"],
-    transformation: [{ width: 500, height: 500, crop: "limit" }],
-  });
-  
+  cloudinary: cloudinary,
+  folder: "edu",
+  allowedFormats: ["jpg", "png", "jpeg"],
+  transformation: [{ width: 500, height: 500, crop: "limit" }],
+});
 
 const upload = multer({ storage });
 
