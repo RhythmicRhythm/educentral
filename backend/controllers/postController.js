@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler");
+const { fileSizeFormatter } = require("../utils/fileUpload");
 const Post = require("../models/postModel");
 const User = require("../models/userModel");
 
@@ -12,7 +13,20 @@ const createPost = asyncHandler(async (req, res) => {
     throw new Error("Please fill in all fields");
   }
 
+  // Handle Image upload
+  let fileData = {};
+
   try {
+
+      // Check if file was uploaded
+    if (req.file) {
+      fileData = {
+        filename: req.file.filename,
+        path: req.file.path,
+        mimetype: req.file.mimetype,
+        size: req.file.size,
+      };
+    }
     // Fetch user from the database
     const user = await User.findById(req.user.id);
 
@@ -23,6 +37,7 @@ const createPost = asyncHandler(async (req, res) => {
       desc,
       userimage,
       image,
+      photo: fileData,
     });
 
     res.status(201).json(post);
@@ -30,6 +45,19 @@ const createPost = asyncHandler(async (req, res) => {
     console.error(err);
     res.status(500).send(err);
   }
+});
+
+// Add Image
+const addImage = asyncHandler(async (req, res) => {
+  // Handle Image upload
+  let fileData = {};
+
+  // Create Product
+  const pictures = await Post.create({
+    photo: fileData,
+  });
+
+  res.status(201).json(pictures);
 });
 
 // Get all Posts
@@ -225,6 +253,7 @@ const dislikePost = asyncHandler(async (req, res) => {
 
 module.exports = {
   createPost,
+  addImage,
   getPosts,
   getPostUser,
   getPostById,

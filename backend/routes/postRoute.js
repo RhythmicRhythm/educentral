@@ -4,6 +4,7 @@ const {
   getPosts,
   getPostUser,
   addComment,
+  addImage,
   addReply,
   likePost,
   getPostById,
@@ -11,12 +12,14 @@ const {
 } = require("../controllers/postController");
 const protect = require("../middleWare/authMiddleware");
 const router = express.Router();
+const { upload } = require("../utils/fileUpload");
 
-router.post("/", protect, createPost);
+router.post("/", protect, upload.single("photo"), createPost);
 router.get("/getposts", protect, getPosts);
 router.get("/getpost/:id", protect, getPostById);
 router.get("/getpostuser", protect, getPostUser);
 router.post("/addcomment/:id", protect, addComment);
+router.post("/addimage", upload.single("photo"), addImage);
 router.post("/addreply/:id/:commentId", protect, addReply);
 router.post("/likepost/:id", protect, likePost);
 router.post("/dislikepost/:id", protect, dislikePost);

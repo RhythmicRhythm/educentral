@@ -8,6 +8,9 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const errorHandler = require("./middleWare/errorMiddleware");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 const app = express();
 
 // Middlewares
