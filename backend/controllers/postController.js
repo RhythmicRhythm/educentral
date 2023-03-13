@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const { fileSizeFormatter } = require("../utils/fileUpload");
 const Post = require("../models/postModel");
+const cloudinary = require("cloudinary").v2;
 const User = require("../models/userModel");
 
 //Create Post
@@ -18,15 +19,9 @@ const createPost = asyncHandler(async (req, res) => {
 
   try {
 
-      // Check if file was uploaded
-    if (req.file) {
-      fileData = {
-        filename: req.file.filename,
-        path: req.file.path,
-        mimetype: req.file.mimetype,
-        size: req.file.size,
-      };
-    }
+    // Upload file to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path);
+
     // Fetch user from the database
     const user = await User.findById(req.user.id);
 
@@ -37,7 +32,7 @@ const createPost = asyncHandler(async (req, res) => {
       desc,
       userimage,
       image,
-      photo: fileData,
+      photo: result.secure_url,
     });
 
     res.status(201).json(post);

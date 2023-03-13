@@ -28,8 +28,8 @@ const postSchema = mongoose.Schema(
         "https://www.businessbecause.com/uploads/default/news/images/1611746171.png",
     },
     photo: {
-      type: Object,
-      default: {},
+      type: String, // Store Cloudinary image URL
+      default: "",
     },
     comments: [
       {
