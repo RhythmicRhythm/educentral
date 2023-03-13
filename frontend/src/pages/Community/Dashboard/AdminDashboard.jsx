@@ -21,6 +21,8 @@ const AdminDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [formData, setformData] = useState(initialState);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [productImage, setProductImage] = useState("");
   const { desc } = formData;
 
   const handleInputChange = (e) => {
@@ -28,14 +30,20 @@ const AdminDashboard = () => {
     setformData({ ...formData, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    setProductImage(e.target.files[0]);
+    setImagePreview(URL.createObjectURL(e.target.files[0]));
+  };
+
   const createpost = async (e) => {
     e.preventDefault();
+    const postData = new FormData();
+    postData.append("desc", desc);
 
+    postData.append("image", productImage);
+
+    console.log(...postData);
     console.log("clicked");
-
-    const postData = {
-      desc,
-    };
 
     try {
       const data = await createPost(postData);
@@ -91,22 +99,33 @@ const AdminDashboard = () => {
                   />
                 </div>
 
+                <div className="pb-2 pt-2 text-left flex flex-col">
+                  <label className="font-bold text-gray-700 text-sm mb-2">
+                    Add Image
+                  </label>
+                  <input
+                    type="file"
+                    name="image"
+                    id="image"
+                    onChange={handleImageChange}
+                  />
+                </div>
+
                 <div className="flex justify-between">
-                  <div className="flex gap-6">
-                    <div className="">
-                      <Icon icon={image} size={20} />
-                    </div>
-                    <div className="">
-                      <Icon icon={happy} size={20} />
-                    </div>
-                  </div>
                   <div className="">
                     <button type="submit" className="">
-                      <Icon icon={send} size={20} />
+                      Add Post
                     </button>
                   </div>
                 </div>
               </form>
+              {/* {image && (
+                <img
+                  src={URL.createObjectURL(image)}
+                  alt="Preview"
+                  style={{ height: "100px", width: "100px" }}
+                />
+              )} */}
             </div>
           </div>
           <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
@@ -151,7 +170,6 @@ const AdminDashboard = () => {
                       alt=""
                     />
                   </div>
-               
                 </div>
               </Link>
             ))}
