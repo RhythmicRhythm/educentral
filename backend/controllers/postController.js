@@ -19,18 +19,19 @@ const createPost = asyncHandler(async (req, res) => {
 
   try {
     // Upload file to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path);
+    // const result = await cloudinary.uploader.upload(req.file.path);
+    console.log(req.file);
 
     // Fetch user from the database
     const user = await User.findById(req.user.id);
 
-    // Create Post with user's name
+    // // Create Post with user's name
     const post = await Post.create({
       author: req.user.id,
       name: user.firstname,
       desc,
       userimage,
-      image: result.secure_url,
+      image: req.file.path,
     });
 
     res.status(201).json(post);
