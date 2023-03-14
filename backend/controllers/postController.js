@@ -58,10 +58,13 @@ const getPostUser = asyncHandler(async (req, res) => {
 
 // Get single post
 const getPostById = asyncHandler(async (req, res) => {
-  const post = await Post.findById(req.params.id).populate({
-    path: "comments.user",
-    select: "firstname lastname",
-  });
+  const post = await Post.findById(req.params.id) .populate({
+    path: "author comments.user comments.replies.user",
+    model: "User",
+    select: "firstname lastname image",
+    strictPopulate: false, // add this line to fix the error
+  })
+  .exec();
 
   if (!post) {
     res.status(404);

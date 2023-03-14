@@ -3,30 +3,44 @@ import { useParams } from "react-router-dom";
 import { getPostById } from "../../../services/authServices";
 import moment from "moment";
 import parse from "html-react-parser";
-import { toast } from "react-toastify";
 import PostHeader from "../../../components/Header/PostHeader";
 import Icon from "react-icons-kit";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
-import { addComment, likePost, dislikePost } from "../../../services/authServices";
+import {
+  addComment,
+  likePost,
+  dislikePost,
+} from "../../../services/authServices";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const initialState = {
   text: "",
+  reply: "",
 };
 
 const Post = () => {
   useRedirectLoggedOutUser("/login");
 
   const [post, setPost] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
   const [formData, setformData] = useState(initialState);
+  const [replyData, setreplyData] = useState(initialState);
+
   const params = useParams();
   const postId = params.id;
   const { text } = formData;
+  const { reply } = replyData;
+  let commentsId = null;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
+  };
+
+  const handleReplyChange = (e) => {
+    const { name, value } = e.target;
+    setreplyData({ ...replyData, [name]: value });
   };
 
   const addcomment = async (e) => {
@@ -43,9 +57,8 @@ const Post = () => {
       console.log(data);
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
-    //   toast.success("post added Successful...");
+      //   toast.success("post added Successful...");
       //   setPosts([data, ...posts]);
-      
     } catch (error) {
       console.log(error);
     }
@@ -53,35 +66,46 @@ const Post = () => {
 
   const likepost = async () => {
     console.log("Post Liked....");
-    try{
-       const data = await likePost(postId);
-        console.log(data);
-        const updatedPost = await getPostById(postId);
-        setPost(updatedPost);
-
+    try {
+      const data = await likePost(postId);
+      console.log(data);
+      const updatedPost = await getPostById(postId);
+      setPost(updatedPost);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-  }
+  };
 
   const dislikepost = async () => {
     console.log("Post Disliked....");
-    try{
-        const data = await dislikePost(postId);
-         console.log(data);
-         const updatedPost = await getPostById(postId);
-         setPost(updatedPost);
- 
-     } catch (error) {
-         console.log(error);
-     }
-  }
+    try {
+      const data = await dislikePost(postId);
+      console.log(data);
+      const updatedPost = await getPostById(postId);
+      setPost(updatedPost);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addreply = async (e) => {
+    e.preventDefault();
+    console.log("clicked on comment", commentsId);
+   
+  };
+
+  const handleReplyClick = (commentId) => {
+    commentsId = commentId
+  console.log(commentsId);
+
+    
+  };
 
   useEffect(() => {
     async function getPostData() {
       const data = await getPostById(postId);
       setPost(data);
-      
+      console.log(data);
     }
     getPostData();
   }, [postId]);
@@ -135,11 +159,13 @@ const Post = () => {
                       />
                     </svg>
                     <span className="align-middle text-xs">
-                      {moment(post ? post.createdAt :0).format("MMM DD, YYYY")}
+                      {moment(post ? post.createdAt : 0).format("MMM DD, YYYY")}
                     </span>
                   </div>
                 </div>
-                <h1 className="mb-8 text-sm text-gray-600 font-semibold">{post?.desc}</h1>
+                <h1 className="mb-8 text-sm text-gray-600 font-semibold">
+                  {post?.desc}
+                </h1>
               </div>
               <div className="px-8">
                 <div className="flex mt-6 gap-6 border-t border-blue-400 p-6">
@@ -204,17 +230,84 @@ const Post = () => {
                   post.comments.map((comment) => (
                     <div
                       key={comment._id}
-                      className="border-b border-gray-100 mb-4 pb-4"
+                      className="border-b border-gray-800 mb-4 pb-4 text-left"
                     >
-                      <p className="mb-4">
+                      <p className="mb-2">
                         <span className="font-semibold">
                           {comment.user.firstname}
                         </span>{" "}
-                        on {moment(comment.createdAt).format("MMM DD, YYYY")}
+                        {/* on {moment(comment.createdAt).format("MMM DD, YYYY")} */}
                       </p>
                       <p className="whitespace-pre-line text-gray-600 w-full">
                         {parse(comment.text)}
                       </p>
+                      <div className="flex gap-6 text-gray-600 w-full">
+                        <p className="">4h</p>
+                        <p
+                          onClick={() => handleReplyClick(comment._id)}
+                          className=""
+                        >
+                          Reply
+                        </p>
+                      </div>
+
+                      <div className="text-left p-2">
+                        <div
+                          onClick={() => setIsOpen((prev) => !prev)}
+                          className=" flex  cursor-pointer"
+                        >
+                          <h1 className="text-gray-600 ">
+                            {" "}
+                            view {comment.replies &&
+                              comment.replies.length}{" "}
+                            replies
+                          </h1>
+
+                          <div className="">
+                            {!isOpen ? (
+                              <h1 className="px-1">g</h1>
+                            ) : (
+                              <h1 className="px-1">h</h1>
+                            )}
+                          </div>
+                        </div>
+                        {isOpen && (
+                          <div className="mt-2  transition duration-500 ease-in flex flex-col">
+                            {comment.replies.map((reply) => (
+                              <div key={reply._id} className="mt-2">
+                                <p className="">{reply.user.firstname}</p>
+                                <p className="whitespace-pre-line text-gray-600 w-full">
+                                  {parse(reply.text)}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <form onSubmit={ addreply} className=" w-full mt-6">
+                        <div className="pb-2 pt-4 text-left">
+                          <label className="font-bold text-gray-700 text-sm">
+                            add Reply
+                          </label>
+                          <textarea
+                            type="text"
+                            name="desc"
+                            id="desc"
+                            value={reply}
+                            placeholder="What's Happening?"
+                            className="form-input"
+                            onChange={handleReplyChange}
+                          />
+                        </div>
+
+                        <div className="flex justify-between">
+                          <div className="">
+                            <button type="submit" className="">
+                              Add reply
+                            </button>
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   ))}
               </div>
