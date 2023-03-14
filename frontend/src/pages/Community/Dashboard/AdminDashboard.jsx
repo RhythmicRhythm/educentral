@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { toast } from "react-toastify";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
-import { getPosts, createPost  } from "../../../services/authServices";
+import { getPosts, createPost } from "../../../services/authServices";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
+
 
 const initialState = {
   desc: "",
@@ -115,13 +116,7 @@ const AdminDashboard = () => {
                   </div>
                 </div>
               </form>
-              {/* {image && (
-                <img
-                  src={URL.createObjectURL(image)}
-                  alt="Preview"
-                  style={{ height: "100px", width: "100px" }}
-                />
-              )} */}
+            
             </div>
           </div>
           <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
