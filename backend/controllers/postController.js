@@ -30,10 +30,10 @@ const createPost = asyncHandler(async (req, res) => {
         name: user.firstname,
         desc,
         userimage,
-        image: result.secure_url,
+        // image: result.secure_url,
       });
 
-      res.status(201).json("post added with image");
+      res.status(201).json( post);
     } else {
       // Create Post without image
       const user = await User.findById(req.user.id);
@@ -45,7 +45,7 @@ const createPost = asyncHandler(async (req, res) => {
         userimage,
       });
 
-      res.status(201).json("definately the image error ");
+      res.status(201).json(post);
     }
   }catch (err) {
     console.error(err);
