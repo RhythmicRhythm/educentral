@@ -47,9 +47,10 @@ const createPost = asyncHandler(async (req, res) => {
 
       res.status(201).json(post);
     }
-  } catch (err) {
+  }catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    const error = new Error(err.message);
+    res.status(500).send(error);
   }
 });
 
