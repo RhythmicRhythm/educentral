@@ -30,7 +30,7 @@ const createPost = asyncHandler(async (req, res) => {
         name: user.firstname,
         desc,
         userimage,
-        // image: result.secure_url,
+        image: result.secure_url,
       });
 
       res.status(201).json( post);
