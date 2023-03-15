@@ -45,7 +45,7 @@ const AdminDashboard = () => {
     try {
       const data = await createPost(postData);
       console.log(data);
-      toast.success("post added Successful...");
+      
       setPosts([data, ...posts]);
       setShowModal(false);
       setformData({ ...formData, desc: "" });

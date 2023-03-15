@@ -1,9 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
+export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
-export const BACKEND_URL = "http://localhost:5000";
+// export const BACKEND_URL = "http://localhost:5000";
 
 export const validateEmail = (email) => {
   return email.match(
@@ -167,7 +167,7 @@ export const createPost = async (postData) => {
       (error.response && error.response.data && error.response.data.message) ||
       error.message ||
       error.toString();
-    toast.error(message);
+    console.log(message);
   }
 };
 
