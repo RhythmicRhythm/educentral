@@ -18,9 +18,6 @@ const createPost = asyncHandler(async (req, res) => {
     let fileData = {};
 
     if (req.file) {
-      // Upload file to Cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-
       // Fetch user from the database
       const user = await User.findById(req.user.id);
 
@@ -30,10 +27,10 @@ const createPost = asyncHandler(async (req, res) => {
         name: user.firstname,
         desc,
         userimage,
-        image: result.secure_url,
+        image: req.file.path,
       });
 
-      res.status(201).json( post);
+      res.status(201).json(post);
     } else {
       // Create Post without image
       const user = await User.findById(req.user.id);
@@ -47,13 +44,12 @@ const createPost = asyncHandler(async (req, res) => {
 
       res.status(201).json(post);
     }
-  }catch (err) {
+  } catch (err) {
     console.error(err);
     const error = new Error(err.message);
     res.status(500).send(error);
   }
 });
-
 
 // Get all Posts
 const getPosts = asyncHandler(async (req, res) => {
@@ -125,9 +121,9 @@ const addComment = asyncHandler(async (req, res) => {
 
 // Add reply to comment
 const addReply = asyncHandler(async (req, res) => {
-  const { text } = req.body;
+  const { replyText } = req.body;
 
-  if (!text) {
+  if (!replyText) {
     res.status(400);
     throw new Error("Please enter a reply");
   }
@@ -147,12 +143,12 @@ const addReply = asyncHandler(async (req, res) => {
       throw new Error("Comment not found");
     }
 
-    const reply = {
-      text,
+    const commentreply = {
+      replyText,
       user: req.user.id,
     };
 
-    comment.replies.push(reply);
+    comment.replies.push(commentreply);
 
     await post.save();
 
