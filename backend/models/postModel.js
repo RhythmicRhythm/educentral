@@ -41,20 +41,22 @@ const postSchema = mongoose.Schema(
           type: Date,
           default: Date.now,
         },
-        replies: [{
-          text: {
-            type: String,
-            required: true,
+        replies: [
+          {
+            replyText: {
+              type: String,
+              required: false,
+            },
+            user: {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "User",
+            },
+            createdAt: {
+              type: Date,
+              default: Date.now,
+            },
           },
-          user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-          },
-          createdAt: {
-            type: Date,
-            default: Date.now,
-          },
-        }],
+        ],
       },
     ],
     likes: [
