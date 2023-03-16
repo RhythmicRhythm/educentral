@@ -272,7 +272,7 @@ const Post = () => {
                       <p className="font-medium text-gray-500 w-full">
                         {parse(comment.text)}
                       </p>
-                      <div className="flex gap-4 text-gray-800 font-bold w-full">
+                      <div className="flex gap-4 text-gray-800 font-bold w-full cursor-pointer">
                         <p className="">4h</p>
                         <p
                           onClick={() => handleReplyClick(comment._id)}
@@ -333,7 +333,7 @@ const Post = () => {
                             name="replyText"
                             id="reply"
                             value={replyText}
-                            placeholder="What's Happening?"
+                            placeholder="Input your reply"
                             className="form-input"
                             onChange={handleReplyChange}
                           />
