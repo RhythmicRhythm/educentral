@@ -19,11 +19,13 @@ const AdminDashboard = () => {
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState("");
+  const [isDescEmpty, setIsDescEmpty] = useState(true);
   const { desc } = formData;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
+    setIsDescEmpty(value.trim() === '');
   };
 
   const handleImageChange = (e) => {
@@ -117,6 +119,7 @@ const AdminDashboard = () => {
                 <div className="flex justify-between">
                   <div className="">
                     <button
+                      disabled={isDescEmpty}
                       type="submit"
                       className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
                       hover:from-blue-900 hover:to-pink-600
