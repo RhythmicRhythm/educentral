@@ -1,46 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
-import { getPostById } from "../../../services/authServices";
 import moment from "moment";
 import parse from "html-react-parser";
 import PostHeader from "../../../components/Header/PostHeader";
 import Icon from "react-icons-kit";
+import {ic_arrow_right} from 'react-icons-kit/md/ic_arrow_right';
+import {ic_arrow_drop_down} from 'react-icons-kit/md/ic_arrow_drop_down';
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import {
   addComment,
   likePost,
   dislikePost,
+  getPostById,
+  addReply,
 } from "../../../services/authServices";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
 const initialState = {
   text: "",
-  reply: "",
+  rreplyText: "",
 };
 
 const Post = () => {
   useRedirectLoggedOutUser("/login");
 
   const [post, setPost] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState({});
+  const [showReplyForm, setShowReplyForm] = useState({});
   const [formData, setformData] = useState(initialState);
   const [replyData, setreplyData] = useState(initialState);
 
   const params = useParams();
   const postId = params.id;
   const { text } = formData;
-  const { reply } = replyData;
+  const { replyText } = replyData;
   let commentsId = null;
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setformData({ ...formData, [name]: value });
+  const handleClick = (commentId) => {
+    setIsOpen((prevState) => ({
+      ...prevState,
+      [commentId]: !prevState[commentId],
+    }));
+  };
+
+  const handleReplyClick = (commentId) => {
+    commentsId = commentId;
+    console.log(commentsId);
+    setShowReplyForm((prevState) => ({
+      ...prevState,
+      [commentId]: !prevState[commentId],
+    }));
   };
 
   const handleReplyChange = (e) => {
     const { name, value } = e.target;
     setreplyData({ ...replyData, [name]: value });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
   };
 
   const addcomment = async (e) => {
@@ -57,8 +77,7 @@ const Post = () => {
       console.log(data);
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
-      //   toast.success("post added Successful...");
-      //   setPosts([data, ...posts]);
+      setformData({ ...formData, text: "" });
     } catch (error) {
       console.log(error);
     }
@@ -88,17 +107,23 @@ const Post = () => {
     }
   };
 
-  const addreply = async (e) => {
+  const addreply = async (e, commentId) => {
     e.preventDefault();
-    console.log("clicked on comment", commentsId);
-   
-  };
+    console.log(commentId);
 
-  const handleReplyClick = (commentId) => {
-    commentsId = commentId
-  console.log(commentsId);
+    const replyData = {
+      replyText,
+    };
 
-    
+    try {
+      const data = await addReply(replyData, postId, commentId);
+      console.log(data);
+      const updatedPost = await getPostById(postId);
+      setPost(updatedPost);
+      setreplyData({ ...formData, replyText: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -230,18 +255,19 @@ const Post = () => {
                   post.comments.map((comment) => (
                     <div
                       key={comment._id}
-                      className="border-b border-gray-800 mb-4 pb-4 text-left"
+                      className="border-b border-gray-200 mb-4 pb-4 text-left"
+                      // ref={commentBoxRef}
                     >
-                      <p className="mb-2">
-                        <span className="font-semibold">
+                      <h1 className="mb-2">
+                        <span className="font-bold text-gray-800 text-lg">
                           {comment.user.firstname}
                         </span>{" "}
                         {/* on {moment(comment.createdAt).format("MMM DD, YYYY")} */}
-                      </p>
-                      <p className="whitespace-pre-line text-gray-600 w-full">
+                      </h1>
+                      <p className="font-medium text-gray-500 w-full">
                         {parse(comment.text)}
                       </p>
-                      <div className="flex gap-6 text-gray-600 w-full">
+                      <div className="flex gap-4 text-gray-800 font-bold w-full">
                         <p className="">4h</p>
                         <p
                           onClick={() => handleReplyClick(comment._id)}
@@ -251,49 +277,57 @@ const Post = () => {
                         </p>
                       </div>
 
-                      <div className="text-left p-2">
+                      <div className="text-left p-2 ml-4">
                         <div
-                          onClick={() => setIsOpen((prev) => !prev)}
-                          className=" flex  cursor-pointer"
+                          onClick={() => handleClick(comment._id)}
+                          className=" flex cursor-pointer"
                         >
-                          <h1 className="text-gray-600 ">
+                          <h1 className="text-gray-700 text-sm font-bold mt-1">
                             {" "}
                             view {comment.replies &&
                               comment.replies.length}{" "}
                             replies
                           </h1>
 
-                          <div className="">
-                            {!isOpen ? (
-                              <h1 className="px-1">g</h1>
+                          <div className=" text-gray-600">
+                            {!isOpen[comment._id] ? (
+                              <h1 className=""><Icon icon={ic_arrow_right} size={20} /></h1>
                             ) : (
-                              <h1 className="px-1">h</h1>
+                              <h1 className=""><Icon icon={ic_arrow_drop_down} size={20} /></h1>
                             )}
                           </div>
                         </div>
-                        {isOpen && (
-                          <div className="mt-2  transition duration-500 ease-in flex flex-col">
+                        {isOpen[comment._id] && (
+                          <div
+                            // ref={replyFormRef}
+                            className="mt-2  transition duration-500 ease-in flex flex-col"
+                          >
                             {comment.replies.map((reply) => (
                               <div key={reply._id} className="mt-2">
-                                <p className="">{reply.user.firstname}</p>
-                                <p className="whitespace-pre-line text-gray-600 w-full">
-                                  {parse(reply.text)}
+                                <h1 className="font-bold text-gray-700 text-sm">{reply.user.firstname}</h1>
+                                <p className="font-medium text-gray-500 w-full">
+                                  {parse(reply.replyText)}
                                 </p>
                               </div>
                             ))}
                           </div>
                         )}
                       </div>
-                      <form onSubmit={ addreply} className=" w-full mt-6">
+                      <form
+                        onSubmit={(e) => addreply(e, comment._id)}
+                        className={`w-full mt-6 ${
+                          showReplyForm[comment._id] ? "" : "hidden"
+                        }`}
+                      >
                         <div className="pb-2 pt-4 text-left">
                           <label className="font-bold text-gray-700 text-sm">
                             add Reply
                           </label>
                           <textarea
                             type="text"
-                            name="desc"
-                            id="desc"
-                            value={reply}
+                            name="replyText"
+                            id="reply"
+                            value={replyText}
                             placeholder="What's Happening?"
                             className="form-input"
                             onChange={handleReplyChange}
@@ -302,8 +336,12 @@ const Post = () => {
 
                         <div className="flex justify-between">
                           <div className="">
-                            <button type="submit" className="">
-                              Add reply
+                            <button
+                              type="submit"
+                              className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
+                              hover:from-blue-900 hover:to-pink-600 text-xs font-semibold rounded-lg text-white px-2 py-1 cursor-pointer"
+                            >
+                              Add Reply
                             </button>
                           </div>
                         </div>

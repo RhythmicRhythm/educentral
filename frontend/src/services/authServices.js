@@ -1,9 +1,9 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
+// export const BACKEND_URL = "https://educentral-community-backend.onrender.com";
 
-// export const BACKEND_URL = "http://localhost:5000";
+export const BACKEND_URL = "http://localhost:5000";
 
 export const validateEmail = (email) => {
   return email.match(
@@ -177,6 +177,26 @@ export const addComment = async (postData, postId) => {
     const response = await axios.post(
       `${BACKEND_URL}/api/posts/addcomment/${postId}`,
       postData
+    );
+    if (response.statusText === "OK") {
+      toast.success("post added Successful...");
+    }
+    return response.data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) ||
+      error.message ||
+      error.toString();
+    toast.error(message);
+  }
+};
+
+// Add Comment
+export const addReply = async (replyData, postId, commentId) => {
+  try {
+    const response = await axios.post(
+      `${BACKEND_URL}/api/posts/addreply/${postId}/${commentId}`,
+      replyData
     );
     if (response.statusText === "OK") {
       toast.success("post added Successful...");

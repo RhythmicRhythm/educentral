@@ -7,7 +7,6 @@ import { getPosts, createPost } from "../../../services/authServices";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
-
 const initialState = {
   desc: "",
 };
@@ -45,7 +44,7 @@ const AdminDashboard = () => {
     try {
       const data = await createPost(postData);
       console.log(data);
-      
+
       setPosts([data, ...posts]);
       setShowModal(false);
       setformData({ ...formData, desc: "" });
@@ -101,6 +100,13 @@ const AdminDashboard = () => {
                     Add Image
                   </label>
                   <input
+                    className="text-sm text-grey-500
+                    file:mr-5 file:py-2 file:px-6
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-medium
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:cursor-pointer hover:file:bg-amber-50
+                    hover:file:text-amber-700"
                     type="file"
                     name="image"
                     id="image"
@@ -110,13 +116,17 @@ const AdminDashboard = () => {
 
                 <div className="flex justify-between">
                   <div className="">
-                    <button type="submit" className="">
+                    <button
+                      type="submit"
+                      className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
+                      hover:from-blue-900 hover:to-pink-600
+                      text-lg font-semibold rounded-lg text-white px-3 py-1 cursor-pointer"
+                    >
                       Add Post
                     </button>
                   </div>
                 </div>
               </form>
-            
             </div>
           </div>
           <div className="opacity-75 fixed inset-0 z-40 bg-black"></div>
