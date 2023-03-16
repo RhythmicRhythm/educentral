@@ -29,7 +29,9 @@ const Post = () => {
   const [isOpen, setIsOpen] = useState({});
   const [showReplyForm, setShowReplyForm] = useState({});
   const [formData, setformData] = useState(initialState);
+  const [isFormEmpty, setIsFormEmpty] = useState(true);
   const [replyData, setreplyData] = useState(initialState);
+  const [isReplyEmpty, setIsReplyEmpty] = useState(true);
 
   const params = useParams();
   const postId = params.id;
@@ -56,11 +58,13 @@ const Post = () => {
   const handleReplyChange = (e) => {
     const { name, value } = e.target;
     setreplyData({ ...replyData, [name]: value });
+    setIsReplyEmpty(value.trim() === '');
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
+    setIsFormEmpty(value.trim() === '');
   };
 
   const addcomment = async (e) => {
@@ -233,6 +237,7 @@ const Post = () => {
 
               <div className="mt-8">
                 <button
+                disabled={isFormEmpty}
                   onClick={addcomment}
                   type="button"
                   className="transition duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
@@ -337,6 +342,7 @@ const Post = () => {
                         <div className="flex justify-between">
                           <div className="">
                             <button
+                            disabled={isReplyEmpty}
                               type="submit"
                               className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
                               hover:from-blue-900 hover:to-pink-600 text-xs font-semibold rounded-lg text-white px-2 py-1 cursor-pointer"
