@@ -269,14 +269,14 @@ const Post = () => {
                         </span>{" "}
                         {/* on {moment(comment.createdAt).format("MMM DD, YYYY")} */}
                       </h1>
-                      <p className="font-medium text-gray-500 w-full">
+                      <p className="font-medium text-gray-700 w-full">
                         {parse(comment.text)}
                       </p>
-                      <div className="flex gap-4 text-gray-800 font-bold w-full cursor-pointer">
-                        <p className="">4h</p>
+                      <div className="flex gap-4 mt-2 w-full cursor-pointer">
+                        <p className="text-xs font-semibold text-gray-500">{moment(comment.createdAt).fromNow()}</p>
                         <p
                           onClick={() => handleReplyClick(comment._id)}
-                          className=""
+                          className="text-xs font-bold text-gray-600"
                         >
                           Reply
                         </p>
@@ -309,10 +309,11 @@ const Post = () => {
                           >
                             {comment.replies.map((reply) => (
                               <div key={reply._id} className="mt-2">
-                                <h1 className="font-bold text-gray-700 text-sm">{reply.user.firstname}</h1>
-                                <p className="font-medium text-gray-500 w-full">
+                                <h1 className="font-bold text-gray-800 text-sm">{reply.user.firstname}</h1>
+                                <p className="font-medium text-sm text-gray-600 w-full">
                                   {parse(reply.replyText)}
                                 </p>
+                                <p className="font-semibold text-gray-500 text-xs mt-1">{moment(reply.createdAt).fromNow()}</p>
                               </div>
                             ))}
                           </div>
