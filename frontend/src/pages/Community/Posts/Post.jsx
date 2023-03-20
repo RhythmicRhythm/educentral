@@ -4,8 +4,8 @@ import moment from "moment";
 import parse from "html-react-parser";
 import PostHeader from "../../../components/Header/PostHeader";
 import Icon from "react-icons-kit";
-import {ic_arrow_right} from 'react-icons-kit/md/ic_arrow_right';
-import {ic_arrow_drop_down} from 'react-icons-kit/md/ic_arrow_drop_down';
+import { ic_arrow_right } from "react-icons-kit/md/ic_arrow_right";
+import { ic_arrow_drop_down } from "react-icons-kit/md/ic_arrow_drop_down";
 import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import {
@@ -58,13 +58,13 @@ const Post = () => {
   const handleReplyChange = (e) => {
     const { name, value } = e.target;
     setreplyData({ ...replyData, [name]: value });
-    setIsReplyEmpty(value.trim() === '');
+    setIsReplyEmpty(value.trim() === "");
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData({ ...formData, [name]: value });
-    setIsFormEmpty(value.trim() === '');
+    setIsFormEmpty(value.trim() === "");
   };
 
   const addcomment = async (e) => {
@@ -193,7 +193,7 @@ const Post = () => {
                   </div>
                 </div>
                 <h1 className="mb-8 text-sm text-gray-600 font-semibold">
-                  {post?.desc}
+                  <pre style={{ whiteSpace: "pre-wrap" }}>{post?.desc}</pre>
                 </h1>
               </div>
               <div className="px-8">
@@ -237,7 +237,7 @@ const Post = () => {
 
               <div className="mt-8">
                 <button
-                disabled={isFormEmpty}
+                  disabled={isFormEmpty}
                   onClick={addcomment}
                   type="button"
                   className="transition duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
@@ -273,7 +273,9 @@ const Post = () => {
                         {parse(comment.text)}
                       </p>
                       <div className="flex gap-4 mt-2 w-full cursor-pointer">
-                        <p className="text-xs font-semibold text-gray-500">{moment(comment.createdAt).fromNow()}</p>
+                        <p className="text-xs font-semibold text-gray-500">
+                          {moment(comment.createdAt).fromNow()}
+                        </p>
                         <p
                           onClick={() => handleReplyClick(comment._id)}
                           className="text-xs font-bold text-gray-600"
@@ -296,9 +298,13 @@ const Post = () => {
 
                           <div className=" text-gray-600">
                             {!isOpen[comment._id] ? (
-                              <h1 className=""><Icon icon={ic_arrow_right} size={20} /></h1>
+                              <h1 className="">
+                                <Icon icon={ic_arrow_right} size={20} />
+                              </h1>
                             ) : (
-                              <h1 className=""><Icon icon={ic_arrow_drop_down} size={20} /></h1>
+                              <h1 className="">
+                                <Icon icon={ic_arrow_drop_down} size={20} />
+                              </h1>
                             )}
                           </div>
                         </div>
@@ -309,11 +315,15 @@ const Post = () => {
                           >
                             {comment.replies.map((reply) => (
                               <div key={reply._id} className="mt-2">
-                                <h1 className="font-bold text-gray-800 text-sm">{reply.user.firstname}</h1>
+                                <h1 className="font-bold text-gray-800 text-sm">
+                                  {reply.user.firstname}
+                                </h1>
                                 <p className="font-medium text-sm text-gray-600 w-full">
                                   {parse(reply.replyText)}
                                 </p>
-                                <p className="font-semibold text-gray-500 text-xs mt-1">{moment(reply.createdAt).fromNow()}</p>
+                                <p className="font-semibold text-gray-500 text-xs mt-1">
+                                  {moment(reply.createdAt).fromNow()}
+                                </p>
                               </div>
                             ))}
                           </div>
@@ -343,7 +353,7 @@ const Post = () => {
                         <div className="flex justify-between">
                           <div className="">
                             <button
-                            disabled={isReplyEmpty}
+                              disabled={isReplyEmpty}
                               type="submit"
                               className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
                               hover:from-blue-900 hover:to-pink-600 text-xs font-semibold rounded-lg text-white px-2 py-1 cursor-pointer"
