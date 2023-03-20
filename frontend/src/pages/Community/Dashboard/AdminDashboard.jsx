@@ -25,7 +25,6 @@ const AdminDashboard = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
-  const [update, setUpdate] = useState([]);
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState("");
@@ -37,7 +36,6 @@ const AdminDashboard = () => {
     setformData({ ...formData, [name]: value });
     setIsDescEmpty(value.trim() === "");
   };
-
 
   const handleImageChange = (e) => {
     setPostImage(e.target.files[0]);
@@ -86,7 +84,7 @@ const AdminDashboard = () => {
       const data = await dislikePost(postId);
       console.log(data);
       const updatedPost = await getPosts();
-      setUpdate(updatedPost);
+      setPosts(updatedPost);
     } catch (error) {
       console.log(error);
     }
@@ -193,7 +191,11 @@ const AdminDashboard = () => {
                 p-8 "
                 >
                   <div className="">
-                    <img className="rounded-full w-10" src={item.userimage} alt="" />
+                    <img
+                      className="rounded-full w-10"
+                      src={item.userimage}
+                      alt=""
+                    />
                   </div>
                   <div className="text-left">
                     <div className="flex gap-2">
@@ -238,8 +240,9 @@ const AdminDashboard = () => {
                     <h1 className="text-lg">{item ? item.dislikesCount : 0}</h1>
                   </div>
                   <Link
-                  to={`/dashboard/${item._id}`}
-                  className="flex gap-2 text-gray-400 cursor-pointer">
+                    to={`/dashboard/${item._id}`}
+                    className="flex gap-2 text-gray-400 cursor-pointer"
+                  >
                     {" "}
                     <h1>
                       <Icon icon={bubble2} size={18} />
