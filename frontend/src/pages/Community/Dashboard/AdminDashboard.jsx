@@ -30,12 +30,11 @@ const AdminDashboard = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const newValue = value.replace(/\s+/g, ' '); // Replace multiple spaces with a single space character
-    const formattedValue = newValue.replace(/[\r\n]+/g, '\n'); // Replace newlines or carriage returns with newline characters
+    const newValue = value.replace(/\s+/g, " "); // Replace multiple spaces with a single space character
+    const formattedValue = newValue.replace(/[\r\n]+/g, "\n"); // Replace newlines or carriage returns with newline characters
     setformData({ ...formData, [name]: formattedValue });
-    setIsDescEmpty(formattedValue.trim() === '');
+    setIsDescEmpty(formattedValue.trim() === "");
   };
-  
 
   const handleImageChange = (e) => {
     setPostImage(e.target.files[0]);
@@ -174,7 +173,12 @@ const AdminDashboard = () => {
                     <h1 className="font-bold text-gray-500">{item.name}</h1>
                   </div>
                   <div className="">
-                    <p className="text-sm text-gray-600 mt-2">{item.desc}</p>
+                    <pre
+                      className="text-sm text-gray-600 mt-2"
+                      style={{ whiteSpace: "pre-wrap" }}
+                    >
+                      {item.desc}
+                    </pre>
                   </div>
                   <div className="flex mt-4 px-4">
                     <img
