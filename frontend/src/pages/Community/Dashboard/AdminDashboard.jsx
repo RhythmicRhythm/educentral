@@ -25,6 +25,7 @@ const AdminDashboard = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [update, setUpdate] = useState([]);
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState("");
@@ -84,8 +85,8 @@ const AdminDashboard = () => {
     try {
       const data = await dislikePost(postId);
       console.log(data);
-      // const updatedPost = await getPostById(postId);
-      // setPost(updatedPost);
+      const updatedPost = await getPosts();
+      setUpdate(updatedPost);
     } catch (error) {
       console.log(error);
     }
@@ -188,11 +189,11 @@ const AdminDashboard = () => {
                 <Link
                   to={`/dashboard/${item._id}`}
                   key={item._id}
-                  className="flex flex-row gap-6 justify-start mt-16 border-b-2 border-gray-100 
+                  className="flex flex-col gap-2 justify-start mt-2 border-b-2 border-gray-100 
                 p-8 "
                 >
-                  <div className="w-56">
-                    <img className="rounded-full" src={item.userimage} alt="" />
+                  <div className="">
+                    <img className="rounded-full w-10" src={item.userimage} alt="" />
                   </div>
                   <div className="text-left">
                     <div className="flex gap-2">
@@ -221,7 +222,7 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                 </Link>
-                <div className="unaffect text-black flex justify-between px-2 py-1">
+                <div className="unaffect text-black flex justify-between px-4 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => likepost(item._id)}>
