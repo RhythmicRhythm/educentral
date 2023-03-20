@@ -70,8 +70,8 @@ const AdminDashboard = () => {
     try {
       const data = await likePost(postId);
       console.log(data);
-      // const updatedPost = await getPostById(postId);
-      // setPost(updatedPost);
+      const updatedPost = await getPosts();
+      setPosts(updatedPost);
     } catch (error) {
       console.log(error);
     }
