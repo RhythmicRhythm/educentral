@@ -197,17 +197,17 @@ const AdminDashboard = () => {
                   </div>
                   <div className="text-left">
                     <div className="flex gap-2">
-                      <h1 className="font-bold text-gray-500">{item.name}</h1>
+                      <h1 className="font-bold text-gray-700">{item.name}</h1>
                     </div>
                     <div className="">
                       <pre
-                        className="text-sm text-gray-600 mt-2"
+                        className="text-sm text-gray-500 mt-2"
                         style={{ whiteSpace: "pre-wrap" }}
                       >
                         {item.desc.length > 100
                           ? `${item.desc.substring(0, 100)}`
                           : item.desc}
-                        <span className="text-purple-800 text-sm ">
+                        <span className="text-purple-800 text-sm">
                           {" "}
                           read more ....
                         </span>
@@ -237,13 +237,15 @@ const AdminDashboard = () => {
                     </h1>
                     <h1 className="text-lg">{item ? item.dislikesCount : 0}</h1>
                   </div>
-                  <div className="flex gap-2 text-gray-400 cursor-pointer">
+                  <Link
+                  to={`/dashboard/${item._id}`}
+                  className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
-                    <h1 onClick={() => dislikepost(item._id)}>
+                    <h1>
                       <Icon icon={bubble2} size={18} />
                     </h1>
                     {item ? item.comments.length : 0}
-                  </div>
+                  </Link>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
