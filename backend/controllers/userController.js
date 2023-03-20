@@ -249,7 +249,6 @@ const getMembers = asyncHandler(async (req, res) => {
   res.status(200).json({ members: user.members });
 });
 
-
 // Update User
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
