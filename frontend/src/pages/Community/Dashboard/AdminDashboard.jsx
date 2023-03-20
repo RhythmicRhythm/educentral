@@ -37,13 +37,6 @@ const AdminDashboard = () => {
     setIsDescEmpty(value.trim() === "");
   };
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   const newValue = value.replace(/\s+/g, " "); // Replace multiple spaces with a single space character
-  //   const formattedValue = newValue.replace(/[\r\n]+/g, "\n"); // Replace newlines or carriage returns with newline characters
-  //   setformData({ ...formData, [name]: formattedValue });
-  //   setIsDescEmpty(formattedValue.trim() === "");
-  // };
 
   const handleImageChange = (e) => {
     setPostImage(e.target.files[0]);
@@ -74,6 +67,7 @@ const AdminDashboard = () => {
 
   const likepost = async (postId) => {
     console.log("Post Liked....");
+    console.log(postId);
     try {
       const data = await likePost(postId);
       console.log(data);
@@ -86,6 +80,7 @@ const AdminDashboard = () => {
 
   const dislikepost = async (postId) => {
     console.log("Post Disliked....");
+    console.log(postId);
     try {
       const data = await dislikePost(postId);
       console.log(data);
