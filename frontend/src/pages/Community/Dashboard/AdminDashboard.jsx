@@ -22,19 +22,19 @@ const AdminDashboard = () => {
   const [isDescEmpty, setIsDescEmpty] = useState(true);
   const { desc } = formData;
 
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setformData({ ...formData, [name]: value });
-  //   setIsDescEmpty(value.trim() === '');
-  // };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const newValue = value.replace(/\s+/g, " "); // Replace multiple spaces with a single space character
-    const formattedValue = newValue.replace(/[\r\n]+/g, "\n"); // Replace newlines or carriage returns with newline characters
-    setformData({ ...formData, [name]: formattedValue });
-    setIsDescEmpty(formattedValue.trim() === "");
+    setformData({ ...formData, [name]: value });
+    setIsDescEmpty(value.trim() === '');
   };
+
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   const newValue = value.replace(/\s+/g, " "); // Replace multiple spaces with a single space character
+  //   const formattedValue = newValue.replace(/[\r\n]+/g, "\n"); // Replace newlines or carriage returns with newline characters
+  //   setformData({ ...formData, [name]: formattedValue });
+  //   setIsDescEmpty(formattedValue.trim() === "");
+  // };
 
   const handleImageChange = (e) => {
     setPostImage(e.target.files[0]);
