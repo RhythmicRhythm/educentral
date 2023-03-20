@@ -72,7 +72,7 @@ const AdminDashboard = () => {
     }
   };
 
-    const likepost = async (postId) => {
+  const likepost = async (postId) => {
     console.log("Post Liked....");
     try {
       const data = await likePost(postId);
@@ -95,7 +95,7 @@ const AdminDashboard = () => {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     console.log("Getting Posts");
 
@@ -226,32 +226,32 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                 </Link>
-                <div className="unaffect text-black flex p-2">
+                <div className="unaffect text-black flex justify-between px-2 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => likepost(item._id)}>
-                      <Icon icon={ic_thumb_up_outline} size={20} />
+                      <Icon icon={ic_thumb_up_outline} size={18} />
                     </h1>
-                    {/* <h1 className="text-lg">{post ? post.likesCount : 0}</h1> */}
+                    <h1 className="text-lg">{item ? item.likesCount : 0}</h1>
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
-                      <Icon icon={ic_thumb_down_outline}size={20} />
+                      <Icon icon={ic_thumb_down_outline} size={18} />
                     </h1>
-                    {/* <h1 className="text-lg">{post ? post.likesCount : 0}</h1> */}
+                    <h1 className="text-lg">{item ? item.dislikesCount : 0}</h1>
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
-                      <Icon icon={ic_thumb_down_outline}size={20} />
+                      <Icon icon={bubble2} size={18} />
                     </h1>
-                    {/* <h1 className="text-lg">{post ? post.likesCount : 0}</h1> */}
+                    {item ? item.comments.length : 0}
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
-                      <Icon icon={ic_thumb_down_outline}size={20} />
+                      <Icon icon={share2} size={18} />
                     </h1>
                     {/* <h1 className="text-lg">{post ? post.likesCount : 0}</h1> */}
                   </div>
