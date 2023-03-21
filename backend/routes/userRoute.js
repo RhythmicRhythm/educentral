@@ -8,6 +8,8 @@ const {
   updateUser,
   changePassword,
   addMember,
+  addMemberByLink,
+  generateLink,
   getMembers,
   forgotPassword,
   resetPassword,
@@ -22,6 +24,8 @@ router.get("/loggedin", loginStatus);
 router.get("/getmembers", protect, getMembers);
 router.get("/getuser", protect, getUser);
 router.post("/addmembers", protect, addMember);
+router.get("/generate-link/:adminId", generateLink);
+router.get("/add-member/:link", addMemberByLink);
 router.patch("/changepassword", protect, changePassword);
 router.put("/updateuser", protect, updateUser);
 router.post("/forgotpassword", forgotPassword);

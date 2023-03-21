@@ -249,6 +249,64 @@ const getMembers = asyncHandler(async (req, res) => {
   res.status(200).json({ members: user.members });
 });
 
+// Generate link for adding members
+const generateLink = asyncHandler(async (req, res) => {
+ 
+
+  // Check if admin exists
+  // const admin = await User.findById(userId);
+  const admin = await User.findById(req.params.id)
+
+  if (!admin) {
+    res.status(404);
+    throw new Error("User not found");
+  }
+
+  // Generate unique link
+  const link = crypto.randomBytes(20).toString("hex");
+
+  // Save link to admin's record
+  admin.addMemberLink = link;
+  await admin.save();
+
+  res.status(200).json({
+    message: "Link generated successfully",
+    link,
+  });
+});
+
+// Add member using link
+const addMemberByLink = asyncHandler(async (req, res) => {
+  const { link } = req.params;
+
+  // Check if link exists
+  const admin = await User.findOne({ addMemberLink: link });
+
+  if (!admin) {
+    res.status(404);
+    throw new Error("Link not found");
+  }
+
+  // Check if user is already a member
+  const user = await User.findById(req.user._id);
+
+  if (admin.members.includes(user._id)) {
+    res.status(400);
+    throw new Error("User is already a member");
+  }
+
+  // Add user to admin's team
+  admin.members.push(user._id);
+  user.addedBy = admin._id;
+
+  await Promise.all([admin.save(), user.save()]);
+
+  res.status(200).json({
+    message: "Member added successfully",
+  });
+});
+
+
 // Update User
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
@@ -443,6 +501,8 @@ module.exports = {
   logoutUser,
   loginStatus,
   addMember,
+  addMemberByLink,
+  generateLink,
   getMembers,
   getUser,
   updateUser,
