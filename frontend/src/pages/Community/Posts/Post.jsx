@@ -27,6 +27,8 @@ const Post = () => {
 
   const [post, setPost] = useState(null);
   const [isOpen, setIsOpen] = useState({});
+  const [likesCount, setLikesCount] = useState(post.likesCount);
+  const [dislikesCount, setDislikesCount] = useState(post.dislikesCount);
   const [showReplyForm, setShowReplyForm] = useState({});
   const [formData, setformData] = useState(initialState);
   const [isFormEmpty, setIsFormEmpty] = useState(true);

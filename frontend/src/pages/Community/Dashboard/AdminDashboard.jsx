@@ -187,7 +187,7 @@ const AdminDashboard = () => {
                 <Link
                   to={`/dashboard/${item._id}`}
                   key={item._id}
-                  className="flex flex-col gap-2 justify-start mt-2 border-b-2 border-gray-100 
+                  className="flex flex-col gap-2 justify-start mt-2  
                 p-8 "
                 >
                   <div className="">
@@ -224,6 +224,10 @@ const AdminDashboard = () => {
                     </div>
                   </div>
                 </Link>
+                <div className="text-gray-400 text-[.70rem] flex justify-between px-4 py-1 border-b-2 border-gray-100">
+                    <div className="">liked by </div>
+                    <div className="">10 Comments </div>
+                </div>
                 <div className="unaffect text-black flex justify-between px-4 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
