@@ -6,6 +6,8 @@ import { ic_thumb_up_outline } from "react-icons-kit/md/ic_thumb_up_outline";
 import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline";
 import { share2 } from "react-icons-kit/icomoon/share2";
 import { toast } from "react-toastify";
+import moment from "moment";
+import WebFont from 'webfontloader';
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import {
   getPosts,
@@ -199,8 +201,9 @@ const AdminDashboard = () => {
                   </div>
                   <div className="text-left">
                     <div className="flex gap-2">
-                      <h1 className="font-bold text-gray-700">{item.name}</h1>
+                      <h1 className="font-bold text-gray-700 text-sm">{item.name}</h1>
                     </div>
+                    <p className="text-gray-600 text-xs font-bold"> {moment(item.createdAt).fromNow()} </p>
                     <div className="">
                       <pre
                         className="text-sm text-gray-500 mt-2"
