@@ -247,7 +247,7 @@ const AdminDashboard = () => {
                     </h1>
                     
                   </div>
-                  <div className="flex gap-2 text-gray-400 cursor-pointer">
+                  <div className="flex gap-2 text-gray-400 cursor-pointer border-r-2 border-gray-100">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
                       <Icon icon={ic_thumb_down_outline} size={18} />
