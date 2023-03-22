@@ -27,8 +27,7 @@ const Post = () => {
 
   const [post, setPost] = useState(null);
   const [isOpen, setIsOpen] = useState({});
-  const [likesCount, setLikesCount] = useState(post.likesCount);
-  const [dislikesCount, setDislikesCount] = useState(post.dislikesCount);
+ 
   const [showReplyForm, setShowReplyForm] = useState({});
   const [formData, setformData] = useState(initialState);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
@@ -91,6 +90,10 @@ const Post = () => {
 
   const likepost = async () => {
     console.log("Post Liked....");
+    setPost((prevPost) => ({
+      ...prevPost,
+      likesCount: prevPost.likesCount + 1,
+    }));
     try {
       const data = await likePost(postId);
       console.log(data);
@@ -103,6 +106,10 @@ const Post = () => {
 
   const dislikepost = async () => {
     console.log("Post Disliked....");
+    setPost((prevPost) => ({
+      ...prevPost,
+      dislikesCount: prevPost.dislikesCount + 1,
+    }));
     try {
       const data = await dislikePost(postId);
       console.log(data);
