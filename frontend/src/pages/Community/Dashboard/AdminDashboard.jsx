@@ -228,8 +228,16 @@ const AdminDashboard = () => {
                   </div>
                 </Link>
                 <div className="text-gray-400 text-[.70rem] flex justify-between px-4 py-1 border-b-2 border-gray-100">
-                    <div className="">liked by </div>
-                    <div className="">10 Comments </div>
+                    
+                    <div className="flex gap-2">
+                    <div className="">{item ? item.likesCount : 0} likes </div>
+                    <div className="">{item ? item.dislikesCount : 0} dislikes </div>
+                    </div>
+                    <div className="flex gap-2">
+                    <div className="">{item ? item.comments.length : 0} Comments </div>
+                    
+                    </div>
+                   
                 </div>
                 <div className="unaffect text-black flex justify-between px-4 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
@@ -237,14 +245,14 @@ const AdminDashboard = () => {
                     <h1 onClick={() => likepost(item._id)}>
                       <Icon icon={ic_thumb_up_outline} size={18} />
                     </h1>
-                    <h1 className="text-lg">{item ? item.likesCount : 0}</h1>
+                    
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
                       <Icon icon={ic_thumb_down_outline} size={18} />
                     </h1>
-                    <h1 className="text-lg">{item ? item.dislikesCount : 0}</h1>
+                   
                   </div>
                   <Link
                     to={`/dashboard/${item._id}`}
