@@ -14,7 +14,7 @@ import {
   dislikePost,
   getPostById,
   addReply,
-  getUser
+  getUser,
 } from "../../../services/authServices";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
@@ -92,24 +92,24 @@ const Post = () => {
 
   const likepost = async () => {
     console.log("Post Liked....");
-  
+
     // Check if the user has already liked the post
-    if  (post.likes.some((like) => like.user === userId)) {
+    if (post.likes.some((like) => like.user === userId)) {
       console.log("userExixt");
-    //  User has already liked the post, decrement the likesCount
+      //  User has already liked the post, decrement the likesCount
       setPost((prevPost) => ({
         ...prevPost,
         likesCount: prevPost.likesCount - 1,
       }));
     } else {
       console.log("userExixt na");
-     //  User has not liked the post, increment the likesCount
+      //  User has not liked the post, increment the likesCount
       setPost((prevPost) => ({
         ...prevPost,
         likesCount: prevPost.likesCount + 1,
       }));
     }
-  
+
     try {
       const data = await likePost(postId);
       console.log(data);
@@ -119,14 +119,27 @@ const Post = () => {
       console.log(error);
     }
   };
-  
 
   const dislikepost = async () => {
     console.log("Post Disliked....");
-    setPost((prevPost) => ({
-      ...prevPost,
-      dislikesCount: prevPost.dislikesCount + 1,
-    }));
+
+    // Check if the user has already liked the post
+    if (post.dislikes.some((dislike) => dislike.user === userId)) {
+      console.log("userExixt");
+      //  User has already liked the post, decrement the likesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        dislikesCount: prevPost.dislikesCount - 1,
+      }));
+    } else {
+      console.log("userExixt na");
+      //  User has not liked the post, increment the likesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        dislikesCount: prevPost.dislikesCount + 1,
+      }));
+    }
+
     try {
       const data = await dislikePost(postId);
       console.log(data);
@@ -173,12 +186,10 @@ const Post = () => {
       console.log(data);
 
       setProfile(data);
-    
-      setUserId(data._id);
-      
-      console.log(data._id);
 
-     
+      setUserId(data._id);
+
+      console.log(data._id);
     }
     getUserData();
   }, []);
