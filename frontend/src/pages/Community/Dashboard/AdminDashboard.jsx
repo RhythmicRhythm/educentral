@@ -73,22 +73,38 @@ const AdminDashboard = () => {
     console.log("Post Liked....");
     console.log(postId);
 
-     // Find the index of the post with the given postId
-     const postToUpdate = posts.find(post => post._id === postId);
+// Find the index of the post with the given postId
+const postIndexToUpdate = posts.findIndex(post => post._id === postId);
 
-  console.log(postToUpdate);
+console.log(posts[postIndexToUpdate]);
 
-  if (postToUpdate.likes.some((like) => like.user === userId)) {
-    console.log("userExist");
-    // User has already liked the post, decrement the likesCount
-    postToUpdate.likesCount = postToUpdate.likesCount - 1;
-  }  else {
-    console.log("userNotExist");
-    // User has not liked the post, increment the likesCount
-    postToUpdate.likesCount = postToUpdate.likesCount + 1;
-  }
+if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
+  console.log("userExist");
+  // User has already liked the post, decrement the likesCount
+  posts[postIndexToUpdate].likesCount = posts[postIndexToUpdate].likesCount - 1;
+}  else {
+  console.log("userNotExist");
+  // User has not liked the post, increment the likesCount
+  posts[postIndexToUpdate].likesCount = posts[postIndexToUpdate].likesCount + 1;
+}
+  // Create a new array with the updated post
+  const updatedPosts = [...posts];
+  updatedPosts[postIndexToUpdate] = posts[postIndexToUpdate];
 
-   
+  // Update the state with the new array
+  setPosts(updatedPosts);
+
+  // if (postToUpdate.likes.some((like) => like.user === userId)) {
+  //   console.log("userExist");
+  //   // User has already liked the post, decrement the likesCount
+  //   postToUpdate.likesCount = postToUpdate.likesCount - 1;
+  // }
+  //   else {
+  //   console.log("userNotExist");
+  //   // User has not liked the post, increment the likesCount
+  //   postToUpdate.likesCount = postToUpdate.likesCount + 1;
+  // }
+    //  setPosts(postToUpdate);
 
     // try {
     //   const data = await likePost(postId);
