@@ -29,6 +29,7 @@ const AdminDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [profile, setProfile] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState("");
@@ -71,14 +72,47 @@ const AdminDashboard = () => {
   const likepost = async (postId) => {
     console.log("Post Liked....");
     console.log(postId);
-    try {
-      const data = await likePost(postId);
-      console.log(data);
-      const updatedPost = await getPosts();
-      setPosts(updatedPost);
-    } catch (error) {
-      console.log(error);
-    }
+
+     // Find the index of the post with the given postId
+     const postToUpdate = posts.find(post => post._id === postId);
+
+  console.log(postToUpdate);
+
+  if (postToUpdate.likes.some((like) => like.user === userId)) {
+    console.log("userExist");
+    // User has already liked the post, decrement the likesCount
+    // postToUpdate.likesCount = postToUpdate.likesCount - 1;
+  }  else {
+    console.log("userNotExist");
+    // User has not liked the post, increment the likesCount
+    // postToUpdate.likesCount = postToUpdate.likesCount + 1;
+  }
+
+        // // Check if the user has already liked the post
+        // if (posts.likes.some((like) => like.user === userId)) {
+        //   console.log("userExixt");
+        //   //  User has already liked the post, decrement the likesCount
+        //   setPosts((prevPost) => ({
+        //     ...prevPost,
+        //     likesCount: prevPost.likesCount - 1,
+        //   }));
+        // } else {
+        //   console.log("userExixt na");
+        //   //  User has not liked the post, increment the likesCount
+        //   setPosts((prevPost) => ({
+        //     ...prevPost,
+        //     likesCount: prevPost.likesCount + 1,
+        //   }));
+        // }
+
+    // try {
+    //   const data = await likePost(postId);
+    //   console.log(data);
+    //   const updatedPost = await getPosts();
+    //   setPosts(updatedPost);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const dislikepost = async (postId) => {
@@ -113,9 +147,10 @@ const AdminDashboard = () => {
       console.log(data);
 
       setProfile(data);
-      console.log(profile);
 
-     
+      setUserId(data._id);
+
+      console.log(data._id); 
     }
     getUserData();
   }, []);
