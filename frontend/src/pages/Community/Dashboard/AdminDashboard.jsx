@@ -106,7 +106,7 @@ const AdminDashboard = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Getting use");
+    console.log("Getting user");
 
     async function getUserData() {
       const data = await getUser();

@@ -14,6 +14,7 @@ import {
   dislikePost,
   getPostById,
   addReply,
+  getUser
 } from "../../../services/authServices";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
 
@@ -27,7 +28,8 @@ const Post = () => {
 
   const [post, setPost] = useState(null);
   const [isOpen, setIsOpen] = useState({});
- 
+  const [profile, setProfile] = useState(null);
+  const [userId, setUserId] = useState(null);
   const [showReplyForm, setShowReplyForm] = useState({});
   const [formData, setformData] = useState(initialState);
   const [isFormEmpty, setIsFormEmpty] = useState(true);
@@ -147,6 +149,24 @@ const Post = () => {
     }
     getPostData();
   }, [postId]);
+
+  useEffect(() => {
+    console.log("Getting user");
+
+    async function getUserData() {
+      const data = await getUser();
+      console.log(data);
+
+      setProfile(data);
+    
+      setUserId(data._id);
+      
+      console.log(data._id);
+
+     
+    }
+    getUserData();
+  }, []);
 
   return (
     <>
