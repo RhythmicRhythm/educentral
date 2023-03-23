@@ -14,6 +14,7 @@ import {
   createPost,
   likePost,
   dislikePost,
+  getUser
 } from "../../../services/authServices";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
@@ -27,6 +28,7 @@ const AdminDashboard = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [profile, setProfile] = useState(null);
   const [formData, setformData] = useState(initialState);
   const [imagePreview, setImagePreview] = useState(null);
   const [postImage, setPostImage] = useState("");
@@ -95,10 +97,25 @@ const AdminDashboard = () => {
   useEffect(() => {
     console.log("Getting Posts");
 
-    async function getUserData() {
+    async function getPostData() {
       const data = await getPosts();
       console.log(data);
       setPosts(data);
+    }
+    getPostData();
+  }, []);
+
+  useEffect(() => {
+    console.log("Getting use");
+
+    async function getUserData() {
+      const data = await getUser();
+      console.log(data);
+
+      setProfile(data);
+      console.log(profile);
+
+     
     }
     getUserData();
   }, []);

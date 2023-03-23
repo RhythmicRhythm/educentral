@@ -45,7 +45,7 @@ const Profile = () => {
 
           <div class="mt-8 ">
             <h2 class="text-gray-600 font-bold text-2xl tracking-wide">
-              Jonathan <br /> Smith
+              {profile?._id}
             </h2>
           </div>
           <p class="text-emerald-400 font-semibold mt-2.5">Active</p>
