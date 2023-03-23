@@ -81,29 +81,14 @@ const AdminDashboard = () => {
   if (postToUpdate.likes.some((like) => like.user === userId)) {
     console.log("userExist");
     // User has already liked the post, decrement the likesCount
-    // postToUpdate.likesCount = postToUpdate.likesCount - 1;
+    postToUpdate.likesCount = postToUpdate.likesCount - 1;
   }  else {
     console.log("userNotExist");
     // User has not liked the post, increment the likesCount
-    // postToUpdate.likesCount = postToUpdate.likesCount + 1;
+    postToUpdate.likesCount = postToUpdate.likesCount + 1;
   }
 
-        // // Check if the user has already liked the post
-        // if (posts.likes.some((like) => like.user === userId)) {
-        //   console.log("userExixt");
-        //   //  User has already liked the post, decrement the likesCount
-        //   setPosts((prevPost) => ({
-        //     ...prevPost,
-        //     likesCount: prevPost.likesCount - 1,
-        //   }));
-        // } else {
-        //   console.log("userExixt na");
-        //   //  User has not liked the post, increment the likesCount
-        //   setPosts((prevPost) => ({
-        //     ...prevPost,
-        //     likesCount: prevPost.likesCount + 1,
-        //   }));
-        // }
+   
 
     // try {
     //   const data = await likePost(postId);
