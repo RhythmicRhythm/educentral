@@ -92,10 +92,24 @@ const Post = () => {
 
   const likepost = async () => {
     console.log("Post Liked....");
-    setPost((prevPost) => ({
-      ...prevPost,
-      likesCount: prevPost.likesCount + 1,
-    }));
+  
+    // Check if the user has already liked the post
+    if  (post.likes.some((like) => like.user === userId)) {
+      console.log("userExixt");
+    //  User has already liked the post, decrement the likesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        likesCount: prevPost.likesCount - 1,
+      }));
+    } else {
+      console.log("userExixt na");
+     //  User has not liked the post, increment the likesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        likesCount: prevPost.likesCount + 1,
+      }));
+    }
+  
     try {
       const data = await likePost(postId);
       console.log(data);
@@ -105,6 +119,7 @@ const Post = () => {
       console.log(error);
     }
   };
+  
 
   const dislikepost = async () => {
     console.log("Post Disliked....");
