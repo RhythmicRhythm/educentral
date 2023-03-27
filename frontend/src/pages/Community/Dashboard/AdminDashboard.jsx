@@ -7,14 +7,14 @@ import { ic_thumb_down_outline } from "react-icons-kit/md/ic_thumb_down_outline"
 import { share2 } from "react-icons-kit/icomoon/share2";
 import { toast } from "react-toastify";
 import moment from "moment";
-import WebFont from 'webfontloader';
+import WebFont from "webfontloader";
 import { timesOutline } from "react-icons-kit/typicons/timesOutline";
 import {
   getPosts,
   createPost,
   likePost,
   dislikePost,
-  getUser
+  getUser,
 } from "../../../services/authServices";
 import { pen_3 } from "react-icons-kit/ikons/pen_3";
 import useRedirectLoggedOutUser from "../../../customHook/useRedirectLoggedOutUser";
@@ -73,60 +73,78 @@ const AdminDashboard = () => {
     console.log("Post Liked....");
     console.log(postId);
 
-// Find the index of the post with the given postId
-const postIndexToUpdate = posts.findIndex(post => post._id === postId);
+    // Find the index of the post with the given postId
+    const postIndexToUpdate = posts.findIndex((post) => post._id === postId);
 
-console.log(posts[postIndexToUpdate]);
+    console.log(posts[postIndexToUpdate]);
 
-if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
-  console.log("userExist");
-  // User has already liked the post, decrement the likesCount
-  posts[postIndexToUpdate].likesCount = posts[postIndexToUpdate].likesCount - 1;
-}  else {
-  console.log("userNotExist");
-  // User has not liked the post, increment the likesCount
-  posts[postIndexToUpdate].likesCount = posts[postIndexToUpdate].likesCount + 1;
-}
-  // Create a new array with the updated post
-  const updatedPosts = [...posts];
-  updatedPosts[postIndexToUpdate] = posts[postIndexToUpdate];
-
-  // Update the state with the new array
-  setPosts(updatedPosts);
-
-    try {
-      const data = await likePost(postId);
-      console.log(data);
-      const updatedPost = await getPosts();
-      setPosts(updatedPost);
-    } catch (error) {
-      console.log(error);
+    if (
+      posts[postIndexToUpdate].dislikes.some(
+        (dislike) => dislike.user === userId
+      )
+    ) {
+      console.log("remove dislike ");
+      // User has already disliked the post, decrement the dislikesCount
+      posts[postIndexToUpdate].dislikesCount = posts[postIndexToUpdate].dislikesCount - 1;
     }
+
+    if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
+      console.log("remove like");
+      // User has already liked the post, decrement the likesCount
+      posts[postIndexToUpdate].likesCount =
+        posts[postIndexToUpdate].likesCount - 1;
+    } else {
+      console.log("add like");
+      // User has not liked the post, increment the likesCount
+      posts[postIndexToUpdate].likesCount =
+        posts[postIndexToUpdate].likesCount + 1;
+    }
+    // Create a new array with the updated post
+    const updatedPosts = [...posts];
+    updatedPosts[postIndexToUpdate] = posts[postIndexToUpdate];
+
+    // Update the state with the new array
+    setPosts(updatedPosts);
+
+    // try {
+    //   const data = await likePost(postId);
+    //   console.log(data);
+    //   const updatedPost = await getPosts();
+    //   setPosts(updatedPost);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   const dislikepost = async (postId) => {
     console.log("Post Disliked....");
 
     // Find the index of the post with the given postId
-const postIndexToUpdate = posts.findIndex(post => post._id === postId);
+    const postIndexToUpdate = posts.findIndex((post) => post._id === postId);
 
-console.log(posts[postIndexToUpdate]);
+    console.log(posts[postIndexToUpdate]);
 
-if (posts[postIndexToUpdate].dislikes.some((dislike) => dislike.user === userId)) {
-  console.log("userExist");
-  // User has already disliked the post, decrement the likesCount
-  posts[postIndexToUpdate].dislikesCount = posts[postIndexToUpdate].dislikesCount - 1;
-}  else {
-  console.log("userNotExist");
-  // User has not disliked the post, increment the likesCount
-  posts[postIndexToUpdate].dislikesCount = posts[postIndexToUpdate].dislikesCount + 1;
-}
-  // Create a new array with the updated post
-  const updatedPosts = [...posts];
-  updatedPosts[postIndexToUpdate] = posts[postIndexToUpdate];
+    if (
+      posts[postIndexToUpdate].dislikes.some(
+        (dislike) => dislike.user === userId
+      )
+    ) {
+      console.log("userExist");
+      // User has already disliked the post, decrement the likesCount
+      posts[postIndexToUpdate].dislikesCount =
+        posts[postIndexToUpdate].dislikesCount - 1;
+    } else {
+      console.log("userNotExist");
+      // User has not disliked the post, increment the likesCount
+      posts[postIndexToUpdate].dislikesCount =
+        posts[postIndexToUpdate].dislikesCount + 1;
+    }
+    // Create a new array with the updated post
+    const updatedPosts = [...posts];
+    updatedPosts[postIndexToUpdate] = posts[postIndexToUpdate];
 
-  // Update the state with the new array
-  setPosts(updatedPosts);
+    // Update the state with the new array
+    setPosts(updatedPosts);
 
     console.log(postId);
     try {
@@ -140,28 +158,21 @@ if (posts[postIndexToUpdate].dislikes.some((dislike) => dislike.user === userId)
   };
 
   useEffect(() => {
-    console.log("Getting Posts");
-
     async function getPostData() {
       const data = await getPosts();
-      console.log(data);
+
       setPosts(data);
     }
     getPostData();
   }, []);
 
   useEffect(() => {
-    console.log("Getting user");
-
     async function getUserData() {
       const data = await getUser();
-      console.log(data);
 
       setProfile(data);
 
       setUserId(data._id);
-
-      console.log(data._id); 
     }
     getUserData();
   }, []);
@@ -264,9 +275,14 @@ if (posts[postIndexToUpdate].dislikes.some((dislike) => dislike.user === userId)
                   </div>
                   <div className="text-left">
                     <div className="flex gap-2">
-                      <h1 className="font-bold text-gray-700 text-sm">{item.name}</h1>
+                      <h1 className="font-bold text-gray-700 text-sm">
+                        {item.name}
+                      </h1>
                     </div>
-                    <p className="text-gray-600 text-xs font-bold"> {moment(item.createdAt).fromNow()} </p>
+                    <p className="text-gray-600 text-xs font-bold">
+                      {" "}
+                      {moment(item.createdAt).fromNow()}{" "}
+                    </p>
                     <div className="">
                       <pre
                         className="text-sm text-gray-500 mt-2"
@@ -291,16 +307,17 @@ if (posts[postIndexToUpdate].dislikes.some((dislike) => dislike.user === userId)
                   </div>
                 </Link>
                 <div className="text-gray-400 text-[.70rem] flex justify-between px-4 py-1 border-b-2 border-gray-100">
-                    
-                    <div className="flex gap-2">
+                  <div className="flex gap-2">
                     <div className="">{item ? item.likesCount : 0} likes </div>
-                    <div className="">{item ? item.dislikesCount : 0} dislikes </div>
+                    <div className="">
+                      {item ? item.dislikesCount : 0} dislikes{" "}
                     </div>
-                    <div className="flex gap-2">
-                    <div className="">{item ? item.comments.length : 0} Comments </div>
-                    
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="">
+                      {item ? item.comments.length : 0} Comments{" "}
                     </div>
-                   
+                  </div>
                 </div>
                 <div className="unaffect text-black flex justify-between px-4 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
@@ -308,14 +325,12 @@ if (posts[postIndexToUpdate].dislikes.some((dislike) => dislike.user === userId)
                     <h1 onClick={() => likepost(item._id)}>
                       <Icon icon={ic_thumb_up_outline} size={18} />
                     </h1>
-                    
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer border-r-2 border-gray-100">
                     {" "}
                     <h1 onClick={() => dislikepost(item._id)}>
                       <Icon icon={ic_thumb_down_outline} size={18} />
                     </h1>
-                   
                   </div>
                   <Link
                     to={`/dashboard/${item._id}`}

@@ -167,7 +167,6 @@ const Post = () => {
 
     try {
       const data = await addReply(replyData, postId, commentId);
-
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
       setreplyData({ ...formData, replyText: "" });
