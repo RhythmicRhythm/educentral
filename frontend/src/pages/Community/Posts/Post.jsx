@@ -93,6 +93,16 @@ const Post = () => {
   const likepost = async () => {
     console.log("Post Liked....");
 
+      // Check if the user has already liked the post
+      if (post.dislikes.some((dislike) => dislike.user === userId)) {
+        console.log("This user already disliked");
+        //  User has already liked the post, decrement the likesCount
+        setPost((prevPost) => ({
+          ...prevPost,
+          dislikesCount: prevPost.dislikesCount - 1,
+        }));
+      }
+      ////
     // Check if the user has already liked the post
     if (post.likes.some((like) => like.user === userId)) {
       console.log("userExixt");
