@@ -26,7 +26,7 @@ const createPost = asyncHandler(async (req, res) => {
         author: req.user.id,
         name: user.firstname,
         desc: desc.replace(/\n/g, "<br/>"), // Replace newline characters with <br/> tags
-      
+
         userimage,
         image: req.file.path,
       });

@@ -51,7 +51,7 @@ const Post = () => {
 
   const handleReplyClick = (commentId) => {
     commentsId = commentId;
-    console.log(commentsId);
+
     setShowReplyForm((prevState) => ({
       ...prevState,
       [commentId]: !prevState[commentId],
@@ -73,15 +73,13 @@ const Post = () => {
   const addcomment = async (e) => {
     e.preventDefault();
 
-    console.log("clicked");
-
     const postData = {
       text,
     };
 
     try {
       const data = await addComment(postData, postId);
-      console.log(data);
+
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
       setformData({ ...formData, text: "" });
@@ -91,28 +89,23 @@ const Post = () => {
   };
 
   const likepost = async () => {
-    console.log("Post Liked....");
+    // Check if the user has already disliked the post
+    if (post.dislikes.some((dislike) => dislike.user === userId)) {
+      //  User has already disliked the post, decrement the dislikesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        dislikesCount: prevPost.dislikesCount - 1,
+      }));
+    }
 
-      // Check if the user has already disliked the post
-      if (post.dislikes.some((dislike) => dislike.user === userId)) {
-        console.log("This user already disliked");
-        //  User has already disliked the post, decrement the dislikesCount
-        setPost((prevPost) => ({
-          ...prevPost,
-          dislikesCount: prevPost.dislikesCount - 1,
-        }));
-      }
-     
     // Check if the user has already liked the post
     if (post.likes.some((like) => like.user === userId)) {
-      console.log("userExixt");
       //  User has already liked the post, decrement the likesCount
       setPost((prevPost) => ({
         ...prevPost,
         likesCount: prevPost.likesCount - 1,
       }));
     } else {
-      console.log("userExixt na");
       //  User has not liked the post, increment the likesCount
       setPost((prevPost) => ({
         ...prevPost,
@@ -122,38 +115,32 @@ const Post = () => {
 
     try {
       const data = await likePost(postId);
-      console.log(data);
+
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   const dislikepost = async () => {
-    console.log("Post Disliked....");
-
-      // Check if the user has already liked the post
-      if (post.likes.some((like) => like.user === userId)) {
-        console.log("userExixt");
-        //  User has already liked the post, decrement the likesCount
-        setPost((prevPost) => ({
-          ...prevPost,
-          likesCount: prevPost.likesCount - 1,
-        }));
-      }
+    // Check if the user has already liked the post
+    if (post.likes.some((like) => like.user === userId)) {
+      //  User has already liked the post, decrement the likesCount
+      setPost((prevPost) => ({
+        ...prevPost,
+        likesCount: prevPost.likesCount - 1,
+      }));
+    }
 
     // Check if the user has already disliked the post
     if (post.dislikes.some((dislike) => dislike.user === userId)) {
-      console.log("userExixt");
       //  User has already disliked the post, decrement the dislikesCount
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount - 1,
       }));
     } else {
-      console.log("userExixt na");
       //  User has not disliked the post, increment the dislikesCount
       setPost((prevPost) => ({
         ...prevPost,
@@ -163,7 +150,7 @@ const Post = () => {
 
     try {
       const data = await dislikePost(postId);
-      console.log(data);
+
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
     } catch (error) {
@@ -173,7 +160,6 @@ const Post = () => {
 
   const addreply = async (e, commentId) => {
     e.preventDefault();
-    console.log(commentId);
 
     const replyData = {
       replyText,
@@ -181,7 +167,7 @@ const Post = () => {
 
     try {
       const data = await addReply(replyData, postId, commentId);
-      console.log(data);
+
       const updatedPost = await getPostById(postId);
       setPost(updatedPost);
       setreplyData({ ...formData, replyText: "" });
@@ -194,23 +180,17 @@ const Post = () => {
     async function getPostData() {
       const data = await getPostById(postId);
       setPost(data);
-      console.log(data);
     }
     getPostData();
   }, [postId]);
 
   useEffect(() => {
-    console.log("Getting user");
-
     async function getUserData() {
       const data = await getUser();
-      console.log(data);
 
       setProfile(data);
 
       setUserId(data._id);
-
-      console.log(data._id);
     }
     getUserData();
   }, []);
