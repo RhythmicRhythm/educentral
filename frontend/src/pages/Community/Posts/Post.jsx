@@ -93,16 +93,16 @@ const Post = () => {
   const likepost = async () => {
     console.log("Post Liked....");
 
-      // Check if the user has already liked the post
+      // Check if the user has already disliked the post
       if (post.dislikes.some((dislike) => dislike.user === userId)) {
         console.log("This user already disliked");
-        //  User has already liked the post, decrement the likesCount
+        //  User has already disliked the post, decrement the dislikesCount
         setPost((prevPost) => ({
           ...prevPost,
           dislikesCount: prevPost.dislikesCount - 1,
         }));
       }
-      ////
+     
     // Check if the user has already liked the post
     if (post.likes.some((like) => like.user === userId)) {
       console.log("userExixt");
@@ -134,17 +134,27 @@ const Post = () => {
   const dislikepost = async () => {
     console.log("Post Disliked....");
 
-    // Check if the user has already liked the post
+      // Check if the user has already liked the post
+      if (post.likes.some((like) => like.user === userId)) {
+        console.log("userExixt");
+        //  User has already liked the post, decrement the likesCount
+        setPost((prevPost) => ({
+          ...prevPost,
+          likesCount: prevPost.likesCount - 1,
+        }));
+      }
+
+    // Check if the user has already disliked the post
     if (post.dislikes.some((dislike) => dislike.user === userId)) {
       console.log("userExixt");
-      //  User has already liked the post, decrement the likesCount
+      //  User has already disliked the post, decrement the dislikesCount
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount - 1,
       }));
     } else {
       console.log("userExixt na");
-      //  User has not liked the post, increment the likesCount
+      //  User has not disliked the post, increment the dislikesCount
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount + 1,
