@@ -85,7 +85,8 @@ const AdminDashboard = () => {
     ) {
       console.log("remove dislike ");
       // User has already disliked the post, decrement the dislikesCount
-      posts[postIndexToUpdate].dislikesCount = posts[postIndexToUpdate].dislikesCount - 1;
+      posts[postIndexToUpdate].dislikesCount =
+        posts[postIndexToUpdate].dislikesCount - 1;
     }
 
     if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
@@ -106,14 +107,14 @@ const AdminDashboard = () => {
     // Update the state with the new array
     setPosts(updatedPosts);
 
-    // try {
-    //   const data = await likePost(postId);
-    //   console.log(data);
-    //   const updatedPost = await getPosts();
-    //   setPosts(updatedPost);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      const data = await likePost(postId);
+      console.log(data);
+      const updatedPost = await getPosts();
+      setPosts(updatedPost);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const dislikepost = async (postId) => {
@@ -124,18 +125,26 @@ const AdminDashboard = () => {
 
     console.log(posts[postIndexToUpdate]);
 
+
+    if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
+      console.log("remove like");
+      // User has already liked the post, decrement the likesCount
+      posts[postIndexToUpdate].likesCount =
+        posts[postIndexToUpdate].likesCount - 1;
+    }
+
     if (
       posts[postIndexToUpdate].dislikes.some(
         (dislike) => dislike.user === userId
       )
     ) {
       console.log("userExist");
-      // User has already disliked the post, decrement the likesCount
+      // User has already disliked the post, decrement the dislikesCount
       posts[postIndexToUpdate].dislikesCount =
         posts[postIndexToUpdate].dislikesCount - 1;
     } else {
       console.log("userNotExist");
-      // User has not disliked the post, increment the likesCount
+      // User has not disliked the post, increment the dislikesCount
       posts[postIndexToUpdate].dislikesCount =
         posts[postIndexToUpdate].dislikesCount + 1;
     }
