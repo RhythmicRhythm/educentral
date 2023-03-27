@@ -70,32 +70,24 @@ const AdminDashboard = () => {
   };
 
   const likepost = async (postId) => {
-    console.log("Post Liked....");
-    console.log(postId);
-
     // Find the index of the post with the given postId
     const postIndexToUpdate = posts.findIndex((post) => post._id === postId);
-
-    console.log(posts[postIndexToUpdate]);
 
     if (
       posts[postIndexToUpdate].dislikes.some(
         (dislike) => dislike.user === userId
       )
     ) {
-      console.log("remove dislike ");
       // User has already disliked the post, decrement the dislikesCount
       posts[postIndexToUpdate].dislikesCount =
         posts[postIndexToUpdate].dislikesCount - 1;
     }
 
     if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
-      console.log("remove like");
       // User has already liked the post, decrement the likesCount
       posts[postIndexToUpdate].likesCount =
         posts[postIndexToUpdate].likesCount - 1;
     } else {
-      console.log("add like");
       // User has not liked the post, increment the likesCount
       posts[postIndexToUpdate].likesCount =
         posts[postIndexToUpdate].likesCount + 1;
@@ -109,7 +101,7 @@ const AdminDashboard = () => {
 
     try {
       const data = await likePost(postId);
-      console.log(data);
+
       const updatedPost = await getPosts();
       setPosts(updatedPost);
     } catch (error) {
@@ -124,7 +116,6 @@ const AdminDashboard = () => {
     const postIndexToUpdate = posts.findIndex((post) => post._id === postId);
 
     console.log(posts[postIndexToUpdate]);
-
 
     if (posts[postIndexToUpdate].likes.some((like) => like.user === userId)) {
       console.log("remove like");
@@ -272,23 +263,25 @@ const AdminDashboard = () => {
                 <Link
                   to={`/dashboard/${item._id}`}
                   key={item._id}
-                  className="flex flex-col gap-2 justify-start mt-2  
-                p-8 "
+                  className="flex flex-col gap-2 justify-start mt-2"
                 >
-                  <div className="">
+                  <div className="px-2">
                     <img
                       className="rounded-full w-10"
                       src={item.userimage}
                       alt=""
                     />
                   </div>
-                  <div className="text-left">
+                  <div className="text-left px-2">
                     <div className="flex gap-2">
                       <h1 className="font-bold text-gray-700 text-sm">
                         {item.name}
                       </h1>
                     </div>
-                    <p className="text-gray-600 text-xs font-bold">
+                    <h1 className="font-medium text-gray-500 text-xs">
+                      description description description
+                    </h1>
+                    <p className="text-gray-600 text-xs font-semibold">
                       {" "}
                       {moment(item.createdAt).fromNow()}{" "}
                     </p>
@@ -306,13 +299,9 @@ const AdminDashboard = () => {
                         </span>
                       </pre>
                     </div>
-                    <div className="flex mt-4 px-4">
-                      <img
-                        className="w-auto rounded-lg"
-                        src={item.image}
-                        alt=""
-                      />
-                    </div>
+                  </div>
+                  <div className="flex mt-4">
+                    <img className="w-auto" src={item.image} alt="" />
                   </div>
                 </Link>
                 <div className="text-gray-400 text-[.70rem] flex justify-between px-4 py-1 border-b-2 border-gray-100">
@@ -331,14 +320,27 @@ const AdminDashboard = () => {
                 <div className="unaffect text-black flex justify-between px-4 py-1">
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
-                    <h1 onClick={() => likepost(item._id)}>
-                      <Icon icon={ic_thumb_up_outline} size={18} />
+                    <h1 className="text-xs" onClick={() => likepost(item._id)}>
+                      <Icon
+                        className="mr-1"
+                        icon={ic_thumb_up_outline}
+                        size={18}
+                      />
+                      Like
                     </h1>
                   </div>
                   <div className="flex gap-2 text-gray-400 cursor-pointer border-r-2 border-gray-100">
                     {" "}
-                    <h1 onClick={() => dislikepost(item._id)}>
-                      <Icon icon={ic_thumb_down_outline} size={18} />
+                    <h1
+                      className="text-xs"
+                      onClick={() => dislikepost(item._id)}
+                    >
+                      <Icon
+                        className="mr-1"
+                        icon={ic_thumb_down_outline}
+                        size={18}
+                      />
+                      Dislike
                     </h1>
                   </div>
                   <Link
@@ -346,15 +348,16 @@ const AdminDashboard = () => {
                     className="flex gap-2 text-gray-400 cursor-pointer"
                   >
                     {" "}
-                    <h1>
-                      <Icon icon={bubble2} size={18} />
+                    <h1 className="text-xs">
+                      <Icon className="mr-1" icon={bubble2} size={16} />
+                      Comment
                     </h1>
-                    {item ? item.comments.length : 0}
                   </Link>
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
-                    <h1 onClick={() => dislikepost(item._id)}>
-                      <Icon icon={share2} size={18} />
+                    <h1 className="text-xs">
+                      <Icon className="mr-1" icon={share2} size={16} />
+                      Share
                     </h1>
                     {/* <h1 className="text-lg">{post ? post.likesCount : 0}</h1> */}
                   </div>
