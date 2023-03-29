@@ -29,6 +29,7 @@ const Post = () => {
   const [post, setPost] = useState(null);
   const [isOpen, setIsOpen] = useState({});
   const [like, setLike] = useState(null);
+  const [dislike, setDislike] = useState(null);
   const [profile, setProfile] = useState(null);
   const [userId, setUserId] = useState(null);
   const [showReplyForm, setShowReplyForm] = useState({});
@@ -93,7 +94,7 @@ const Post = () => {
     // Check if the user has already disliked the post
     if (post.dislikes.some((dislike) => dislike.user === userId)) {
       //  User has already disliked the post, decrement the dislikesCount
-     
+
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount - 1,
@@ -102,21 +103,23 @@ const Post = () => {
 
     // Check if the user has already liked the post
     if (post.likes.some((like) => like.user === userId)) {
-      //
-      setLike(true);
-      //  User has already liked the post, decrement the likesCount
-
-      setPost((prevPost) => ({
-        ...prevPost,
-        likesCount: prevPost.likesCount - 1,
-      }));
+      // User has already liked the post and the like state is false, decrement the likesCount
+      if (!like) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          likesCount: prevPost.likesCount - 1,
+        }));
+        setLike(true);
+      }
     } else {
-      setLike(false);
-      //  User has not liked the post, increment the likesCount
-      setPost((prevPost) => ({
-        ...prevPost,
-        likesCount: prevPost.likesCount + 1,
-      }));
+      // User has not liked the post and the like state is true, increment the likesCount
+      if (like) {
+        setPost((prevPost) => ({
+          ...prevPost,
+          likesCount: prevPost.likesCount + 1,
+        }));
+        setLike(false);
+      }
     }
 
     try {
@@ -142,16 +145,22 @@ const Post = () => {
     // Check if the user has already disliked the post
     if (post.dislikes.some((dislike) => dislike.user === userId)) {
       //  User has already disliked the post, decrement the dislikesCount
+    if(!dislike) {
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount - 1,
       }));
+      setDislike(true);
+    }
     } else {
       //  User has not disliked the post, increment the dislikesCount
+    if (dislike) {
       setPost((prevPost) => ({
         ...prevPost,
         dislikesCount: prevPost.dislikesCount + 1,
       }));
+      setDislike(false)
+    }
     }
 
     try {
@@ -200,7 +209,7 @@ const Post = () => {
     getUserData();
   }, []);
 
-    const style = {
+  const style = {
     color: like ? "#F4A261" : "#000",
   };
 
@@ -266,7 +275,7 @@ const Post = () => {
                   <div className="flex gap-2 text-gray-400 cursor-pointer">
                     {" "}
                     <h1 style={style} onClick={likepost}>
-                      <Icon  icon={ic_thumb_up_outline} size={25} />
+                      <Icon icon={ic_thumb_up_outline} size={25} />
                     </h1>
                     <h1 className="text-lg">{post ? post.likesCount : 0}</h1>
                   </div>
