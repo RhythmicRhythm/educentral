@@ -3,177 +3,247 @@ import "./Newdashboard.css";
 import logo from "../Assets/Napps.png";
 import Icon from "react-icons-kit";
 
-
-
 const NewDashboard = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
 
-    function handleMenuClick() {
-        setIsMenuOpen(!isMenuOpen);
-      }
-    
-      function handleCloseClick() {
-        setIsMenuOpen(false);
-      }
+  function handleMenuClick() {
+    setIsMenuOpen(!isMenuOpen);
+  }
+
+  function handleCloseClick() {
+    setIsMenuOpen(false);
+  }
   return (
     <div className="c-container">
-        <aside style={{ display: isMenuOpen ? 'block' : 'none' }}>
-            <div className="top">
-                <div className="logo">
-                    <img src={logo} alt="" />
-                    <h2>edu <span className="danger text-black">Central</span></h2>
-                </div>
-                <div className="close"onClick={handleCloseClick}>
-                    X
-                </div>
-            </div>
-               <div className="sidebar">
-                {/* Sidebar Links */}
-                <div className="anchor-link">
-                    <h2>M</h2>
-                    <h1>Dashboard</h1>
-                </div>
-                <div className="anchor-link active">
-                    <h2>M</h2>
-                    <h1>Dashboard</h1>
-                </div>
-                <div className="anchor-link">
-                    <h2>M</h2>
-                    <h1>Dashboard</h1>
-                </div>
-                <div className="anchor-link">
-                    <h2>M</h2>
-                    <h1>Dashboard</h1>
-                </div>
-                <div className="anchor-link">
-                    <h2>M</h2>
-                    <h1>Dashboard</h1>
-                </div>
-                {/* Sidebar Links */}
-            </div>
-        </aside>
-
-        {/* =============== END OF ASIDE===============   */}
-        <main>
-            <h1>Dashboard</h1>
-            <div className="date">
-                <input type="date"  /> 
-            </div>
-
-            <div className="insight">
-                insights
-                <div className="">
-                    <div className="">
-                        Create Post
-                    </div>
-                    <div className="">
-                        
-                    </div>
-                </div>
-            </div>
-
-             {/* =============== END OF INSIGHTS ===============   */}
-
-             <div className="recent-orders">
-                <h2>Recent Orders</h2>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Product Name</th>
-                            <th>Product Name</th>
-                            <th>Product Name</th>
-                          
-                         
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                           
-                        </tr>
-                        <tr>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                           
-                        </tr>
-                        <tr>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                           
-                        </tr>
-                          <tr>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            <td>foldable mini</td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-             </div>
-        </main>
-
-        {/* =========== END OF MAIN ===========  */}
-        <div className="right">
-            <div className="top">
-                <button onClick={handleMenuClick} >
-                    M
-                </button>
-                <div className="profile">
-                    <div className="info">
-                        <p>Hi, <b>MR John</b></p>
-                        <small>Admin</small>
-                    </div>
-                    <div className="profile-photo">
-                        <img src="" alt="" />
-                    </div>
-                </div>
-            </div>
-
-            {/* ===========END OF TOP ===========*/}
-            <div className="recent-updates">
-                <h2>Recent Updates</h2>
-                <div className="updates">
-                    <div className="update">
-                        <div className="profile-photo">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="messages">
-                            <p>Mike Tyson <b>recieved his order of exclusive gps drones </b> </p>
-                             <small>2 minutes ago</small>
-                        </div>
-                    </div>
-                     <div className="update">
-                        <div className="profile-photo">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="messages">
-                            <p>Mike Tyson <b>recieved his order of exclusive gps drones </b> </p>
-                             <small>2 minutes ago</small>
-                        </div>
-                    </div>
-                     <div className="update">
-                        <div className="profile-photo">
-                            <img src="" alt="" />
-                        </div>
-                        <div className="messages">
-                            <p>Mike Tyson <b>recieved his order of exclusive gps drones </b> </p>
-                             <small>2 minutes ago</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <aside style={{ display: isMenuOpen ? "block" : "none" }}>
+        <div className="top">
+          <div className="logo">
+            <img src={logo} alt="" />
+            <h2>
+              edu <span className="danger text-black">Central</span>
+            </h2>
+          </div>
+          <div className="close" onClick={handleCloseClick}>
+            X
+          </div>
         </div>
+        <div className="sidebar">
+          {/* Sidebar Links */}
+          <div className="anchor-link">
+            <h2>M</h2>
+            <h1>Dashboard</h1>
+          </div>
+          <div className="anchor-link active">
+            <h2>M</h2>
+            <h1>Dashboard</h1>
+          </div>
+          <div className="anchor-link">
+            <h2>M</h2>
+            <h1>Dashboard</h1>
+          </div>
+          <div className="anchor-link">
+            <h2>M</h2>
+            <h1>Dashboard</h1>
+          </div>
+          <div className="anchor-link">
+            <h2>M</h2>
+            <h1>Dashboard</h1>
+          </div>
+          {/* Sidebar Links */}
+        </div>
+      </aside>
+
+      {/* =============== END OF ASIDE===============   */}
+      <main>
+        <h1>Dashboard</h1>
+        <div className="date">
+          <input type="date" />
+        </div>
+
+        <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+          <div className="">
+            <div className="">
+              <h2 className="text-sm text-gray-500">Create Post</h2>
+              <form
+                // onSubmit={createpost}
+                className=" w-full mt-6 text-sm text-gray-500"
+              >
+                <div className="pb-2 pt-4 text-left">
+                  <textarea
+                    type="text"
+                    name="desc"
+                    id="desc"
+                    // value={desc}
+                    placeholder="What's on your mind?"
+                    className="form-input-d"
+                    // onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="pb-2 pt-2 text-left flex gap-8 flex-row">
+                  {/* <label className="font-bold text-gray-700 text-sm mb-2">
+                    Add Image
+                  </label> */}
+                  <input
+                    className="text-sm text-grey-500
+                    file:mr-5 file:py-2 file:px-6
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-medium
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:cursor-pointer hover:file:bg-amber-50
+                    hover:file:text-amber-700"
+                    type="file"
+                    name="image"
+                    id="image"
+                    // onChange={handleImageChange}
+                  />
+                  <div className="">h</div>
+                </div>
+
+                <div className="flex justify-between">
+                  <div className="">
+                    {/* <button
+                    //   disabled={isDescEmpty}
+                      type="submit"
+                      className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
+                      hover:from-blue-900 hover:to-pink-600
+                      text-lg font-semibold rounded-lg text-white px-3 py-1 cursor-pointer"
+                    >
+                      Add Post
+                    </button> */}
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div className=""></div>
+          </div>
+        </div>
+
+        <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-4">
+              <div className="w-10 ">
+                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
+              </div>
+              <div className="">
+                <h1 className="text-sm text-gray-600"> John Doe</h1>
+                <p className="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
+              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
+              <span className="text-blue-400">See more</span>{" "}
+            </p>
+          </div>
+        </div>
+
+        <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-4">
+              <div className="w-10 ">
+                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
+              </div>
+              <div className="">
+                <h1 className="text-sm text-gray-600"> John Doe</h1>
+                <p className="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
+              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
+              <span className="text-blue-400">See more</span>{" "}
+            </p>
+            <img
+              className="rounded-lg"
+              src="http://127.0.0.1:5500/images/t-31.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+
+        {/* =============== END OF INSIGHTS ===============   */}
+
+        <div className="recent-orders bg-white p-4 rounded-lg shadow">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-4">
+              <div className="w-10 ">
+                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
+              </div>
+              <div className="">
+                <h1 className="text-sm text-gray-600"> John Doe</h1>
+                <p className="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
+              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
+              <span className="text-blue-400">See more</span>{" "}
+            </p>
+          </div>
+        </div>
+      </main>
+
+      {/* =========== END OF MAIN ===========  */}
+      <div className="right">
+        <div className="top">
+          <button onClick={handleMenuClick}>M</button>
+          <div className="profile">
+            <div className="info">
+              <p>
+                Hi, <b>MR John</b>
+              </p>
+              <small>Admin</small>
+            </div>
+            <div className="profile-photo">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </div>
+
+        {/* ===========END OF TOP ===========*/}
+        <div className="recent-updates">
+          <h2>Recent Updates</h2>
+          <div className="updates">
+            <div className="update">
+              <div className="profile-photo">
+                <img src="" alt="" />
+              </div>
+              <div className="messages">
+                <p>
+                  Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
+                </p>
+                <small>2 minutes ago</small>
+              </div>
+            </div>
+            <div className="update">
+              <div className="profile-photo">
+                <img src="" alt="" />
+              </div>
+              <div className="messages">
+                <p>
+                  Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
+                </p>
+                <small>2 minutes ago</small>
+              </div>
+            </div>
+            <div className="update">
+              <div className="profile-photo">
+                <img src="" alt="" />
+              </div>
+              <div className="messages">
+                <p>
+                  Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
+                </p>
+                <small>2 minutes ago</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -82,11 +82,22 @@ button[disabled]{
   padding: 10px;
   outline: none;
   border-bottom: 2px solid #b7b9bc;
+  
 }
 .form-input:focus {
   border-bottom: 2px solid #0539b4;
 }
 
+.form-input-d {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid #b7b9bc;
+  border-radius: 10px;
+}
+.form-input:focus {
+  border-bottom: 2px solid #0539b4;
+}
 .hamburger {
 	position: relative;
 	top: calc(50% - 2px);

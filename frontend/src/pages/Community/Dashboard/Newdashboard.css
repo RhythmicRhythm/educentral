@@ -46,7 +46,7 @@ img {
   margin: 0 auto;
 
   gap: 1.8rem;
-  grid-template-columns: 14rem auto 23rem;
+  grid-template-columns: 14rem auto 19rem;
 }
 
 aside {
@@ -197,7 +197,7 @@ main .recent-orders table {
 
   main .recent-orders {
     width: 94%;
-    position: absolute;
+    /* position: absolute; */
     left: 50%;
     transform: translateX(-50%);
     margin: 2rem 0 0 8.8rem;
@@ -258,7 +258,7 @@ main .recent-orders table {
     padding: 0 1rem;
    }
    main .recent-orders{
-    position: relative;
+    /* position: relative; */
     margin: 3rem 0 0 0;
     width: 100%;
    }
@@ -294,7 +294,5 @@ main .recent-orders table {
     cursor: pointer;
     color: var(--color-dark);
     position: absolute;
-
-
    }
 }
