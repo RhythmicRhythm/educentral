@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Sidebar.scss";
+// import "./Sidebar.scss";
 import { HiMenuAlt3 } from "react-icons/hi";
 import SidebarItem from "./SidebarItem";
 import Icon from "react-icons-kit";

@@ -30,6 +30,7 @@ import NewForum from "./pages/Community/CreateGroup/NewForum";
 import Workspaces from "./pages/Community/CreateGroup/workspaces";
 import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
+import NewDashboard from "./pages/Community/Dashboard/NewDashboard";
 import Members from "./pages/Community/Members/Members";
 import Post from "./pages/Community/Posts/Post";
 
@@ -77,15 +78,14 @@ function App() {
               </Sidebar>
             }
           />
+
+          <Route path="/newdashboard" element={<NewDashboard />} />
           {/* dashboards */}
 
-           {/* dashboards */}
+          {/* posts */}
 
-           <Route
-            path="/dashboard/:id"
-            element={< Post /> }
-          />
-          {/* dashboards */}
+          <Route path="/dashboard/:id" element={<Post />} />
+          {/* posts */}
 
           <Route path="/creategroup" element={<Creategroup />} />
 

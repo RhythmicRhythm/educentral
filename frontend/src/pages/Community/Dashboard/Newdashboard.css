@@ -1,0 +1,300 @@
+:root {
+  --color-primary: #7380ce;
+  --color-danger: #ff7782;
+  --color-success: #41f1b6;
+  --color-warning: #ffbb5f;
+  --color-light: rgba(132, 139, 208, 0.1);
+  --color-white: #fff;
+  --color-info-light: #dce1eb;
+  --color-info-dark: #7d8da1;
+  --color-primary-variant: #111e88;
+  --color-dark-variant: #363949;
+  --color-background: #f6f6f9;
+
+  --card-border-radius: 2rem;
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+
+  --card-padding: 1.8rem;
+  --padding-1: 1.2rem;
+  --box-shadow: 0 2rem 3rem var(--color-lght);
+}
+
+* {
+  appearance: none;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 0.88rem;
+  background: var(--color-background);
+  user-select: none;
+  overflow-x: hidden;
+}
+.anchor-link {
+  color: var(--color-dark);
+}
+img {
+  display: block;
+  width: 100%;
+}
+
+.c-container {
+  display: grid;
+  width: 96%;
+  margin: 0 auto;
+
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto 23rem;
+}
+
+aside {
+  height: 100vh;
+}
+
+aside .top {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
+aside .logo {
+  display: flex;
+  gap: 0.8rem;
+}
+aside .logo img {
+  width: 2rem;
+  height: 2rem;
+}
+
+aside .close {
+  display: none;
+}
+
+/* ========= SIDEBAR ==========  */
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  position: relative;
+  top: 3rem;
+}
+
+aside .sidebar .anchor-link {
+  display: flex;
+  color: var(--color-info-dark);
+  margin-left: 2rem;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  height: 2.2rem;
+  transition: all 300ms ease;
+}
+aside .sidebar .anchor-link h2 {
+  font-size: 1.6rem;
+  transition: all 300ms ease;
+}
+aside .sidebar .anchor-link:last-child {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+aside .sidebar .anchor-link.active {
+  background: var(--color-light);
+  color: var(--color-primary);
+  margin-left: 0;
+}
+
+aside .sidebar .anchor-link.active:before {
+  content: "";
+  width: 6px;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+aside .sidebar .anchor-link.active h2 {
+  color: var(--color-primary);
+  margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar .anchor-link:hover {
+  color: var(--color-primary);
+}
+aside .sidebar .anchor-link:hover h2 {
+  margin-left: 1rem;
+}
+
+/* ============= MAIN =============  */
+main {
+  margin-top: 1.4rem;
+}
+main .insights {
+  display: grid;
+}
+
+/* ============= RECENT ORDERS =============  */
+main .recent-orders {
+  margin-top: 2rem;
+}
+main .recent-orders h2 {
+  margin-bottom: 0.8rem;
+}
+main .recent-orders table {
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+}
+
+/* ================ RIGHT ================ */
+.right {
+  margin-top: 1.4rem;
+}
+.right .top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+  background: gray;
+}
+
+.right .top button {
+  display: none;
+}
+.right .top .profile {
+  display: flex;
+  gap: 2rem;
+  text-align: right;
+}
+
+/* MEDIA qUERIES  */
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 94%;
+    grid-template-columns: 7rem auto 23rem;
+  }
+  aside .logo h2 {
+    display: none;
+  }
+  aside .sidebar h1 {
+    display: none;
+  }
+  aside .sidebar .anchor-link {
+    width: 5.6rem;
+  }
+  aside .sidebar anchor-link:last-child {
+    position: relative;
+    margin-top: 1.8rem;
+  }
+  main .insights{
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  main .recent-orders {
+    width: 94%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 2rem 0 0 8.8rem;
+  }
+  main .recent-orders table{
+    width: 82vw;
+  }
+}
+
+/* ============ MEDIA QUERIES  ============ */
+
+@media screen and (max-width: 768px){
+   .c-container{
+    width: 100vw;
+    grid-template-columns: 1fr;
+   }
+   aside{
+    position: fixed;
+    /* left: -100%; */
+    background: var(--color-white);
+    width: 18rem;
+    z-index: 3;
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    padding-right: var(--card-padding); 
+    /* animation: showMenu 400ms ease fowards;  */
+   }
+/* @keyframes showMenu{
+  to{
+    left: 0;
+  }
+} */
+
+   aside .logo{
+    margin-left: 1rem;
+   }
+   aside .logo h2 {
+    display: inline;
+   }
+   aside .sidebar h1{
+    display: inline;
+   }
+   aside .sidebar .anchor-link{
+     width: 100%;
+     height: 3.4rem;
+   }
+   aside .sidebar .anchor-link:last-child{
+    position: absolute;
+    bottom: 5rem;
+   }
+   aside .close{
+    display: inline-block;
+    cursor: pointer;
+   }
+
+   main{
+    margin-top: 8rem;
+    padding: 0 1rem;
+   }
+   main .recent-orders{
+    position: relative;
+    margin: 3rem 0 0 0;
+    width: 100%;
+   }
+   main .recent-orders table{
+    width: 100%;
+    margin: 0;
+   }
+
+   .right{
+    width: 94%;
+    margin: 0 auto 4rem;
+   }
+   .right .top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    padding: 0 0.8rem;
+    height: 4.6rem;
+    background: var(--color-white);
+    width: 100%;
+
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 1rem 1rem var(--color-light);
+   }
+   .right .profile .info{
+    display: none;
+   }
+   .right .top button{
+    display: inline-block;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-dark);
+    position: absolute;
+
+
+   }
+}
