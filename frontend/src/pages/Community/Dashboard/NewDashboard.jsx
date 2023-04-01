@@ -78,7 +78,6 @@ const NewDashboard = () => {
       {/* =============== END OF ASIDE===============   */}
       <main>
         <h1 className="text-xl font-bold text-gray-600">Dashboard</h1>
-        
 
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
           <div className="">
@@ -148,8 +147,12 @@ const NewDashboard = () => {
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
           <div className="flex flex-col">
             <div className="flex flex-row gap-4">
-              <div className="w-10 ">
-                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
+              <div>
+                <img
+                  className="w-10 rounded-full"
+                  src="https://randomuser.me/api/portraits/men/67.jpg"
+                  alt=""
+                />
               </div>
               <div className="">
                 <h1 className="text-sm text-gray-600"> John Doe</h1>
@@ -200,8 +203,12 @@ const NewDashboard = () => {
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
           <div className="flex flex-col">
             <div className="flex flex-row gap-4">
-              <div className="w-10 ">
-                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
+              <div>
+                <img
+                  className="w-10 rounded-full"
+                  src="https://randomuser.me/api/portraits/men/67.jpg"
+                  alt=""
+                />
               </div>
               <div className="">
                 <h1 className="text-sm text-gray-600"> John Doe</h1>
@@ -216,7 +223,7 @@ const NewDashboard = () => {
             </p>
             <img
               className="rounded-lg"
-              src="http://127.0.0.1:5500/images/t-31.jpg"
+              src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
               alt=""
             />
 
@@ -281,42 +288,43 @@ const NewDashboard = () => {
         </div>
 
         {/* ===========END OF TOP ===========*/}
-        <div className="recent-updates">
-          <h2>Recent Updates</h2>
+        <div className="recent-updates bg-white p-4 rounded-lg shadow mt-6">
+          <h2 className="text-gray-600">Recent Updates</h2>
           <div className="updates">
-            <div className="update">
+            <div className="update mb-2">
               <div className="profile-photo">
                 <img src="" alt="" />
               </div>
               <div className="messages">
-                <p>
+                <p className="text-gray-500 text-xs">
                   Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
                 </p>
                 <small>2 minutes ago</small>
               </div>
             </div>
-            <div className="update">
+            <div className="update mb-2">
               <div className="profile-photo">
                 <img src="" alt="" />
               </div>
               <div className="messages">
-                <p>
+                <p className="text-gray-500 text-xs">
                   Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
                 </p>
                 <small>2 minutes ago</small>
               </div>
             </div>
-            <div className="update">
+            <div className="update mb-2">
               <div className="profile-photo">
                 <img src="" alt="" />
               </div>
               <div className="messages">
-                <p>
+                <p className="text-gray-500 text-xs">
                   Mike Tyson <b>recieved his order of exclusive gps drones </b>{" "}
                 </p>
                 <small>2 minutes ago</small>
               </div>
             </div>
+            
           </div>
         </div>
       </div>
