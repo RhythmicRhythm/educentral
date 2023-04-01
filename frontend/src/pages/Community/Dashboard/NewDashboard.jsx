@@ -19,35 +19,56 @@ const NewDashboard = () => {
         <div className="top">
           <div className="logo">
             <img src={logo} alt="" />
-            <h2 className="text-xl text-gray-600 font-bold">
-              Napps
-            </h2>
+            <h2 className="text-xl text-gray-600 font-bold">Napps</h2>
           </div>
           <div className="close ml-12 mb-2" onClick={handleCloseClick}>
-            <img className="w-4" src="https://img.icons8.com/stickers/256/x.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/stickers/256/x.png"
+              alt=""
+            />
           </div>
         </div>
         <div className="sidebar">
           {/* Sidebar Links */}
           <div className="anchor-link">
-            <img className="w-4"
-             src="https://img.icons8.com/fluency/256/dashboard-layout.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/fluency/256/dashboard-layout.png"
+              alt=""
+            />
             <h1>Dashboard</h1>
           </div>
           <div className="anchor-link active">
-            <img className="w-4" src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/256/external-premium-membership-ecommerce-3-sbts2018-outline-color-sbts2018.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/256/external-premium-membership-ecommerce-3-sbts2018-outline-color-sbts2018.png"
+              alt=""
+            />
             <h1>Members</h1>
           </div>
           <div className="anchor-link">
-            <img className="w-4" src="https://img.icons8.com/stickers/256/user-skin-type-1.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/stickers/256/user-skin-type-1.png"
+              alt=""
+            />
             <h1>Profile</h1>
           </div>
           <div className="anchor-link">
-             <img className="w-4" src="https://img.icons8.com/stickers/256/collaboration-female-male.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/stickers/256/collaboration-female-male.png"
+              alt=""
+            />
             <h1>Dashboard</h1>
           </div>
           <div className="anchor-link">
-           <img className="w-4" src="https://img.icons8.com/stickers/256/door-opened.png" alt="" />
+            <img
+              className="w-4"
+              src="https://img.icons8.com/stickers/256/door-opened.png"
+              alt=""
+            />
             <h1>Sign Out</h1>
           </div>
           {/* Sidebar Links */}
@@ -56,10 +77,8 @@ const NewDashboard = () => {
 
       {/* =============== END OF ASIDE===============   */}
       <main>
-        <h1>Dashboard</h1>
-        <div className="date">
-          <input type="date" />
-        </div>
+        <h1 className="text-xl font-bold text-gray-600">Dashboard</h1>
+        
 
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
           <div className="">
@@ -99,7 +118,11 @@ const NewDashboard = () => {
                     // onChange={handleImageChange}
                   />
                   <div className="">
-                    <img className="w-8" src="https://img.icons8.com/stickers/256/paper-plane.png" alt="" />
+                    <img
+                      className="w-8"
+                      src="https://img.icons8.com/stickers/256/paper-plane.png"
+                      alt=""
+                    />
                   </div>
                 </div>
 
@@ -140,6 +163,38 @@ const NewDashboard = () => {
               <span className="text-blue-400">See more</span>{" "}
             </p>
           </div>
+
+          <div className="mt-4 flex flex-row justify-between">
+            <div className="flex flex-row gap-4">
+              <div className="flex flex-row">
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">2.5k Likes</h1>
+              </div>
+              <div
+                className="flex flex-row
+                "
+              >
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">97 Comments</h1>
+              </div>
+            </div>
+            <div className="flex flex-row gap-1">
+              <img
+                className="w-6"
+                src="https://img.icons8.com/stickers/256/share.png"
+                alt=""
+              />
+              <h1 className="text-xs mt-1">27 Shares</h1>
+            </div>
+          </div>
         </div>
 
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
@@ -164,6 +219,38 @@ const NewDashboard = () => {
               src="http://127.0.0.1:5500/images/t-31.jpg"
               alt=""
             />
+
+            <div className="mt-4 flex flex-row justify-between">
+              <div className="flex flex-row gap-4">
+                <div className="flex flex-row">
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
+                    alt=""
+                  />
+                  <h1 className="text-xs mt-1">2.5k Likes</h1>
+                </div>
+                <div
+                  className="flex flex-row
+                "
+                >
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
+                    alt=""
+                  />
+                  <h1 className="text-xs mt-1">97 Comments</h1>
+                </div>
+              </div>
+              <div className="flex flex-row gap-1">
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/256/share.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">27 Shares</h1>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -174,7 +261,11 @@ const NewDashboard = () => {
       <div className="right">
         <div className="top">
           <button onClick={handleMenuClick}>
-            <img className="w-6" src="https://img.icons8.com/stickers/256/xbox-menu.png" alt="" />
+            <img
+              className="w-6"
+              src="https://img.icons8.com/stickers/256/xbox-menu.png"
+              alt=""
+            />
           </button>
           <div className="profile">
             <div className="info">
