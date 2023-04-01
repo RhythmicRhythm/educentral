@@ -19,35 +19,36 @@ const NewDashboard = () => {
         <div className="top">
           <div className="logo">
             <img src={logo} alt="" />
-            <h2>
-              edu <span className="danger text-black">Central</span>
+            <h2 className="text-xl text-gray-600 font-bold">
+              Napps
             </h2>
           </div>
-          <div className="close" onClick={handleCloseClick}>
-            X
+          <div className="close ml-12 mb-2" onClick={handleCloseClick}>
+            <img className="w-4" src="https://img.icons8.com/stickers/256/x.png" alt="" />
           </div>
         </div>
         <div className="sidebar">
           {/* Sidebar Links */}
           <div className="anchor-link">
-            <h2>M</h2>
+            <img className="w-4"
+             src="https://img.icons8.com/fluency/256/dashboard-layout.png" alt="" />
             <h1>Dashboard</h1>
           </div>
           <div className="anchor-link active">
-            <h2>M</h2>
+            <img className="w-4" src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/256/external-premium-membership-ecommerce-3-sbts2018-outline-color-sbts2018.png" alt="" />
+            <h1>Members</h1>
+          </div>
+          <div className="anchor-link">
+            <img className="w-4" src="https://img.icons8.com/stickers/256/user-skin-type-1.png" alt="" />
+            <h1>Profile</h1>
+          </div>
+          <div className="anchor-link">
+             <img className="w-4" src="https://img.icons8.com/stickers/256/collaboration-female-male.png" alt="" />
             <h1>Dashboard</h1>
           </div>
           <div className="anchor-link">
-            <h2>M</h2>
-            <h1>Dashboard</h1>
-          </div>
-          <div className="anchor-link">
-            <h2>M</h2>
-            <h1>Dashboard</h1>
-          </div>
-          <div className="anchor-link">
-            <h2>M</h2>
-            <h1>Dashboard</h1>
+           <img className="w-4" src="https://img.icons8.com/stickers/256/door-opened.png" alt="" />
+            <h1>Sign Out</h1>
           </div>
           {/* Sidebar Links */}
         </div>
@@ -63,7 +64,7 @@ const NewDashboard = () => {
         <div className="insight bg-white p-4 rounded-lg shadow mt-6">
           <div className="">
             <div className="">
-              <h2 className="text-sm text-gray-500">Create Post</h2>
+              <h2 className="text-sm text-gray-600 font-bold">Create Post</h2>
               <form
                 // onSubmit={createpost}
                 className=" w-full mt-6 text-sm text-gray-500"
@@ -80,7 +81,7 @@ const NewDashboard = () => {
                   />
                 </div>
 
-                <div className="pb-2 pt-2 text-left flex gap-8 flex-row">
+                <div className="pb-2 pt-2 text-left flex justify-between flex-row">
                   {/* <label className="font-bold text-gray-700 text-sm mb-2">
                     Add Image
                   </label> */}
@@ -97,7 +98,9 @@ const NewDashboard = () => {
                     id="image"
                     // onChange={handleImageChange}
                   />
-                  <div className="">h</div>
+                  <div className="">
+                    <img className="w-8" src="https://img.icons8.com/stickers/256/paper-plane.png" alt="" />
+                  </div>
                 </div>
 
                 <div className="flex justify-between">
@@ -165,32 +168,14 @@ const NewDashboard = () => {
         </div>
 
         {/* =============== END OF INSIGHTS ===============   */}
-
-        <div className="recent-orders bg-white p-4 rounded-lg shadow">
-          <div className="flex flex-col">
-            <div className="flex flex-row gap-4">
-              <div className="w-10 ">
-                <img src="http://127.0.0.1:5500/images/user-8.png" alt="" />
-              </div>
-              <div className="">
-                <h1 className="text-sm text-gray-600"> John Doe</h1>
-                <p className="text-xs text-gray-400">2 hours ago</p>
-              </div>
-            </div>
-            <p className="text-xs text-gray-500">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
-              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
-              <span className="text-blue-400">See more</span>{" "}
-            </p>
-          </div>
-        </div>
       </main>
 
       {/* =========== END OF MAIN ===========  */}
       <div className="right">
         <div className="top">
-          <button onClick={handleMenuClick}>M</button>
+          <button onClick={handleMenuClick}>
+            <img className="w-6" src="https://img.icons8.com/stickers/256/xbox-menu.png" alt="" />
+          </button>
           <div className="profile">
             <div className="info">
               <p>

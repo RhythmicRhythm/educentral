@@ -50,7 +50,8 @@ img {
 }
 
 aside {
-  height: 100vh;
+  max-height: 100vh;
+  
 }
 
 aside .top {
@@ -93,7 +94,7 @@ aside .sidebar .anchor-link {
   height: 2.2rem;
   transition: all 300ms ease;
 }
-aside .sidebar .anchor-link h2 {
+aside .sidebar .anchor-link img {
   font-size: 1.6rem;
   transition: all 300ms ease;
 }
@@ -124,7 +125,7 @@ aside .sidebar .anchor-link.active h2 {
 aside .sidebar .anchor-link:hover {
   color: var(--color-primary);
 }
-aside .sidebar .anchor-link:hover h2 {
+aside .sidebar .anchor-link:hover img {
   margin-left: 1rem;
 }
 
