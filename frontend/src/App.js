@@ -30,6 +30,7 @@ import NewForum from "./pages/Community/CreateGroup/NewForum";
 import Workspaces from "./pages/Community/CreateGroup/workspaces";
 import AdminDashboard from "./pages/Community/Dashboard/AdminDashboard";
 import UserDashboard from "./pages/Community/Dashboard/UserDashboard";
+import NnewDashboard from "./pages/Community/Dashboard/NnewDashboard";
 import NewDashboard from "./pages/Community/Dashboard/NewDashboard";
 import Members from "./pages/Community/Members/Members";
 import Post from "./pages/Community/Posts/Post";
@@ -80,6 +81,8 @@ function App() {
           />
 
           <Route path="/newdashboard" element={<NewDashboard />} />
+
+          <Route path="/nnewdashboard" element={<NnewDashboard />} />
           {/* dashboards */}
 
           {/* posts */}
