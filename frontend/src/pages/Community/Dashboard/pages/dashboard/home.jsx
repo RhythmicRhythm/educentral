@@ -30,171 +30,193 @@ import {
 
 export function Home() {
   return (
-    <div className="mt-12">
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({ icon, title, footer, ...rest }) => (
-          <StatisticsCard
-            key={title}
-            {...rest}
-            title={title}
-            icon={React.createElement(icon, {
-              className: "w-6 h-6 text-white",
-            })}
-            footer={
-              <Typography className="font-normal text-blue-gray-600">
-                <strong className={footer.color}>{footer.value}</strong>
-                &nbsp;{footer.label}
-              </Typography>
-            }
-          />
-        ))}
-      </div>
-      <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
-        {statisticsChartsData.map((props) => (
-          <StatisticsChart
-            key={props.title}
-            {...props}
-            footer={
-              <Typography
-                variant="small"
-                className="flex items-center font-normal text-blue-gray-600"
-              >
-                <ClockIcon strokeWidth={2} className="h-4 w-4 text-inherit" />
-                &nbsp;{props.footer}
-              </Typography>
-            }
-          />
-        ))}
-      </div>
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        <Card className="overflow-hidden xl:col-span-2">
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color="transparent"
-            className="m-0 flex items-center justify-between p-6"
-          >
-            <div>
-              <Typography variant="h6" color="blue-gray" className="mb-1">
-                Projects
-              </Typography>
-              <Typography
-                variant="small"
-                className="flex items-center gap-1 font-normal text-blue-gray-600"
-              >
-                <CheckIcon strokeWidth={3} className="h-4 w-4 text-blue-500" />
-                <strong>30 done</strong> this month
-              </Typography>
-            </div>
-            <Menu placement="left-start">
-              <MenuHandler>
-                <IconButton size="sm" variant="text" color="blue-gray">
-                  <EllipsisVerticalIcon
-                    strokeWidth={3}
-                    fill="currenColor"
-                    className="h-6 w-6"
-                  />
-                </IconButton>
-              </MenuHandler>
-              <MenuList>
-                <MenuItem>Action</MenuItem>
-                <MenuItem>Another Action</MenuItem>
-                <MenuItem>Something else here</MenuItem>
-              </MenuList>
-            </Menu>
-          </CardHeader>
-          <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-            <table className="w-full min-w-[640px] table-auto">
-              <thead>
-                <tr>
-                  {["companies", "members", "budget", "completion"].map(
-                    (el) => (
-                      <th
-                        key={el}
-                        className="border-b border-blue-gray-50 py-3 px-6 text-left"
-                      >
-                        <Typography
-                          variant="small"
-                          className="text-[11px] font-medium uppercase text-blue-gray-400"
-                        >
-                          {el}
-                        </Typography>
-                      </th>
-                    )
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {projectsTableData.map(
-                  ({ img, name, members, budget, completion }, key) => {
-                    const className = `py-3 px-5 ${
-                      key === projectsTableData.length - 1
-                        ? ""
-                        : "border-b border-blue-gray-50"
-                    }`;
+    <div className="mt-8 px-20">
+      <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="overflow-hidden xl:col-span-2">
+          <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+            <div className="">
+              <div className="">
+                <h2 className="text-sm text-gray-600 font-bold">Create Post</h2>
+                <form
+                  // onSubmit={createpost}
+                  className=" w-full mt-6 text-sm text-gray-500"
+                >
+                  <div className="pb-2 pt-4 text-left">
+                    <textarea
+                      type="text"
+                      name="desc"
+                      id="desc"
+                      // value={desc}
+                      placeholder="What's on your mind?"
+                      className="form-input-d"
+                      // onChange={handleInputChange}
+                    />
+                  </div>
 
-                    return (
-                      <tr key={name}>
-                        <td className={className}>
-                          <div className="flex items-center gap-4">
-                            <Avatar src={img} alt={name} size="sm" />
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-bold"
-                            >
-                              {name}
-                            </Typography>
-                          </div>
-                        </td>
-                        <td className={className}>
-                          {members.map(({ img, name }, key) => (
-                            <Tooltip key={name} content={name}>
-                              <Avatar
-                                src={img}
-                                alt={name}
-                                size="xs"
-                                variant="circular"
-                                className={`cursor-pointer border-2 border-white ${
-                                  key === 0 ? "" : "-ml-2.5"
-                                }`}
-                              />
-                            </Tooltip>
-                          ))}
-                        </td>
-                        <td className={className}>
-                          <Typography
-                            variant="small"
-                            className="text-xs font-medium text-blue-gray-600"
-                          >
-                            {budget}
-                          </Typography>
-                        </td>
-                        <td className={className}>
-                          <div className="w-10/12">
-                            <Typography
-                              variant="small"
-                              className="mb-1 block text-xs font-medium text-blue-gray-600"
-                            >
-                              {completion}%
-                            </Typography>
-                            <Progress
-                              value={completion}
-                              variant="gradient"
-                              color={completion === 100 ? "green" : "blue"}
-                              className="h-1"
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  }
-                )}
-              </tbody>
-            </table>
-          </CardBody>
-        </Card>
-        <Card>
+                  <div className="pb-2 pt-2 text-left flex justify-between flex-row">
+                    {/* <label className="font-bold text-gray-700 text-sm mb-2">
+                    Add Image
+                  </label> */}
+                    <input
+                      className="text-sm text-grey-500
+                    file:mr-5 file:py-2 file:px-6
+                    file:rounded-full file:border-0
+                    file:text-sm file:font-medium
+                    file:bg-blue-50 file:text-blue-700
+                    hover:file:cursor-pointer hover:file:bg-amber-50
+                    hover:file:text-amber-700"
+                      type="file"
+                      name="image"
+                      id="image"
+                      // onChange={handleImageChange}
+                    />
+                    <div className="">
+                      <img
+                        className="w-8"
+                        src="https://img.icons8.com/stickers/256/paper-plane.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <div className="">
+                      {/* <button
+                    //   disabled={isDescEmpty}
+                      type="submit"
+                      className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
+                      hover:from-blue-900 hover:to-pink-600
+                      text-lg font-semibold rounded-lg text-white px-3 py-1 cursor-pointer"
+                    >
+                      Add Post
+                    </button> */}
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div className=""></div>
+            </div>
+          </div>
+
+          <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-4">
+              <div>
+                <img
+                  className="w-10 rounded-full"
+                  src="https://randomuser.me/api/portraits/men/67.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="">
+                <h1 className="text-sm text-gray-600"> John Doe</h1>
+                <p className="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
+              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
+              <span className="text-blue-400">See more</span>{" "}
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-row justify-between">
+            <div className="flex flex-row gap-4">
+              <div className="flex flex-row">
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">2.5k Likes</h1>
+              </div>
+              <div
+                className="flex flex-row
+                "
+              >
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">97 Comments</h1>
+              </div>
+            </div>
+            <div className="flex flex-row gap-1">
+              <img
+                className="w-6"
+                src="https://img.icons8.com/stickers/256/share.png"
+                alt=""
+              />
+              <h1 className="text-xs mt-1">27 Shares</h1>
+            </div>
+          </div>
+        </div>
+
+        <div className="insight bg-white p-4 rounded-lg shadow mt-6">
+          <div className="flex flex-col">
+            <div className="flex flex-row gap-4">
+              <div>
+                <img
+                  className="w-10 rounded-full"
+                  src="https://randomuser.me/api/portraits/men/67.jpg"
+                  alt=""
+                />
+              </div>
+              <div className="">
+                <h1 className="text-sm text-gray-600"> John Doe</h1>
+                <p className="text-xs text-gray-400">2 hours ago</p>
+              </div>
+            </div>
+            <p className="text-xs text-gray-500 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
+              faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
+              <span className="text-blue-400">See more</span>{" "}
+            </p>
+            <img
+              className="rounded-lg"
+              src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              alt=""
+            />
+
+            <div className="mt-4 flex flex-row justify-between">
+              <div className="flex flex-row gap-4">
+                <div className="flex flex-row">
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
+                    alt=""
+                  />
+                  <h1 className="text-xs mt-1">2.5k Likes</h1>
+                </div>
+                <div
+                  className="flex flex-row
+                "
+                >
+                  <img
+                    className="w-6"
+                    src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
+                    alt=""
+                  />
+                  <h1 className="text-xs mt-1">97 Comments</h1>
+                </div>
+              </div>
+              <div className="flex flex-row gap-1">
+                <img
+                  className="w-6"
+                  src="https://img.icons8.com/stickers/256/share.png"
+                  alt=""
+                />
+                <h1 className="text-xs mt-1">27 Shares</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div className="">
           <CardHeader
             floated={false}
             shadow={false}
@@ -250,7 +272,7 @@ export function Home() {
               )
             )}
           </CardBody>
-        </Card>
+        </div>
       </div>
     </div>
   );
