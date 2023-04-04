@@ -34,6 +34,7 @@ import NnewDashboard from "./pages/Community/Dashboard/NnewDashboard";
 import NewDashboard from "./pages/Community/Dashboard/NewDashboard";
 import Members from "./pages/Community/Members/Members";
 import Post from "./pages/Community/Posts/Post";
+import Auth from "./pages/Community/Dashboard/layouts/auth";
 
 axios.defaults.withCredentials = true;
 
@@ -69,7 +70,7 @@ function App() {
 
           {/* dashboards */}
 
-          <Route
+          {/* <Route
             path="/dashboard"
             element={
               <Sidebar>
@@ -78,23 +79,27 @@ function App() {
                 </Layout>
               </Sidebar>
             }
-          />
+          /> */}
 
-          <Route path="/newdashboard" element={<NewDashboard />} />
+<Route path="/dashboard/*" element={<NnewDashboard />} />
+      <Route path="/auth/*" element={<Auth />} />
+      <Route path="*" element={<Navigate to="/dashboard/home" replace />} />
 
-          <Route path="/nnewdashboard" element={<NnewDashboard />} />
+          {/* <Route path="/newdashboard" element={<NewDashboard />} />
+
+          <Route path="/nnewdashboard" element={<NnewDashboard />} /> */}
           {/* dashboards */}
 
           {/* posts */}
 
-          <Route path="/dashboard/:id" element={<Post />} />
+          {/* <Route path="/dashboard/:id" element={<Post />} /> */}
           {/* posts */}
 
-          <Route path="/creategroup" element={<Creategroup />} />
+          {/* <Route path="/creategroup" element={<Creategroup />} /> */}
 
           {/* <Route path="/creatinggroup" element={<Creatinggroup />} /> */}
-          <Route path="/adminhomepage" element={<AdminHomepage />} />
-          <Route path="/a" element={<A />} />
+          {/* <Route path="/adminhomepage" element={<AdminHomepage />} />
+          <Route path="/a" element={<A />} /> */}
 
           {/* <Route
             path="/dashboard"
@@ -107,7 +112,7 @@ function App() {
             }
           /> */}
 
-          <Route path="/creatinggroup" element={<Creatinggroup />} />
+          {/* <Route path="/creatinggroup" element={<Creatinggroup />} />
 
           <Route
             path="/editgroup"
@@ -118,15 +123,15 @@ function App() {
                 </Layout>
               </Sidebar>
             }
-          />
+          /> */}
 
-          <Route path="/editworkspace" element={<EditWorkspace />} />
+          {/* <Route path="/editworkspace" element={<EditWorkspace />} />
 
           <Route path="/addworkspace" element={<AddWorkspace />} />
           <Route path="/workspaces" element={<Workspaces />} />
-          <Route path="/createnewforum" element={<NewForum />} />
+          <Route path="/createnewforum" element={<NewForum />} /> */}
 
-          <Route
+          {/* <Route
             path="/profile"
             element={
               <Sidebar>
@@ -135,9 +140,9 @@ function App() {
                 </Layout>
               </Sidebar>
             }
-          />
+          /> */}
 
-          <Route
+          {/* <Route
             path="/members"
             element={
               <Sidebar>
@@ -157,7 +162,7 @@ function App() {
                 </Layout>
               </Sidebar>
             }
-          />
+          /> */}
         </Routes>
       </BrowserRouter>
     </div>

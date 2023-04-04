@@ -6,6 +6,10 @@ import {
   ArrowRightOnRectangleIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid";
+// import  Home  from "./pages/dashboard/home";
+// import Profile from "./pages/dashboard/profile";
+// import Tables from "./pages/dashboard/tables";
+// import Notifications from "./pages/dashboard/notifications";
 import { Home, Profile, Tables, Notifications } from "./pages/dashboard";
 import { SignIn, SignUp } from "./pages/auth";
 
