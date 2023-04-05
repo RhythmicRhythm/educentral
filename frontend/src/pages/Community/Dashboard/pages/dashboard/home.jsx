@@ -172,7 +172,8 @@ export function Home() {
 
   return (
     <div className="mt-8 md:px-20">
-      <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-3 xl:grid-cols-3">
+      <div className="mb-4 grid grid-cols-1 gap-8 lg:grid-cols-3 xl:grid-cols-3">
+        
         <div className="overflow-hidden lg:col-span-2 xl:col-span-2">
           <div className="insight bg-white p-4 rounded-lg shadow mt-6">
             <div className="">
@@ -212,92 +213,22 @@ export function Home() {
                       onChange={handleImageChange}
                     />
                     <div className="">
-                      <button 
-                      type="submit"
-                      disabled={isDescEmpty}
-                      >
-                      <img
-                        className="w-8"
-                        src="https://img.icons8.com/stickers/256/paper-plane.png"
-                        alt=""
-                      />
+                      <button type="submit" disabled={isDescEmpty}>
+                        <img
+                          className="w-8"
+                          src="https://img.icons8.com/stickers/256/paper-plane.png"
+                          alt=""
+                        />
                       </button>
-                     
                     </div>
                   </div>
 
                   <div className="flex justify-between">
-                    <div className="">
-                      {/* <button
-                    //   disabled={isDescEmpty}
-                      type="submit"
-                      className="transition duration-500 ease bg-gradient-to-r from-blue-400 via-blue-600 to-blue-900 
-                      hover:from-blue-900 hover:to-pink-600
-                      text-lg font-semibold rounded-lg text-white px-3 py-1 cursor-pointer"
-                    >
-                      Add Post
-                    </button> */}
-                    </div>
+                    <div className=""></div>
                   </div>
                 </form>
               </div>
               <div className=""></div>
-            </div>
-          </div>
-
-          <div className="insight bg-white p-4 rounded-lg shadow mt-6">
-            <div className="flex flex-col">
-              <div className="flex flex-row gap-4">
-                <div>
-                  <img
-                    className="w-10 rounded-full"
-                    src="https://randomuser.me/api/portraits/men/67.jpg"
-                    alt=""
-                  />
-                </div>
-                <div className="">
-                  <h1 className="text-sm text-gray-600"> John Doe</h1>
-                  <p className="text-xs text-gray-400">2 hours ago</p>
-                </div>
-              </div>
-              <p className="text-xs text-gray-500">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-                nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus
-                faucibus mollis pharetra. Proin blandit ac massa sed rhoncus
-                <span className="text-blue-400">See more</span>{" "}
-              </p>
-            </div>
-
-            <div className="mt-4 flex flex-row justify-between">
-              <div className="flex flex-row gap-4">
-                <div className="flex flex-row">
-                  <img
-                    className="w-6"
-                    src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
-                    alt=""
-                  />
-                  <h1 className="text-xs mt-1">2.5k Likes</h1>
-                </div>
-                <div
-                  className="flex flex-row
-                "
-                >
-                  <img
-                    className="w-6"
-                    src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
-                    alt=""
-                  />
-                  <h1 className="text-xs mt-1">97 Comments</h1>
-                </div>
-              </div>
-              <div className="flex flex-row gap-1">
-                <img
-                  className="w-6"
-                  src="https://img.icons8.com/stickers/256/share.png"
-                  alt=""
-                />
-                <h1 className="text-xs mt-1">27 Shares</h1>
-              </div>
             </div>
           </div>
 
@@ -317,8 +248,13 @@ export function Home() {
                       />
                     </div>
                     <div className="">
-                      <h1 className="text-sm text-gray-600"> {item.name}</h1>
-                      <p className="text-xs text-gray-400">2 hours ago</p>
+                      <h1 className="text-sm text-gray-700 font-bold"> {item.name}</h1>
+                      <h2 className="text-xs text-gray-500 font-semibold">
+                        description description
+                      </h2>
+                      <p className="text-xs text-gray-400">
+                      {moment(item.createdAt).fromNow()}{" "}
+                        </p>
                     </div>
                   </div>
 
@@ -330,7 +266,7 @@ export function Home() {
                       ? `${item.desc.substring(0, 100)}`
                       : item.desc}
 
-                    <span className="text-blue-400">
+                    <span className="text-blue-500 px-2">
                       <Link to={`/home/${item._id}`}>See more</Link>
                     </span>
                   </pre>
@@ -339,13 +275,18 @@ export function Home() {
 
                   <div className="mt-4 flex flex-row justify-between">
                     <div className="flex flex-row gap-4">
-                      <div onClick={() => likepost(item._id)} className="flex flex-row cursor-pointer">
+                      <div
+                        onClick={() => likepost(item._id)}
+                        className="flex flex-row cursor-pointer"
+                      >
                         <img
                           className="w-6"
                           src="https://img.icons8.com/stickers/256/facebook-like-skin-type-3.png"
                           alt=""
                         />
-                        <h1 className="text-xs mt-1">{item ? item.likesCount : 0} Likes</h1>
+                        <h1 className="text-xs mt-1">
+                          {item ? item.likesCount : 0} Likes
+                        </h1>
                       </div>
                       <div
                         className="flex flex-row
@@ -356,7 +297,9 @@ export function Home() {
                           src="https://img.icons8.com/stickers/100/000000/comments--v1.png"
                           alt=""
                         />
-                        <h1 className="text-xs mt-1">{item ? item.comments.length : 0} Comments</h1>
+                        <h1 className="text-xs mt-1">
+                          {item ? item.comments.length : 0} Comments
+                        </h1>
                       </div>
                     </div>
                     <div className="flex flex-row gap-1">
@@ -374,27 +317,10 @@ export function Home() {
           </div>
         </div>
 
-        <div className="">
-          <CardHeader
-            floated={false}
-            shadow={false}
-            color="transparent"
-            className="m-0 p-6"
-          >
-            <Typography variant="h6" color="blue-gray" className="mb-2">
-              Orders Overview
-            </Typography>
-            <Typography
-              variant="small"
-              className="flex items-center gap-1 font-normal text-blue-gray-600"
-            >
-              <ArrowUpIcon
-                strokeWidth={3}
-                className="h-3.5 w-3.5 text-green-500"
-              />
-              <strong>24%</strong> this month
-            </Typography>
-          </CardHeader>
+        <div className="col-span-1 ">
+        <div className="relative lg:sticky top-8">
+             gymaihrnbibymfau
+        </div>
         </div>
       </div>
     </div>
