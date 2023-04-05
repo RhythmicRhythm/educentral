@@ -92,7 +92,7 @@ function App() {
 
           {/* posts */}
 
-          {/* <Route path="/dashboard/:id" element={<Post />} /> */}
+          <Route path="/home/:id" element={<Post />} />
           {/* posts */}
 
           {/* <Route path="/creategroup" element={<Creategroup />} /> */}

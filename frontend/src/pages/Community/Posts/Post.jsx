@@ -318,7 +318,7 @@ const Post = () => {
               {/* comments */}
               <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
                 <h3 className="text-xl mb-8 text-gray-700 font-bold border-b pb-4">
-                  {post ? post.comments.length : 0} Comments
+                  {/* {post ? post.comments.length : 0} Comments */}
                 </h3>
                 {post &&
                   post.comments &&
